@@ -20,18 +20,6 @@ const realEvents = [
     video: '/about-reel.mp4',
     services: ['Audio', 'Lighting'],
   },
-  {
-    title: "Posada ARCUS — Private Event",
-    tag: 'Private Party',
-    video: '/posada-arcus-reel.mp4',
-    services: ['Audio', 'Lighting', 'Photography'],
-  },
-  {
-    title: "Casa Karma Pedregal",
-    tag: 'Villa',
-    video: '/casa-karma-reel.mp4',
-    services: ['Audio', 'Lighting', 'Video'],
-  },
 ]
 
 const placeholderEvents = [
