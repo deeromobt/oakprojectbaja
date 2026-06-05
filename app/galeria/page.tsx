@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Play } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Gallery — Oak Project Baja',
@@ -34,6 +34,29 @@ export default function GaleriaPage() {
           <p className="text-lg max-w-2xl leading-relaxed" style={{ color: '#7A6535' }}>
             Every event is a unique story. Here we share some of the most special moments we've had the privilege of being part of in Baja California.
           </p>
+        </div>
+
+        {/* Featured video — The Mendivils Wedding */}
+        <div className="mb-16">
+          <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Featured event</p>
+          <h2 className="text-2xl font-bold italic mb-6" style={{ color: '#2A1E08' }}>The Mendivils — Wedding Film</h2>
+          <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
+            <video
+              className="w-full aspect-video object-cover"
+              src="/mendivil-wedding.mp4"
+              controls
+              playsInline
+              poster=""
+              style={{ background: '#EDE4CC' }}
+            />
+          </div>
+          <div className="flex flex-wrap gap-2 mt-4">
+            {['Audio', 'Lighting', 'Photography', 'Video'].map(s => (
+              <span key={s} className="text-xs px-3 py-1 rounded-full" style={{ background: '#EDE4CC', color: '#968148', border: '1px solid #D9C99A' }}>
+                {s}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Category filter */}
@@ -91,7 +114,7 @@ export default function GaleriaPage() {
           style={{ background: '#EDE4CC', border: '1px dashed #C9B889' }}
         >
           <p className="text-2xl mb-3">📸</p>
-          <h3 className="text-xl font-semibold mb-2" style={{ color: '#2A1E08' }}>Gallery under construction</h3>
+          <h3 className="text-xl font-semibold mb-2" style={{ color: '#2A1E08' }}>More events coming soon</h3>
           <p className="mb-6" style={{ color: '#7A6535' }}>
             We'll soon have real photos from all our events. In the meantime, get a quote for your event!
           </p>

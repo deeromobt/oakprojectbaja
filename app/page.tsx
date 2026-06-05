@@ -118,7 +118,7 @@ export default function HomePage() {
         headline={"Bringing your\nperfect event to life"}
         subline="Furniture rental, audio, lighting, photography, and video for events in Baja California."
         posterSrc="/logo.png"
-        videoSrc="/about-reel.mp4"
+        videoSrc="/hero2.mp4"
       />
 
       {/* Event Types */}
@@ -361,7 +361,7 @@ export default function HomePage() {
             <div className="rounded-3xl overflow-hidden aspect-video" style={{ border: '1px solid #D9C99A' }}>
               <video
                 className="w-full h-full object-cover"
-                src="/about-reel.mp4"
+                src="/mendivil-reel.mp4"
                 autoPlay
                 muted
                 loop
