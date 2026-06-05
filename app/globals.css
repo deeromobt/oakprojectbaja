@@ -39,6 +39,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-higuen), 'Higuen Serif', Georgia, serif;
   font-style: normal;
+  letter-spacing: 0.04em;
 }
 
 html {
