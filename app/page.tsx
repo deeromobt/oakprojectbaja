@@ -113,39 +113,42 @@ const stats = [
 export default function HomePage() {
   return (
     <div>
-      {/* Hero */}
+
+      {/* 1 — Hero: Charlie & Jessica reel */}
       <VideoHero
         headline={"Bringing your\nperfect event to life"}
         subline="Furniture rental, audio, lighting, photography, and video for events in Baja California."
         posterSrc="/logo.png"
-        videoSrc="/hero2.mp4"
+        videoSrc="/about-reel.mp4"
       />
 
-      {/* Event Types */}
-      <section className="py-16" style={{ background: '#FCF7E8' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>What type of event do you have?</p>
-            <h2 className="text-3xl font-bold italic" style={{ color: '#2A1E08' }}>Specialists for every occasion</h2>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {eventTypes.map(et => (
-              <Link
-                key={et.label}
-                href={`/cotizacion?tipo=${encodeURIComponent(et.label)}`}
-                className="rounded-2xl p-4 text-center flex flex-col items-center gap-2 transition-all hover:-translate-y-1"
-                style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
-              >
-                <span className="text-3xl">{et.icon}</span>
-                <p className="font-semibold text-sm" style={{ color: '#2A1E08' }}>{et.label}</p>
-                <p className="text-xs leading-tight" style={{ color: '#7A6535' }}>{et.desc}</p>
-              </Link>
-            ))}
+      {/* 2 — Event Types: Web Sequence 2 background */}
+      <VideoBackground src="/hero2.mp4" overlayOpacity={0.70}>
+        <div className="py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9B889' }}>What type of event do you have?</p>
+              <h2 className="text-3xl font-bold italic" style={{ color: '#FCF7E8' }}>Specialists for every occasion</h2>
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+              {eventTypes.map(et => (
+                <Link
+                  key={et.label}
+                  href={`/cotizacion?tipo=${encodeURIComponent(et.label)}`}
+                  className="rounded-2xl p-4 text-center flex flex-col items-center gap-2 transition-all hover:-translate-y-1"
+                  style={{ background: 'rgba(252,247,232,0.10)', border: '1px solid rgba(201,184,137,0.35)', backdropFilter: 'blur(8px)' }}
+                >
+                  <span className="text-3xl">{et.icon}</span>
+                  <p className="font-semibold text-sm" style={{ color: '#FCF7E8' }}>{et.label}</p>
+                  <p className="text-xs leading-tight" style={{ color: '#C9B889' }}>{et.desc}</p>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
+      </VideoBackground>
 
-      {/* Stats — video background */}
+      {/* 3 — Stats: original stats video */}
       <VideoBackground src="/section-stats.mp4" overlayOpacity={0.78}>
         <div className="py-14">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,7 +164,7 @@ export default function HomePage() {
         </div>
       </VideoBackground>
 
-      {/* Services */}
+      {/* 4 — Services: cream */}
       <section id="servicios" className="py-20" style={{ background: '#FCF7E8' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
@@ -202,60 +205,63 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Packages */}
-      <section className="py-20 border-t" style={{ background: '#FCF7E8', borderColor: '#D9C99A' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Packages</p>
-            <h2 className="text-4xl font-bold mb-3 italic" style={{ color: '#2A1E08' }}>Ready to go, no complications</h2>
-            <p className="max-w-xl mx-auto" style={{ color: '#7A6535' }}>Pre-built packages for the most common events. Fully customizable to your taste.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {packages.map(pkg => (
-              <div
-                key={pkg.name}
-                className="rounded-2xl p-6 flex flex-col gap-4 relative"
-                style={{
-                  background: pkg.popular ? '#E0D5B8' : '#EDE4CC',
-                  border: `1px solid ${pkg.popular ? '#968148' : '#D9C99A'}`,
-                }}
-              >
-                {pkg.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-4 py-1 rounded-full" style={{ background: '#968148', color: '#FCF7E8' }}>
-                    Most popular
-                  </span>
-                )}
-                <div>
-                  <h3 className="text-xl font-bold mb-1" style={{ color: '#2A1E08' }}>{pkg.name}</h3>
-                  <p className="text-sm" style={{ color: '#7A6535' }}>{pkg.desc}</p>
+      {/* 5 — Packages: Mendivil reel background */}
+      <VideoBackground src="/mendivil-reel.mp4" overlayOpacity={0.80}>
+        <div className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14">
+              <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9B889' }}>Packages</p>
+              <h2 className="text-4xl font-bold mb-3 italic" style={{ color: '#FCF7E8' }}>Ready to go, no complications</h2>
+              <p className="max-w-xl mx-auto" style={{ color: '#C9B889' }}>Pre-built packages for the most common events. Fully customizable to your taste.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {packages.map(pkg => (
+                <div
+                  key={pkg.name}
+                  className="rounded-2xl p-6 flex flex-col gap-4 relative"
+                  style={{
+                    background: pkg.popular ? 'rgba(252,247,232,0.14)' : 'rgba(252,247,232,0.08)',
+                    border: `1px solid ${pkg.popular ? 'rgba(201,184,137,0.7)' : 'rgba(201,184,137,0.25)'}`,
+                    backdropFilter: 'blur(10px)',
+                  }}
+                >
+                  {pkg.popular && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-4 py-1 rounded-full" style={{ background: '#968148', color: '#FCF7E8' }}>
+                      Most popular
+                    </span>
+                  )}
+                  <div>
+                    <h3 className="text-xl font-bold mb-1" style={{ color: '#FCF7E8' }}>{pkg.name}</h3>
+                    <p className="text-sm" style={{ color: '#C9B889' }}>{pkg.desc}</p>
+                  </div>
+                  <div>
+                    <p className="text-3xl font-bold" style={{ color: '#FCF7E8' }}>
+                      {new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', minimumFractionDigits: 0 }).format(pkg.price)}
+                    </p>
+                    <p className="text-xs mt-0.5" style={{ color: '#C9B889' }}>estimated base price</p>
+                  </div>
+                  <ul className="flex flex-col gap-2 flex-1">
+                    {pkg.items.map(item => (
+                      <li key={item} className="flex items-center gap-2 text-sm" style={{ color: '#FCF7E8' }}>
+                        <span style={{ color: '#C9B889' }}>✓</span> {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href={`/cotizacion?paquete=${encodeURIComponent(pkg.name)}`} className="w-full py-3 rounded-xl text-center font-semibold text-sm btn-gold mt-2 block">
+                    Request this package
+                  </Link>
                 </div>
-                <div>
-                  <p className="text-3xl font-bold" style={{ color: '#2A1E08' }}>
-                    {new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', minimumFractionDigits: 0 }).format(pkg.price)}
-                  </p>
-                  <p className="text-xs mt-0.5" style={{ color: '#C9B889' }}>estimated base price</p>
-                </div>
-                <ul className="flex flex-col gap-2 flex-1">
-                  {pkg.items.map(item => (
-                    <li key={item} className="flex items-center gap-2 text-sm" style={{ color: '#7A6535' }}>
-                      <span style={{ color: '#968148' }}>✓</span> {item}
-                    </li>
-                  ))}
-                </ul>
-                <Link href={`/cotizacion?paquete=${encodeURIComponent(pkg.name)}`} className="w-full py-3 rounded-xl text-center font-semibold text-sm btn-gold mt-2 block">
-                  Request this package
-                </Link>
-              </div>
-            ))}
+              ))}
+            </div>
+            <p className="text-center text-xs mt-6" style={{ color: '#C9B889' }}>
+              * Packages are reference prices. Final price depends on date, location, and customization.
+            </p>
           </div>
-          <p className="text-center text-xs mt-6" style={{ color: '#C9B889' }}>
-            * Packages are reference prices. Final price depends on date, location, and customization.
-          </p>
         </div>
-      </section>
+      </VideoBackground>
 
-      {/* Gallery Preview */}
-      <section className="py-20 border-t" style={{ background: '#FCF7E8', borderColor: '#D9C99A' }}>
+      {/* 6 — Gallery Preview: cream */}
+      <section className="py-20" style={{ background: '#FCF7E8' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-end justify-between mb-10">
             <div>
@@ -266,36 +272,23 @@ export default function HomePage() {
               See all <ArrowRight size={14} />
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {[
-              { label: 'Vineyard wedding', tag: 'Wedding' },
-              { label: 'Quinceañera', tag: 'Quinceañera' },
-              { label: 'Corporate event', tag: 'Corporate' },
-              { label: 'Beach party', tag: 'Private party' },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="aspect-square rounded-2xl flex flex-col items-center justify-center gap-2"
-                style={{ background: '#EDE4CC', border: '1px dashed #D9C99A' }}
-              >
-                <p className="text-3xl opacity-40">📸</p>
-                <p className="text-xs text-center px-2" style={{ color: '#968148' }}>{item.label}</p>
-                <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: '#D9C99A', color: '#2A1E08' }}>{item.tag}</span>
-              </div>
-            ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="rounded-2xl overflow-hidden aspect-video" style={{ border: '1px solid #D9C99A' }}>
+              <video className="w-full h-full object-cover" src="/mendivil-reel.mp4" autoPlay muted loop playsInline />
+            </div>
+            <div className="rounded-2xl overflow-hidden aspect-video" style={{ border: '1px solid #D9C99A' }}>
+              <video className="w-full h-full object-cover" src="/about-reel.mp4" autoPlay muted loop playsInline />
+            </div>
           </div>
-          <p className="text-center mt-6 text-sm" style={{ color: '#C9B889' }}>
-            Coming soon — full gallery with real events
-          </p>
-          <div className="flex justify-center mt-4 sm:hidden">
-            <Link href="/galeria" className="flex items-center gap-1 text-sm font-semibold" style={{ color: '#968148' }}>
+          <div className="flex justify-center mt-6">
+            <Link href="/galeria" className="inline-flex items-center gap-2 font-semibold text-sm" style={{ color: '#968148' }}>
               View full gallery <ArrowRight size={14} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Testimonials — video background */}
+      {/* 7 — Testimonials: video background */}
       <VideoBackground src="/section-testimonials.mp4" overlayOpacity={0.72}>
         <div className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -330,43 +323,38 @@ export default function HomePage() {
         </div>
       </VideoBackground>
 
-      {/* How it works */}
-      <section className="py-20 border-t" style={{ background: '#FCF7E8', borderColor: '#D9C99A' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Process</p>
-            <h2 className="text-4xl font-bold italic" style={{ color: '#2A1E08' }}>How it works</h2>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { step: '01', title: 'Browse the catalog', desc: 'Navigate by category or choose an event type and add what you need.' },
-              { step: '02', title: 'Build your quote', desc: 'Customize quantities and fill in your event details to receive a breakdown.' },
-              { step: '03', title: 'Book your date', desc: 'Select the date and verify availability before committing.' },
-              { step: '04', title: 'Pay & confirm', desc: 'Secure online payment with Stripe. Your booking is confirmed instantly.' },
-            ].map(item => (
-              <div key={item.step}>
-                <div className="text-5xl font-bold mb-4" style={{ color: '#D9C99A' }}>{item.step}</div>
-                <h3 className="text-lg font-semibold mb-2" style={{ color: '#2A1E08' }}>{item.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#7A6535' }}>{item.desc}</p>
-              </div>
-            ))}
+      {/* 8 — How it works: hero2 background */}
+      <VideoBackground src="/section-cta.mp4" overlayOpacity={0.75}>
+        <div className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-14">
+              <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9B889' }}>Process</p>
+              <h2 className="text-4xl font-bold italic" style={{ color: '#FCF7E8' }}>How it works</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                { step: '01', title: 'Browse the catalog', desc: 'Navigate by category or choose an event type and add what you need.' },
+                { step: '02', title: 'Build your quote', desc: 'Customize quantities and fill in your event details to receive a breakdown.' },
+                { step: '03', title: 'Book your date', desc: 'Select the date and verify availability before committing.' },
+                { step: '04', title: 'Pay & confirm', desc: 'Secure online payment with Stripe. Your booking is confirmed instantly.' },
+              ].map(item => (
+                <div key={item.step}>
+                  <div className="text-5xl font-bold mb-4" style={{ color: 'rgba(201,184,137,0.5)' }}>{item.step}</div>
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#FCF7E8' }}>{item.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: '#C9B889' }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </section>
+      </VideoBackground>
 
-      {/* About snippet */}
-      <section className="py-20 border-t" style={{ background: '#FCF7E8', borderColor: '#D9C99A' }}>
+      {/* 9 — About snippet: cream */}
+      <section className="py-20" style={{ background: '#FCF7E8' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="rounded-3xl overflow-hidden aspect-video" style={{ border: '1px solid #D9C99A' }}>
-              <video
-                className="w-full h-full object-cover"
-                src="/mendivil-reel.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
+              <video className="w-full h-full object-cover" src="/mendivil-reel.mp4" autoPlay muted loop playsInline />
             </div>
             <div>
               <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Who we are</p>
@@ -387,8 +375,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA — video background */}
-      <VideoBackground src="/section-cta.mp4" overlayOpacity={0.55}>
+      {/* 10 — CTA: section-stats video */}
+      <VideoBackground src="/section-stats.mp4" overlayOpacity={0.55}>
         <div className="py-28 px-4 text-center">
           <p className="text-sm font-semibold tracking-widest uppercase mb-4" style={{ color: '#C9B889' }}>
             Oak Project Baja
@@ -409,6 +397,7 @@ export default function HomePage() {
           </div>
         </div>
       </VideoBackground>
+
     </div>
   )
 }
