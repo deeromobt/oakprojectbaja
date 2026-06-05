@@ -98,7 +98,7 @@ export default function NosotrosPage() {
           <div className="flex justify-center gap-1 mb-4">
             {Array.from({ length: 5 }).map((_, i) => <Star key={i} size={18} fill="#C9B889" style={{ color: '#C9B889' }} />)}
           </div>
-          <p className="text-xl italic leading-relaxed max-w-2xl mx-auto mb-6" style={{ color: '#2A1E08' }}>
+          <p className="text-xl leading-relaxed max-w-2xl mx-auto mb-6" style={{ color: '#2A1E08' }}>
             "From the first call to the last detail, the Oak Project team was professional and attentive. The photos were spectacular and the lighting completely transformed the venue."
           </p>
           <p className="font-semibold" style={{ color: '#968148' }}>Carlos & Sofía Ruiz</p>

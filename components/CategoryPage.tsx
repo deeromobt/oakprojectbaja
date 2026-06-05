@@ -66,7 +66,7 @@ export default function CategoryPage({ category }: { category: Category }) {
                       <p className="text-xs font-semibold tracking-widest uppercase mb-1" style={{ color: '#968148' }}>
                         {title}
                       </p>
-                      <p className="text-lg font-bold italic mb-2 group-hover:underline" style={{ color: '#2A1E08' }}>
+                      <p className="text-lg font-bold mb-2 group-hover:underline" style={{ color: '#2A1E08' }}>
                         {subtitle}
                       </p>
                       <p className="text-sm leading-relaxed" style={{ color: '#7A6535' }}>

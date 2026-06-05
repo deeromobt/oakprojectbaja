@@ -302,7 +302,7 @@ export default function HomePage() {
                   style={{ background: 'rgba(252,247,232,0.08)', border: '1px solid rgba(201,184,137,0.3)', backdropFilter: 'blur(8px)' }}
                 >
                   <Quote size={24} style={{ color: '#C9B889' }} />
-                  <p className="text-base leading-relaxed italic" style={{ color: '#FCF7E8' }}>"{t.text}"</p>
+                  <p className="text-base leading-relaxed" style={{ color: '#FCF7E8' }}>"{t.text}"</p>
                   <div className="flex items-center justify-between mt-auto">
                     <div>
                       <p className="font-semibold text-sm" style={{ color: '#FCF7E8' }}>{t.name}</p>
