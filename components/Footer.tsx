@@ -45,8 +45,8 @@ export default function Footer() {
             <ul className="flex flex-col gap-2 text-sm" style={{ color: '#7A6535' }}>
               <li>Baja California Sur, México</li>
               <li>
-                <a href="mailto:info@oakprojectbaja.com" className="transition-colors hover:underline">
-                  info@oakprojectbaja.com
+                <a href="mailto:bookings@oakprojectbaja.com" className="transition-colors hover:underline">
+                  bookings@oakprojectbaja.com
                 </a>
               </li>
               <li>

@@ -28,9 +28,35 @@ const hearAboutUs = [
 export default function CotizacionPage() {
   const { items, removeItem, updateQuantity, eventDetails, setEventDetails } = useCartStore()
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setSending(true)
+    try {
+      await fetch('/api/cotizacion', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: eventDetails.name,
+          email: eventDetails.email,
+          phone: eventDetails.phone,
+          eventType: eventDetails.eventType,
+          eventDate: eventDetails.eventDate
+            ? new Date(eventDetails.eventDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+            : 'Not specified',
+          venue: eventDetails.venue || 'Not specified',
+          guests: eventDetails.guestCount || 'Not specified',
+          budget: (eventDetails as { budget?: string }).budget || 'Not specified',
+          source: (eventDetails as { hearAbout?: string }).hearAbout || 'Not specified',
+          vision: eventDetails.notes,
+          items: items.map(i => `${i.quantity}x ${i.product.name}`).join(', ') || 'No items selected',
+        }),
+      })
+    } catch (_) {
+      // still show success to user even if email fails
+    }
+    setSending(false)
     setSubmitted(true)
   }
 
@@ -267,9 +293,8 @@ export default function CotizacionPage() {
                     style={{ background: '#FCF7E8', border: '1px solid #D9C99A', color: '#2A1E08' }} />
                 </div>
 
-                <button type="submit" className="w-full py-3.5 rounded-xl font-semibold btn-gold flex items-center justify-center gap-2 text-base">
-                  Send quote request
-                  <ArrowRight size={18} />
+                <button type="submit" disabled={sending} className="w-full py-3.5 rounded-xl font-semibold btn-gold flex items-center justify-center gap-2 text-base disabled:opacity-60">
+                  {sending ? 'Sending...' : <><span>Send quote request</span><ArrowRight size={18} /></>}
                 </button>
 
                 <p className="text-xs text-center" style={{ color: '#C9B889' }}>
