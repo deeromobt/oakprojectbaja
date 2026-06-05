@@ -1,24 +1,47 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Play } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Gallery — Oak Project Baja',
-  description: 'Gallery of events by Oak Project Baja. Weddings, quinceañeras, corporate events, and more in Baja California.',
+  description: 'Gallery of events by Oak Project Baja. Weddings, private events, and more in Baja California.',
 }
 
-const categories = ['All', 'Weddings', 'Quinceañeras', 'Corporate', 'Private parties', 'Birthdays']
+const realEvents = [
+  {
+    title: "The Mendivils — Wedding",
+    tag: 'Wedding',
+    video: '/mendivil-reel.mp4',
+    services: ['Audio', 'Lighting', 'Photography', 'Video'],
+  },
+  {
+    title: "Charlie & Jessica — Audio & Lights",
+    tag: 'Wedding',
+    video: '/about-reel.mp4',
+    services: ['Audio', 'Lighting'],
+  },
+  {
+    title: "Posada ARCUS — Private Event",
+    tag: 'Private Party',
+    video: '/posada-arcus-reel.mp4',
+    services: ['Audio', 'Lighting', 'Photography'],
+  },
+  {
+    title: "Casa Karma Pedregal",
+    tag: 'Villa',
+    video: '/casa-karma-reel.mp4',
+    services: ['Audio', 'Lighting', 'Video'],
+  },
+]
 
 const placeholderEvents = [
-  { title: 'Vineyard wedding Valle de Guadalupe', tag: 'Wedding', services: ['Furniture', 'Lighting', 'Photography'] },
-  { title: 'Quinceañera Gran Salón Tijuana', tag: 'Quinceañera', services: ['Furniture', 'Audio', 'Lighting', 'Video'] },
   { title: 'Corporate Event Los Cabos', tag: 'Corporate', services: ['Audio', 'Lighting'] },
+  { title: 'Quinceañera Gran Salón', tag: 'Quinceañera', services: ['Furniture', 'Audio', 'Lighting', 'Video'] },
   { title: 'Beach wedding Ensenada', tag: 'Wedding', services: ['Furniture', 'Photography', 'Video'] },
   { title: 'Birthday 50 La Paz', tag: 'Birthday', services: ['Photo booth', 'Furniture'] },
-  { title: 'Gala dinner Puerto Nuevo', tag: 'Corporate', services: ['Furniture', 'Audio', 'Lighting'] },
-  { title: 'Quinceañera garden Mexicali', tag: 'Quinceañera', services: ['Furniture', 'Lighting', 'Photography'] },
-  { title: 'Intimate wedding Valle de Ojos Negros', tag: 'Wedding', services: ['Furniture', 'Photography'] },
 ]
+
+const categories = ['All', 'Weddings', 'Corporate', 'Private parties', 'Villas', 'Quinceañeras']
 
 export default function GaleriaPage() {
   return (
@@ -36,9 +59,9 @@ export default function GaleriaPage() {
           </p>
         </div>
 
-        {/* Featured video — The Mendivils Wedding */}
+        {/* Featured video — Mendivils Wedding Film */}
         <div className="mb-16">
-          <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Featured event</p>
+          <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Featured film</p>
           <h2 className="text-2xl font-bold italic mb-6" style={{ color: '#2A1E08' }}>The Mendivils — Wedding Film</h2>
           <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
             <video
@@ -46,7 +69,6 @@ export default function GaleriaPage() {
               src="/mendivil-wedding.mp4"
               controls
               playsInline
-              poster=""
               style={{ background: '#EDE4CC' }}
             />
           </div>
@@ -76,19 +98,52 @@ export default function GaleriaPage() {
           ))}
         </div>
 
-        {/* Gallery grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {placeholderEvents.map((event, i) => (
+        {/* Real event reels grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+          {realEvents.map((event, i) => (
             <div
               key={i}
               className="rounded-2xl overflow-hidden transition-all hover:-translate-y-1"
               style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
             >
+              <video
+                className="w-full aspect-video object-cover"
+                src={event.video}
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+              <div className="p-4">
+                <span className="text-xs px-2 py-0.5 rounded-full mb-2 inline-block" style={{ background: '#D9C99A', color: '#2A1E08' }}>
+                  {event.tag}
+                </span>
+                <h3 className="font-semibold text-sm mb-2" style={{ color: '#2A1E08' }}>{event.title}</h3>
+                <div className="flex flex-wrap gap-1">
+                  {event.services.map(s => (
+                    <span key={s} className="text-xs px-2 py-0.5 rounded" style={{ background: '#FCF7E8', color: '#968148', border: '1px solid #D9C99A' }}>
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Placeholder cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {placeholderEvents.map((event, i) => (
+            <div
+              key={i}
+              className="rounded-2xl overflow-hidden"
+              style={{ background: '#EDE4CC', border: '1px dashed #D9C99A' }}
+            >
               <div
                 className="aspect-video flex flex-col items-center justify-center gap-2"
                 style={{ background: 'linear-gradient(135deg, #EDE4CC, #E0D5B8)' }}
               >
-                <p className="text-5xl opacity-30">📸</p>
+                <p className="text-4xl opacity-25">📸</p>
                 <p className="text-xs" style={{ color: '#C9B889' }}>Coming soon</p>
               </div>
               <div className="p-4">
@@ -108,20 +163,18 @@ export default function GaleriaPage() {
           ))}
         </div>
 
-        {/* Coming soon notice */}
-        <div
-          className="mt-12 p-8 rounded-2xl text-center"
-          style={{ background: '#EDE4CC', border: '1px dashed #C9B889' }}
-        >
-          <p className="text-2xl mb-3">📸</p>
+        {/* CTA */}
+        <div className="mt-12 p-8 rounded-2xl text-center" style={{ background: '#EDE4CC', border: '1px dashed #C9B889' }}>
+          <p className="text-2xl mb-3">🎬</p>
           <h3 className="text-xl font-semibold mb-2" style={{ color: '#2A1E08' }}>More events coming soon</h3>
           <p className="mb-6" style={{ color: '#7A6535' }}>
-            We'll soon have real photos from all our events. In the meantime, get a quote for your event!
+            We're continuously adding new events. Ready to create yours?
           </p>
           <Link href="/cotizacion" className="inline-flex items-center gap-2 px-8 py-3 rounded-xl font-semibold btn-gold">
-            Quote my event <ArrowRight size={16} />
+            Get a quote <ArrowRight size={16} />
           </Link>
         </div>
+
       </div>
     </div>
   )
