@@ -122,31 +122,29 @@ export default function HomePage() {
         videoSrc="/about-reel.mp4"
       />
 
-      {/* 2 — Event Types: Web Sequence 2 background */}
-      <VideoBackground src="/hero2.mp4" overlayOpacity={0.70}>
-        <div className="py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9B889' }}>What type of event do you have?</p>
-              <h2 className="text-3xl font-bold italic" style={{ color: '#FCF7E8' }}>Specialists for every occasion</h2>
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-              {eventTypes.map(et => (
-                <Link
-                  key={et.label}
-                  href={`/cotizacion?tipo=${encodeURIComponent(et.label)}`}
-                  className="rounded-2xl p-4 text-center flex flex-col items-center gap-2 transition-all hover:-translate-y-1"
-                  style={{ background: 'rgba(252,247,232,0.10)', border: '1px solid rgba(201,184,137,0.35)', backdropFilter: 'blur(8px)' }}
-                >
-                  <span className="text-3xl">{et.icon}</span>
-                  <p className="font-semibold text-sm" style={{ color: '#FCF7E8' }}>{et.label}</p>
-                  <p className="text-xs leading-tight" style={{ color: '#C9B889' }}>{et.desc}</p>
-                </Link>
-              ))}
-            </div>
+      {/* 2 — Event Types: cream */}
+      <section className="py-16" style={{ background: '#FCF7E8' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>What type of event do you have?</p>
+            <h2 className="text-3xl font-bold italic" style={{ color: '#2A1E08' }}>Specialists for every occasion</h2>
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            {eventTypes.map(et => (
+              <Link
+                key={et.label}
+                href={`/cotizacion?tipo=${encodeURIComponent(et.label)}`}
+                className="rounded-2xl p-4 text-center flex flex-col items-center gap-2 transition-all hover:-translate-y-1"
+                style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
+              >
+                <span className="text-3xl">{et.icon}</span>
+                <p className="font-semibold text-sm" style={{ color: '#2A1E08' }}>{et.label}</p>
+                <p className="text-xs leading-tight" style={{ color: '#7A6535' }}>{et.desc}</p>
+              </Link>
+            ))}
           </div>
         </div>
-      </VideoBackground>
+      </section>
 
       {/* 3 — Stats: original stats video */}
       <VideoBackground src="/section-stats.mp4" overlayOpacity={0.78}>
