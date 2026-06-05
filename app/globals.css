@@ -21,7 +21,7 @@
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
-  --font-sans: var(--font-garamond);
+  --font-sans: var(--font-atkinson);
   --font-serif: var(--font-garamond);
 }
 
@@ -32,8 +32,12 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-garamond), 'EB Garamond', Garamond, Georgia, serif;
+  font-family: var(--font-atkinson), 'Atkinson Hyperlegible', sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-garamond), 'EB Garamond', Garamond, Georgia, serif;
 }
 
 html {

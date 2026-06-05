@@ -53,7 +53,7 @@ export default function CotizacionPage() {
               Back to home
             </Link>
             <a
-              href={`https://wa.me/526241691988?text=${encodeURIComponent(`Hi, I just sent a quote request for ${eventDetails.eventType || 'my event'}. My name is ${eventDetails.name}.`)}`}
+              href={`https://wa.me/526241392530?text=${encodeURIComponent(`Hi, I just sent a quote request for ${eventDetails.eventType || 'my event'}. My name is ${eventDetails.name}.`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 rounded-xl font-semibold btn-outline inline-flex items-center gap-2 justify-center"
@@ -144,7 +144,7 @@ export default function CotizacionPage() {
               <p className="text-sm font-semibold mb-1" style={{ color: '#2A1E08' }}>Prefer to talk directly?</p>
               <p className="text-xs mb-3" style={{ color: '#968148' }}>Message us on WhatsApp and we'll reply in minutes.</p>
               <a
-                href="https://wa.me/526241691988?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20my%20event%20with%20Oak%20Project%20Baja."
+                href="https://wa.me/526241392530?text=Hi!%20I%27d%20like%20to%20get%20a%20quote%20for%20my%20event%20with%20Oak%20Project%20Baja."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 justify-center w-full py-2.5 rounded-xl text-sm font-semibold transition-all hover:scale-[1.02]"

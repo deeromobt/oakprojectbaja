@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { EB_Garamond } from 'next/font/google'
+import { EB_Garamond, Atkinson_Hyperlegible } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -14,6 +14,13 @@ const garamond = EB_Garamond({
   style: ['normal', 'italic'],
 })
 
+const atkinson = Atkinson_Hyperlegible({
+  subsets: ['latin'],
+  variable: '--font-atkinson',
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+})
+
 export const metadata: Metadata = {
   title: 'Oak Project Baja — Furniture, Audio, Lighting & Photography Rentals',
   description: 'Furniture rental, audio, lighting, photography, and video services for events in Baja California. Get a quote online and book your date.',
@@ -22,7 +29,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${garamond.variable} h-full`}>
+    <html lang="en" className={`${garamond.variable} ${atkinson.variable} h-full`}>
       <body className="min-h-full flex flex-col" style={{ background: '#FCF7E8' }}>
         <Providers>
           <Navbar />
