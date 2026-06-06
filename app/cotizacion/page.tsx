@@ -11,11 +11,11 @@ const eventTypes = [
 ]
 
 const budgetRanges = [
-  'Under $40,000 MXN',
-  '$40,000 – $75,000 MXN',
-  '$75,000 – $120,000 MXN',
-  '$120,000 – $170,000 MXN',
-  'Over $170,000 MXN',
+  'Under $2,500 USD',
+  '$2,500 – $5,000 USD',
+  '$5,000 – $8,000 USD',
+  '$8,000 – $11,000 USD',
+  'Over $11,000 USD',
   'Corporate event (special quote)',
   'Not defined yet',
 ]

@@ -15,7 +15,7 @@ export interface Product {
 export const products: Product[] = [
   // FURNITURE
   {
-    id: 'mob-001', name: 'DJ Booth', category: 'mobiliario', price: 4000, unit: 'per event', popular: true, minQty: 1,
+    id: 'mob-001', name: 'DJ Booth', category: 'mobiliario', price: 250, unit: 'per event', popular: true, minQty: 1,
     description: 'Professional DJ Booth available for rental. The perfect stage to make the DJ the center of the night.',
     highlights: ['Professional finish', 'Compatible with any equipment', 'Setup & breakdown included'],
   },
@@ -27,73 +27,73 @@ export const products: Product[] = [
 
   // AUDIO
   {
-    id: 'aud-001', name: '12" Mid Speaker', category: 'audio', price: 2400, unit: 'per unit', popular: true, minQty: 1,
+    id: 'aud-001', name: '12" Mid Speaker', category: 'audio', price: 150, unit: 'per unit', popular: true, minQty: 1,
     description: 'High-power 12-inch QSC speaker. Reproduces mid and high frequencies with clarity and projection in any space.',
     highlights: ['High sound clarity', 'Ideal for vocals and instruments', 'Available in pairs'],
   },
   {
-    id: 'aud-002', name: '18" Subwoofer', category: 'audio', price: 4000, unit: 'per unit', popular: true, minQty: 1,
+    id: 'aud-002', name: '18" Subwoofer', category: 'audio', price: 250, unit: 'per unit', popular: true, minQty: 1,
     description: '18-inch subwoofer for deep, impactful bass. Adds power and body to any sound system.',
     highlights: ['Deep, impactful bass', 'High performance', 'Available in pairs'],
   },
   {
-    id: 'aud-003', name: 'QSC K8 Monitor', category: 'audio', price: 3200, unit: 'per unit', minQty: 1,
+    id: 'aud-003', name: 'QSC K8 Monitor', category: 'audio', price: 200, unit: 'per unit', minQty: 1,
     description: '8-inch QSC K8 monitor for stage or DJ. Reproduces the mix with fidelity for those on stage.',
     highlights: ['Precise reference sound', 'Compact and powerful', 'Ideal for DJs and artists'],
   },
   {
-    id: 'aud-004', name: 'Shure Wireless Microphone', category: 'audio', price: 800, unit: 'per unit', popular: true, minQty: 1,
+    id: 'aud-004', name: 'Shure Wireless Microphone', category: 'audio', price: 50, unit: 'per unit', popular: true, minQty: 1,
     description: 'Professional Shure handheld wireless microphone. Stable, clear signal for presenters, emcees, and performers.',
     highlights: ['Stable signal, no interference', 'Long battery life', 'Compatible with any PA system'],
   },
 
   // LIGHTING
   {
-    id: 'ilu-001', name: '3m Aluminum Truss', category: 'iluminacion', price: 1600, unit: 'per unit', popular: true, minQty: 1,
+    id: 'ilu-001', name: '3m Aluminum Truss', category: 'iluminacion', price: 100, unit: 'per unit', popular: true, minQty: 1,
     description: '3-meter aluminum truss for mounting professional lighting. Robust structure that transforms any space into a performance stage.',
     highlights: ['3 meters long', 'Robust structure', 'Setup & breakdown included'],
   },
   {
-    id: 'ilu-002', name: 'Par LED Washlight', category: 'iluminacion', price: 1600, unit: 'per unit', popular: true, minQty: 2,
+    id: 'ilu-002', name: 'Par LED Washlight', category: 'iluminacion', price: 100, unit: 'per unit', popular: true, minQty: 2,
     description: 'Color wash LED par for stage, dance floor, and ambient lighting. Vibrant colors with DMX control.',
     highlights: ['Customizable colors', 'DMX control', 'Minimum 2 units'],
   },
   {
-    id: 'ilu-003', name: 'Beam Light (Moving Head)', category: 'iluminacion', price: 3200, unit: 'per unit', popular: true, minQty: 2,
+    id: 'ilu-003', name: 'Beam Light (Moving Head)', category: 'iluminacion', price: 200, unit: 'per unit', popular: true, minQty: 2,
     description: 'Moving head with powerful beam and dynamic effects. The element that turns a reception into a true spectacle.',
     highlights: ['Dynamic beam effects', 'Programmable robotic movement', 'Minimum 2 units'],
   },
   {
-    id: 'ilu-004', name: 'DMX Controller + Operator', category: 'iluminacion', price: 3200, unit: 'per event', minQty: 1,
+    id: 'ilu-004', name: 'DMX Controller + Operator', category: 'iluminacion', price: 200, unit: 'per event', minQty: 1,
     description: 'Professional DMX controller plus lighting operator for your event. Live programming and execution of the full lighting production.',
     highlights: ['Operator included', 'Real-time programming', 'Synchronized with music'],
   },
 
   // PHOTOGRAPHY
   {
-    id: 'fot-001', name: 'Wedding Photography', category: 'fotografia', price: 24000, unit: 'per event', popular: true, minQty: 1,
+    id: 'fot-001', name: 'Wedding Photography', category: 'fotografia', price: 1500, unit: 'per event', popular: true, minQty: 1,
     description: 'Full wedding photography coverage with 2 professional photographers for 8 hours. Private high-resolution gallery delivered within the first week.',
     highlights: ['2 professional photographers', '8 hours of coverage', 'Private online gallery', 'Delivered in under 1 week'],
   },
   {
-    id: 'fot-002', name: 'Family Beach Session — 1 hr', category: 'fotografia', price: 5600, unit: 'per session', minQty: 1,
+    id: 'fot-002', name: 'Family Beach Session — 1 hr', category: 'fotografia', price: 350, unit: 'per session', minQty: 1,
     description: 'Intimate family photo session on the beach in Baja California. 1 hour with a professional photographer, high-resolution edited images included.',
     highlights: ['1 hour session', '1 professional photographer', 'Edited photos delivered', 'Beach locations in BCS'],
   },
   {
-    id: 'fot-003', name: 'Family Beach Session — Photos + Reel', category: 'fotografia', price: 8800, unit: 'per session', popular: true, minQty: 1,
+    id: 'fot-003', name: 'Family Beach Session — Photos + Reel', category: 'fotografia', price: 550, unit: 'per session', popular: true, minQty: 1,
     description: 'Complete family beach session including edited photos and a 45-second cinematic reel. The perfect way to capture your Baja California memories.',
     highlights: ['Edited photo gallery', '45-second reel included', 'Professional photographer + videographer', 'Beach locations in BCS'],
   },
 
   // VIDEO
   {
-    id: 'vid-001', name: 'Wedding Video', category: 'video', price: 40000, unit: 'per event', popular: true, minQty: 1,
+    id: 'vid-001', name: 'Wedding Video', category: 'video', price: 2500, unit: 'per event', popular: true, minQty: 1,
     description: 'Full wedding video production with 3 videographers and a drone pilot for 8 hours of filming. Includes 3 deliverables: 3-min film, 1-min highlights, and a 30–45 sec reel.',
     highlights: ['3 videographers + drone pilot', '8 hours of filming', '3-min wedding film', '1-min highlights + 30–45 sec reel'],
   },
   {
-    id: 'vid-002', name: 'Wedding Photo + Video', category: 'video', price: 64000, unit: 'per event', popular: true, minQty: 1,
+    id: 'vid-002', name: 'Wedding Photo + Video', category: 'video', price: 4000, unit: 'per event', popular: true, minQty: 1,
     description: 'Complete wedding photo and video package — 2 photographers and 3 videographers with drone for 8 hours. All photo and video deliverables included.',
     highlights: ['2 photographers + 3 videographers', 'Drone with pilot included', '8 hours of coverage', 'All photo & video deliverables'],
   },
@@ -148,9 +148,9 @@ export function getProductsByCategory(category: Category): Product[] {
 
 export function formatPrice(price: number): string {
   if (price === 0) return 'Price on request'
-  return new Intl.NumberFormat('es-MX', {
+  return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'MXN',
+    currency: 'USD',
     minimumFractionDigits: 0,
   }).format(price)
 }

@@ -25,7 +25,7 @@ const packages = [
   {
     name: 'Sound Package',
     desc: 'Professional DJ service with full sound system — ideal for any event',
-    price: 22000,
+    price: 1375,
     items: [
       'DJ Service — 6 hours',
       '2 QSC mid speakers',
@@ -39,7 +39,7 @@ const packages = [
   {
     name: 'Sound + Lights Package',
     desc: 'Full sound system plus lighting production with trusses, par LEDs, and moving heads',
-    price: 52000,
+    price: 3250,
     items: [
       'DJ Service — 6 hours',
       '2 QSC mid speakers',
@@ -56,7 +56,7 @@ const packages = [
   {
     name: 'Premium Package',
     desc: 'Full production: professional sound, show lighting with 4 trusses, photography, and complete video package',
-    price: 98000,
+    price: 6125,
     items: [
       'DJ Service — 6 hours',
       '4 QSC K12 speakers',
@@ -234,7 +234,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <p className="text-3xl font-bold" style={{ color: '#FCF7E8' }}>
-                      {new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', minimumFractionDigits: 0 }).format(pkg.price)}
+                      {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(pkg.price)}
                     </p>
                     <p className="text-xs mt-0.5" style={{ color: '#C9B889' }}>estimated base price</p>
                   </div>
