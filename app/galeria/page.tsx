@@ -9,19 +9,19 @@ export const metadata: Metadata = {
 
 const realEvents = [
   {
-    title: "Julius — Wedding Party",
+    title: "Indera & Julius — Wedding",
     tag: 'Wedding',
     video: '/julius-party.mp4',
     services: ['Audio', 'Lighting', 'Video'],
   },
   {
-    title: "The Mendivils — Wedding",
+    title: "Katie & Manuel — Wedding",
     tag: 'Wedding',
     video: '/mendivil-reel.mp4',
     services: ['Audio', 'Lighting', 'Photography', 'Video'],
   },
   {
-    title: "Charlie & Jessica — Audio & Lights",
+    title: "Jessica & Charlie — Audio & Lights",
     tag: 'Wedding',
     video: '/about-reel.mp4',
     services: ['Audio', 'Lighting'],
@@ -57,7 +57,7 @@ export default function GaleriaPage() {
         <div className="mb-16 flex flex-col gap-12">
           <div>
             <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Featured film</p>
-            <h2 className="text-2xl font-bold mb-6" style={{ color: '#2A1E08' }}>Julius — Wedding Film</h2>
+            <h2 className="text-2xl font-bold mb-6" style={{ color: '#2A1E08' }}>Indera & Julius — Wedding Film</h2>
             <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
               <video className="w-full aspect-video object-cover" src="/julius-montaje.mp4" controls playsInline style={{ background: '#EDE4CC' }} />
             </div>
@@ -69,7 +69,7 @@ export default function GaleriaPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold mb-6" style={{ color: '#2A1E08' }}>The Mendivils — Wedding Film</h2>
+            <h2 className="text-2xl font-bold mb-6" style={{ color: '#2A1E08' }}>Katie & Manuel — Wedding Film</h2>
             <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
               <video className="w-full aspect-video object-cover" src="/mendivil-wedding.mp4" controls playsInline style={{ background: '#EDE4CC' }} />
             </div>

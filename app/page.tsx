@@ -78,7 +78,7 @@ const packages = [
 
 const eventShowcases = [
   {
-    names: 'Julius',
+    names: 'Indera & Julius',
     event: 'Wedding — Baja California Sur',
     video: '/julius-party.mp4',
     services: ['Audio', 'Lighting', 'Video'],
@@ -87,7 +87,7 @@ const eventShowcases = [
     stars: 5,
   },
   {
-    names: 'The Mendivils',
+    names: 'Katie & Manuel',
     event: 'Wedding — Baja California Sur',
     video: '/mendivil-reel.mp4',
     services: ['Audio', 'Lighting', 'Photography', 'Video'],
@@ -95,7 +95,7 @@ const eventShowcases = [
     stars: 5,
   },
   {
-    names: 'Charlie & Jessica',
+    names: 'Jessica & Charlie',
     event: 'Wedding — Baja California Sur',
     video: '/about-reel.mp4',
     services: ['Audio', 'Lighting'],
