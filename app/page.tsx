@@ -76,29 +76,31 @@ const packages = [
   },
 ]
 
-const testimonials = [
+const eventShowcases = [
   {
-    name: 'Valeria Mendoza',
-    event: 'Wedding — Ensenada',
-    text: 'They exceeded all my expectations. The furniture was impeccable and the audio system sounded perfect. My guests couldn\'t stop asking who arranged everything.',
+    names: 'Julius',
+    event: 'Wedding — Baja California Sur',
+    video: '/julius-party.mp4',
+    services: ['Audio', 'Lighting', 'Video'],
+    // TODO: Replace with Julius's real testimonial
+    quote: 'The energy on the dance floor was incredible all night. The sound was perfect and the lighting completely transformed the venue into something we had only imagined.',
     stars: 5,
   },
   {
-    name: 'Carlos & Sofía Ruiz',
-    event: 'Quinceañera — Tijuana',
-    text: 'From the first call to the last detail, the Oak Project team was professional and attentive. The photos were spectacular and the lighting completely transformed the venue.',
+    names: 'The Mendivils',
+    event: 'Wedding — Baja California Sur',
+    video: '/mendivil-reel.mp4',
+    services: ['Audio', 'Lighting', 'Photography', 'Video'],
+    quote: 'From the first detail to the last song, Oak Project made our wedding exactly what we dreamed of. The production quality was beyond anything we expected.',
     stars: 5,
   },
   {
-    name: 'Rodrigo Garza',
-    event: 'Corporate Event — Los Cabos',
-    text: 'We organized an event for 300 people and everything went perfectly. The audio system was top-notch and delivery/installation was on time without any issues.',
-    stars: 5,
-  },
-  {
-    name: 'Ana Luisa Torres',
-    event: 'Birthday 50 — La Paz',
-    text: 'The photo booth was the hit of the night. All my guests loved having a printed photo as a keepsake. I would definitely hire them again.',
+    names: 'Charlie & Jessica',
+    event: 'Wedding — Baja California Sur',
+    video: '/about-reel.mp4',
+    services: ['Audio', 'Lighting'],
+    // TODO: Replace with Charlie & Jessica's real testimonial
+    quote: 'The audio and lighting setup was flawless. Our guests kept asking who was behind the production — the atmosphere they created was exactly what we wanted.',
     stars: 5,
   },
 ]
@@ -286,40 +288,62 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7 — Testimonials: video background */}
-      <VideoBackground src="/section-testimonials.mp4" overlayOpacity={0.72}>
-        <div className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14">
-              <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9B889' }}>Testimonials</p>
-              <h2 className="text-4xl font-bold italic" style={{ color: '#FCF7E8' }}>What our clients say</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {testimonials.map(t => (
-                <div
-                  key={t.name}
-                  className="rounded-2xl p-6 flex flex-col gap-4"
-                  style={{ background: 'rgba(252,247,232,0.08)', border: '1px solid rgba(201,184,137,0.3)', backdropFilter: 'blur(8px)' }}
-                >
-                  <Quote size={24} style={{ color: '#C9B889' }} />
-                  <p className="text-base leading-relaxed" style={{ color: '#FCF7E8' }}>"{t.text}"</p>
-                  <div className="flex items-center justify-between mt-auto">
-                    <div>
-                      <p className="font-semibold text-sm" style={{ color: '#FCF7E8' }}>{t.name}</p>
-                      <p className="text-xs" style={{ color: '#C9B889' }}>{t.event}</p>
-                    </div>
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: t.stars }).map((_, i) => (
-                        <Star key={i} size={13} fill="#C9B889" style={{ color: '#C9B889' }} />
+      {/* 7 — Event Showcases: real couples + video + testimonial */}
+      <section className="py-20" style={{ background: '#FCF7E8' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Our couples</p>
+            <h2 className="text-4xl font-bold" style={{ color: '#2A1E08' }}>Real events. Real stories.</h2>
+            <p className="mt-3 text-lg max-w-xl mx-auto" style={{ color: '#7A6535' }}>
+              Every video is backed by the people who lived it.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-8">
+            {eventShowcases.map((showcase, i) => (
+              <div
+                key={showcase.names}
+                className={`grid grid-cols-1 lg:grid-cols-2 rounded-3xl overflow-hidden`}
+                style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
+              >
+                {/* Video — alternates left/right on desktop */}
+                <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
+                  <video
+                    className="w-full h-full object-cover"
+                    style={{ minHeight: '280px', maxHeight: '420px' }}
+                    src={showcase.video}
+                    autoPlay muted loop playsInline
+                  />
+                </div>
+
+                {/* Testimonial */}
+                <div className={`p-8 sm:p-10 flex flex-col justify-center gap-5 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
+                  <div className="flex gap-0.5">
+                    {Array.from({ length: showcase.stars }).map((_, j) => (
+                      <Star key={j} size={16} fill="#C9B889" style={{ color: '#C9B889' }} />
+                    ))}
+                  </div>
+                  <Quote size={28} style={{ color: '#C9B889' }} />
+                  <p className="text-lg leading-relaxed" style={{ color: '#2A1E08' }}>
+                    "{showcase.quote}"
+                  </p>
+                  <div className="pt-2 border-t" style={{ borderColor: '#D9C99A' }}>
+                    <p className="font-semibold" style={{ color: '#2A1E08' }}>{showcase.names}</p>
+                    <p className="text-sm mb-3" style={{ color: '#968148' }}>{showcase.event}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {showcase.services.map(s => (
+                        <span key={s} className="text-xs px-2.5 py-1 rounded-full" style={{ background: '#FCF7E8', color: '#968148', border: '1px solid #D9C99A' }}>
+                          {s}
+                        </span>
                       ))}
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
-      </VideoBackground>
+      </section>
 
       {/* 8 — How it works: hero2 background */}
       <VideoBackground src="/section-cta.mp4" overlayOpacity={0.75}>

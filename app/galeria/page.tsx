@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 
 const realEvents = [
   {
+    title: "Julius — Wedding Party",
+    tag: 'Wedding',
+    video: '/julius-party.mp4',
+    services: ['Audio', 'Lighting', 'Video'],
+  },
+  {
     title: "The Mendivils — Wedding",
     tag: 'Wedding',
     video: '/mendivil-reel.mp4',
@@ -24,12 +30,12 @@ const realEvents = [
 
 const placeholderEvents = [
   { title: 'Corporate Event Los Cabos', tag: 'Corporate', services: ['Audio', 'Lighting'] },
-  { title: 'Quinceañera Gran Salón', tag: 'Quinceañera', services: ['Furniture', 'Audio', 'Lighting', 'Video'] },
+  { title: 'Private Event — Los Cabos', tag: 'Private Party', services: ['Furniture', 'Audio', 'Lighting', 'Video'] },
   { title: 'Beach wedding Ensenada', tag: 'Wedding', services: ['Furniture', 'Photography', 'Video'] },
   { title: 'Birthday 50 La Paz', tag: 'Birthday', services: ['Photo booth', 'Furniture'] },
 ]
 
-const categories = ['All', 'Weddings', 'Corporate', 'Private parties', 'Villas', 'Quinceañeras']
+const categories = ['All', 'Weddings', 'Corporate', 'Private parties', 'Villas']
 
 export default function GaleriaPage() {
   return (
@@ -47,25 +53,31 @@ export default function GaleriaPage() {
           </p>
         </div>
 
-        {/* Featured video — Mendivils Wedding Film */}
-        <div className="mb-16">
-          <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Featured film</p>
-          <h2 className="text-2xl font-bold italic mb-6" style={{ color: '#2A1E08' }}>The Mendivils — Wedding Film</h2>
-          <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
-            <video
-              className="w-full aspect-video object-cover"
-              src="/mendivil-wedding.mp4"
-              controls
-              playsInline
-              style={{ background: '#EDE4CC' }}
-            />
+        {/* Featured films */}
+        <div className="mb-16 flex flex-col gap-12">
+          <div>
+            <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Featured film</p>
+            <h2 className="text-2xl font-bold mb-6" style={{ color: '#2A1E08' }}>Julius — Wedding Film</h2>
+            <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
+              <video className="w-full aspect-video object-cover" src="/julius-montaje.mp4" controls playsInline style={{ background: '#EDE4CC' }} />
+            </div>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {['Audio', 'Lighting', 'Video'].map(s => (
+                <span key={s} className="text-xs px-3 py-1 rounded-full" style={{ background: '#EDE4CC', color: '#968148', border: '1px solid #D9C99A' }}>{s}</span>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-wrap gap-2 mt-4">
-            {['Audio', 'Lighting', 'Photography', 'Video'].map(s => (
-              <span key={s} className="text-xs px-3 py-1 rounded-full" style={{ background: '#EDE4CC', color: '#968148', border: '1px solid #D9C99A' }}>
-                {s}
-              </span>
-            ))}
+
+          <div>
+            <h2 className="text-2xl font-bold mb-6" style={{ color: '#2A1E08' }}>The Mendivils — Wedding Film</h2>
+            <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
+              <video className="w-full aspect-video object-cover" src="/mendivil-wedding.mp4" controls playsInline style={{ background: '#EDE4CC' }} />
+            </div>
+            <div className="flex flex-wrap gap-2 mt-4">
+              {['Audio', 'Lighting', 'Photography', 'Video'].map(s => (
+                <span key={s} className="text-xs px-3 py-1 rounded-full" style={{ background: '#EDE4CC', color: '#968148', border: '1px solid #D9C99A' }}>{s}</span>
+              ))}
+            </div>
           </div>
         </div>
 
