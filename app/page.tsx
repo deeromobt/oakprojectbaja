@@ -422,47 +422,64 @@ export default function HomePage() {
           <div className="flex flex-col gap-[1px]" style={{ background: '#D9C99A' }}>
             {eventShowcases.map((showcase, i) => (
               <RevealSection key={showcase.names}>
-                <div
-                  className="flex flex-col sm:flex-row overflow-hidden"
-                  style={{ background: '#FCF7E8' }}
-                >
-                  {/* Portrait reel */}
-                  <div className={`w-full sm:w-60 md:w-72 lg:w-80 flex-shrink-0 ${i % 2 === 1 ? 'sm:order-2' : ''}`}>
-                    <CloudflareVideo id={showcase.cfId} mode="loop" portrait />
-                  </div>
-
-                  {/* Testimonial */}
-                  <div
-                    className={`flex-1 p-8 sm:p-10 lg:p-14 flex flex-col justify-center gap-6 ${i % 2 === 1 ? 'sm:order-1' : ''}`}
-                  >
-                    <div className="flex gap-0.5">
-                      {Array.from({ length: showcase.stars }).map((_, j) => (
-                        <Star key={j} size={13} fill="#C9B889" style={{ color: '#C9B889' }} />
-                      ))}
-                    </div>
-                    <p
-                      className="text-xl sm:text-2xl lg:text-3xl leading-snug italic"
-                      style={{ color: '#2A1E08' }}
-                    >
-                      &ldquo;{showcase.quote}&rdquo;
-                    </p>
-                    <div className="pt-5 border-t" style={{ borderColor: '#D9C99A' }}>
-                      <p className="font-semibold mb-0.5" style={{ color: '#2A1E08' }}>{showcase.names}</p>
-                      <p className="text-sm mb-4" style={{ color: '#968148' }}>{showcase.event}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {showcase.services.map(s => (
-                          <span
-                            key={s}
-                            className="text-xs px-3 py-1 rounded-full"
-                            style={{ background: '#EDE4CC', color: '#968148', border: '1px solid #D9C99A' }}
-                          >
-                            {s}
-                          </span>
+                {i === 0 ? (
+                  /* Julius — landscape 16:9 video on top, testimonial below */
+                  <div className="flex flex-col overflow-hidden" style={{ background: '#FCF7E8' }}>
+                    <CloudflareVideo id={showcase.cfId} mode="loop" />
+                    <div className="p-8 sm:p-10 lg:p-14 flex flex-col gap-5">
+                      <div className="flex gap-0.5">
+                        {Array.from({ length: showcase.stars }).map((_, j) => (
+                          <Star key={j} size={13} fill="#C9B889" style={{ color: '#C9B889' }} />
                         ))}
+                      </div>
+                      <p className="text-xl sm:text-2xl leading-snug italic" style={{ color: '#2A1E08' }}>
+                        &ldquo;{showcase.quote}&rdquo;
+                      </p>
+                      <div className="pt-5 border-t" style={{ borderColor: '#D9C99A' }}>
+                        <p className="font-semibold mb-0.5" style={{ color: '#2A1E08' }}>{showcase.names}</p>
+                        <p className="text-sm mb-4" style={{ color: '#968148' }}>{showcase.event}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {showcase.services.map(s => (
+                            <span key={s} className="text-xs px-3 py-1 rounded-full" style={{ background: '#EDE4CC', color: '#968148', border: '1px solid #D9C99A' }}>
+                              {s}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                ) : (
+                  /* Other couples — portrait reel on the side */
+                  <div
+                    className="flex flex-col sm:flex-row overflow-hidden"
+                    style={{ background: '#FCF7E8' }}
+                  >
+                    <div className={`w-full sm:w-60 md:w-72 lg:w-80 flex-shrink-0 ${i % 2 === 1 ? 'sm:order-2' : ''}`}>
+                      <CloudflareVideo id={showcase.cfId} mode="loop" portrait />
+                    </div>
+                    <div className={`flex-1 p-8 sm:p-10 lg:p-14 flex flex-col justify-center gap-6 ${i % 2 === 1 ? 'sm:order-1' : ''}`}>
+                      <div className="flex gap-0.5">
+                        {Array.from({ length: showcase.stars }).map((_, j) => (
+                          <Star key={j} size={13} fill="#C9B889" style={{ color: '#C9B889' }} />
+                        ))}
+                      </div>
+                      <p className="text-xl sm:text-2xl lg:text-3xl leading-snug italic" style={{ color: '#2A1E08' }}>
+                        &ldquo;{showcase.quote}&rdquo;
+                      </p>
+                      <div className="pt-5 border-t" style={{ borderColor: '#D9C99A' }}>
+                        <p className="font-semibold mb-0.5" style={{ color: '#2A1E08' }}>{showcase.names}</p>
+                        <p className="text-sm mb-4" style={{ color: '#968148' }}>{showcase.event}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {showcase.services.map(s => (
+                            <span key={s} className="text-xs px-3 py-1 rounded-full" style={{ background: '#EDE4CC', color: '#968148', border: '1px solid #D9C99A' }}>
+                              {s}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </RevealSection>
             ))}
           </div>
