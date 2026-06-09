@@ -14,7 +14,19 @@ export default function CloudflareVideo({ id, mode, portrait = false, className 
       <iframe
         src={`${BASE}/${id}?autoplay=true&muted=true&loop=true&controls=false&background=true`}
         className={className}
-        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none', pointerEvents: 'none', ...style }}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          width: '100vw',
+          height: '56.25vw',   /* 16:9 */
+          minHeight: '100%',
+          minWidth: '177.78vh', /* 16:9 inverted */
+          transform: 'translate(-50%, -50%)',
+          border: 'none',
+          pointerEvents: 'none',
+          ...style,
+        }}
         allow="autoplay; fullscreen"
       />
     )
