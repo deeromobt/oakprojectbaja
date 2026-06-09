@@ -10,25 +10,31 @@ const BASE = 'https://iframe.videodelivery.net'
 
 export default function CloudflareVideo({ id, mode, portrait = false, className = '', style }: Props) {
   if (mode === 'background') {
+    // Wrapper with inset:0 gives the iframe a proper containing block with explicit
+    // height, so minHeight:'100%' on the iframe correctly covers the full section
+    // regardless of how tall the section is (even on mobile where it stacks tall).
     return (
-      <iframe
-        src={`${BASE}/${id}?autoplay=true&muted=true&loop=true&controls=false&background=true`}
+      <div
         className={className}
-        style={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          width: '100vw',
-          height: '56.25vw',   /* 16:9 */
-          minHeight: '100%',
-          minWidth: '177.78vh', /* 16:9 inverted */
-          transform: 'translate(-50%, -50%)',
-          border: 'none',
-          pointerEvents: 'none',
-          ...style,
-        }}
-        allow="autoplay; fullscreen"
-      />
+        style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none', ...style }}
+      >
+        <iframe
+          src={`${BASE}/${id}?autoplay=true&muted=true&loop=true&controls=false&background=true`}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: '100vw',
+            height: '56.25vw',    /* 16:9 landscape */
+            minHeight: '100%',    /* fills wrapper height */
+            minWidth: '177.78vh', /* 16:9 inverted */
+            transform: 'translate(-50%, -50%)',
+            border: 'none',
+            pointerEvents: 'none',
+          }}
+          allow="autoplay; fullscreen"
+        />
+      </div>
     )
   }
 
