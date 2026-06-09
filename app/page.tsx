@@ -1,25 +1,25 @@
 import Link from 'next/link'
-import Image from 'next/image'
-import { ArrowRight, Star, Quote } from 'lucide-react'
+import { ArrowRight, Star } from 'lucide-react'
 import VideoHero from '@/components/VideoHero'
 import VideoBackground from '@/components/VideoBackground'
 import CloudflareVideo from '@/components/CloudflareVideo'
+import RevealSection from '@/components/RevealSection'
 
 const eventTypes = [
-  { label: 'Weddings', icon: '💍', desc: 'Your most special day deserves the best' },
-  { label: 'Corporate', icon: '🏢', desc: 'Professionalism in every event' },
-  { label: 'Graduations', icon: '🎓', desc: 'Celebrate this great achievement' },
-  { label: 'Private Parties', icon: '🥂', desc: 'Your vision, our execution' },
-  { label: 'Villas', icon: '🏡', desc: 'Intimate luxury experiences' },
-  { label: 'Yachts', icon: '⛵', desc: 'Celebrate on the Sea of Cortez' },
+  { label: 'Weddings', desc: 'Your most special day deserves the best' },
+  { label: 'Corporate', desc: 'Professionalism in every event' },
+  { label: 'Graduations', desc: 'Celebrate this great achievement' },
+  { label: 'Private Parties', desc: 'Your vision, our execution' },
+  { label: 'Villas', desc: 'Intimate luxury experiences' },
+  { label: 'Yachts', desc: 'Celebrate on the Sea of Cortez' },
 ]
 
 const services = [
-  { href: '/mobiliario', title: 'Furniture', icon: '🪑', items: ['Professional DJ Booths', 'Modular dance floors', 'Customizable sizes', 'Setup & breakdown included'] },
-  { href: '/audio', title: 'Audio', icon: '🔊', items: ['12" mid speakers', '18" subwoofers', '8" monitors', 'Wireless microphones'] },
-  { href: '/iluminacion', title: 'Lighting', icon: '💡', items: ['RGB LED uplights', 'Moving heads', 'Custom gobos', 'String lights'] },
-  { href: '/fotografia', title: 'Photography', icon: '📷', items: ['4–8 hour coverage', 'Photo booth with prints', 'Private online gallery', 'Portrait sessions'] },
-  { href: '/video', title: 'Video', icon: '🎬', items: ['4K drone video', 'Live streaming', 'Edited highlight video', 'Photo + video package'] },
+  { href: '/mobiliario', title: 'Furniture', items: ['Professional DJ Booths', 'Modular dance floors', 'Customizable sizes', 'Setup & breakdown included'] },
+  { href: '/audio', title: 'Audio', items: ['12" mid speakers', '18" subwoofers', '8" monitors', 'Wireless microphones'] },
+  { href: '/iluminacion', title: 'Lighting', items: ['RGB LED uplights', 'Moving heads', 'Custom gobos', 'String lights'] },
+  { href: '/fotografia', title: 'Photography', items: ['4–8 hour coverage', 'Photo booth with prints', 'Private online gallery', 'Portrait sessions'] },
+  { href: '/video', title: 'Video', items: ['4K drone video', 'Live streaming', 'Edited highlight video', 'Photo + video package'] },
 ]
 
 const packages = [
@@ -83,7 +83,6 @@ const eventShowcases = [
     event: 'Wedding — Baja California Sur',
     cfId: '0be046e661a055faeee5366d66de94f9',
     services: ['Audio', 'Lighting', 'Video'],
-    // TODO: Replace with Julius's real testimonial
     quote: 'The energy on the dance floor was incredible all night. The sound was perfect and the lighting completely transformed the venue into something we had only imagined.',
     stars: 5,
   },
@@ -100,7 +99,6 @@ const eventShowcases = [
     event: 'Wedding — Baja California Sur',
     cfId: 'f4c4cb0155960b64fa063d36b0ecabc8',
     services: ['Audio', 'Lighting'],
-    // TODO: Replace with Charlie & Jessica's real testimonial
     quote: 'The audio and lighting setup was flawless. Our guests kept asking who was behind the production — the atmosphere they created was exactly what we wanted.',
     stars: 5,
   },
@@ -113,307 +111,473 @@ const stats = [
   { value: 'Baja Sur', label: 'Regional coverage' },
 ]
 
+const marqueeItems = [
+  'Audio', 'Lighting', 'Photography', 'Video',
+  'Furniture', 'DJ Service', 'Weddings', 'Corporate Events', 'Baja California Sur',
+]
+
 export default function HomePage() {
   return (
     <div>
 
-      {/* 1 — Hero: Charlie & Jessica reel */}
+      {/* 1 — Hero */}
       <VideoHero
         headline={"Bringing your\nperfect event to life"}
         subline="Furniture rental, audio, lighting, photography, and video for events in Baja California."
         cfId="bd123b05247e4ef098521fddab781f90"
       />
 
-      {/* 2 — Event Types: cream */}
-      <section className="py-16" style={{ background: '#FCF7E8' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>What type of event do you have?</p>
-            <h2 className="text-3xl font-bold italic" style={{ color: '#2A1E08' }}>Specialists for every occasion</h2>
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-            {eventTypes.map(et => (
-              <Link
-                key={et.label}
-                href={`/cotizacion?tipo=${encodeURIComponent(et.label)}`}
-                className="rounded-2xl p-4 text-center flex flex-col items-center gap-2 transition-all hover:-translate-y-1"
-                style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
-              >
-                <span className="text-3xl">{et.icon}</span>
-                <p className="font-semibold text-sm" style={{ color: '#2A1E08' }}>{et.label}</p>
-                <p className="text-xs leading-tight" style={{ color: '#7A6535' }}>{et.desc}</p>
-              </Link>
+      {/* MARQUEE STRIP */}
+      <div className="overflow-hidden py-3.5 border-y" style={{ background: '#201208', borderColor: '#3D2D17' }}>
+        <div
+          className="flex whitespace-nowrap"
+          style={{ animation: 'marquee 32s linear infinite', width: 'max-content' }}
+        >
+          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+            <span
+              key={i}
+              className="mx-6 sm:mx-8 text-xs font-semibold tracking-[0.2em] uppercase"
+              style={{ color: '#968148' }}
+            >
+              {item}
+              <span className="ml-6 sm:ml-8" style={{ color: '#3D2D17' }}>·</span>
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* 2 — Event Types: editorial list */}
+      <section className="py-24 sm:py-32" style={{ background: '#FCF7E8' }}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+          <RevealSection>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-16 sm:mb-20 gap-6">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#968148' }}>What we do</p>
+                <h2 className="text-5xl sm:text-6xl" style={{ color: '#2A1E08' }}>For every<br />occasion</h2>
+              </div>
+              <p className="text-sm max-w-xs leading-relaxed" style={{ color: '#7A6535' }}>
+                From intimate beach weddings to large corporate events — we bring the full production.
+              </p>
+            </div>
+          </RevealSection>
+
+          <div className="flex flex-col">
+            {eventTypes.map((et, i) => (
+              <RevealSection key={et.label} delay={i * 55}>
+                <Link
+                  href={`/cotizacion?tipo=${encodeURIComponent(et.label)}`}
+                  className="group flex items-center justify-between py-6 sm:py-7 border-t transition-colors duration-300"
+                  style={{ borderColor: '#D9C99A' }}
+                >
+                  <div className="flex items-baseline gap-5 sm:gap-10">
+                    <span className="text-xs font-mono w-5 shrink-0" style={{ color: '#C9B889' }}>
+                      0{i + 1}
+                    </span>
+                    <h3
+                      className="text-2xl sm:text-3xl lg:text-4xl transition-colors duration-300 group-hover:opacity-60"
+                      style={{ color: '#2A1E08' }}
+                    >
+                      {et.label}
+                    </h3>
+                  </div>
+                  <div className="flex items-center gap-4 sm:gap-8 shrink-0 ml-4">
+                    <span className="hidden md:block text-sm" style={{ color: '#7A6535' }}>{et.desc}</span>
+                    <ArrowRight
+                      size={17}
+                      className="shrink-0 transition-transform duration-300 group-hover:translate-x-1.5"
+                      style={{ color: '#968148' }}
+                    />
+                  </div>
+                </Link>
+              </RevealSection>
             ))}
+            <div className="border-t" style={{ borderColor: '#D9C99A' }} />
           </div>
+
         </div>
       </section>
 
-      {/* 3 — Stats: original stats video */}
+      {/* 3 — Stats: video background */}
       <VideoBackground src="/section-stats.mp4" overlayOpacity={0.78}>
-        <div className="py-14">
+        <div className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              {stats.map(stat => (
-                <div key={stat.label} className="text-center">
-                  <p className="text-4xl font-bold mb-1" style={{ color: '#FCF7E8' }}>{stat.value}</p>
-                  <p className="text-sm tracking-wide" style={{ color: '#C9B889' }}>{stat.label}</p>
-                </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16">
+              {stats.map((stat, i) => (
+                <RevealSection key={stat.label} delay={i * 80} className="text-center">
+                  <p className="text-4xl sm:text-5xl mb-2" style={{ color: '#FCF7E8' }}>{stat.value}</p>
+                  <p className="text-xs tracking-[0.15em] uppercase" style={{ color: '#968148' }}>{stat.label}</p>
+                </RevealSection>
               ))}
             </div>
           </div>
         </div>
       </VideoBackground>
 
-      {/* 4 — Services: cream */}
-      <section id="servicios" className="py-20" style={{ background: '#FCF7E8' }}>
+      {/* 4 — Services: dark editorial grid */}
+      <section id="servicios" className="py-24 sm:py-32" style={{ background: '#201208' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Catalog</p>
-            <h2 className="text-4xl font-bold mb-3 italic" style={{ color: '#2A1E08' }}>Everything for your event</h2>
-            <p className="max-w-xl mx-auto" style={{ color: '#7A6535' }}>Browse each category, build your quote, and book your date in minutes.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {services.map(service => (
-              <Link
-                key={service.href}
-                href={service.href}
-                className="group rounded-2xl p-6 flex flex-col gap-4 transition-all duration-200 hover:-translate-y-1"
-                style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
-              >
-                <div className="text-4xl">{service.icon}</div>
-                <h3 className="text-xl font-bold" style={{ color: '#2A1E08' }}>{service.title}</h3>
-                <ul className="flex flex-col gap-1.5 flex-1">
-                  {service.items.map(item => (
-                    <li key={item} className="flex items-center gap-2 text-sm" style={{ color: '#7A6535' }}>
-                      <Star size={10} fill="#C9B889" style={{ color: '#C9B889', flexShrink: 0 }} />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex items-center gap-1 mt-2 font-semibold text-sm transition-all group-hover:gap-2" style={{ color: '#968148' }}>
-                  See pricing & availability <ArrowRight size={14} />
-                </div>
-              </Link>
-            ))}
-            <div className="rounded-2xl p-6 flex flex-col items-center justify-center text-center gap-4" style={{ background: '#EDE4CC', border: '1px solid #C9B889' }}>
-              <p className="text-3xl">✨</p>
-              <h3 className="text-xl font-bold" style={{ color: '#2A1E08' }}>Need everything?</h3>
-              <p className="text-sm" style={{ color: '#7A6535' }}>Build a quote combining all categories.</p>
-              <Link href="/cotizacion" className="px-6 py-2.5 rounded-xl font-semibold text-sm btn-gold">Get a quote</Link>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 5 — Packages: Mendivil reel background */}
-      <VideoBackground cfId="134e4fa4b335ec371611d69b2fbcd52c" overlayOpacity={0.80}>
-        <div className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14">
-              <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9B889' }}>Packages</p>
-              <h2 className="text-4xl font-bold mb-3 italic" style={{ color: '#FCF7E8' }}>Ready to go, no complications</h2>
-              <p className="max-w-xl mx-auto" style={{ color: '#C9B889' }}>Pre-built packages for the most common events. Fully customizable to your taste.</p>
+          <RevealSection>
+            <div className="mb-16 sm:mb-20">
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#968148' }}>Catalog</p>
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+                <h2 className="text-4xl sm:text-5xl" style={{ color: '#FCF7E8' }}>Everything for<br />your event</h2>
+                <p className="text-sm max-w-xs leading-relaxed" style={{ color: '#7A6535' }}>
+                  Browse each category, build your quote, and book your date in minutes.
+                </p>
+              </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {packages.map(pkg => (
-                <div
-                  key={pkg.name}
-                  className="rounded-2xl p-6 flex flex-col gap-4 relative"
-                  style={{
-                    background: pkg.popular ? 'rgba(252,247,232,0.14)' : 'rgba(252,247,232,0.08)',
-                    border: `1px solid ${pkg.popular ? 'rgba(201,184,137,0.7)' : 'rgba(201,184,137,0.25)'}`,
-                    backdropFilter: 'blur(10px)',
-                  }}
+          </RevealSection>
+
+          {/* Grid with gap-px creating golden line separators */}
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1px]"
+            style={{ background: 'rgba(201,184,137,0.15)' }}
+          >
+            {services.map((service, i) => (
+              <RevealSection key={service.href} delay={i * 70}>
+                <Link
+                  href={service.href}
+                  className="group flex flex-col gap-6 p-8 sm:p-10 h-full transition-colors duration-300"
+                  style={{ background: '#201208' }}
                 >
-                  {pkg.popular && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-4 py-1 rounded-full" style={{ background: '#968148', color: '#FCF7E8' }}>
-                      Most popular
-                    </span>
-                  )}
-                  <div>
-                    <h3 className="text-xl font-bold mb-1" style={{ color: '#FCF7E8' }}>{pkg.name}</h3>
-                    <p className="text-sm" style={{ color: '#C9B889' }}>{pkg.desc}</p>
+                  <div className="flex items-start justify-between">
+                    <span className="text-xs font-mono" style={{ color: '#968148' }}>0{i + 1}</span>
+                    <ArrowRight
+                      size={15}
+                      className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                      style={{ color: '#968148' }}
+                    />
                   </div>
-                  <div>
-                    <p className="text-3xl font-bold" style={{ color: '#FCF7E8' }}>
-                      {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(pkg.price)}
-                    </p>
-                    <p className="text-xs mt-0.5" style={{ color: '#C9B889' }}>estimated base price</p>
-                  </div>
-                  <ul className="flex flex-col gap-2 flex-1">
-                    {pkg.items.map(item => (
-                      <li key={item} className="flex items-center gap-2 text-sm" style={{ color: '#FCF7E8' }}>
-                        <span style={{ color: '#C9B889' }}>✓</span> {item}
+                  <h3 className="text-3xl sm:text-4xl" style={{ color: '#FCF7E8' }}>{service.title}</h3>
+                  <ul className="flex flex-col gap-2.5 flex-1">
+                    {service.items.map(item => (
+                      <li key={item} className="flex items-center gap-2.5 text-sm" style={{ color: '#5C4B30' }}>
+                        <span style={{ color: '#968148', fontSize: '0.45rem', lineHeight: 1 }}>▸</span>
+                        {item}
                       </li>
                     ))}
                   </ul>
-                  <Link href={`/cotizacion?paquete=${encodeURIComponent(pkg.name)}`} className="w-full py-3 rounded-xl text-center font-semibold text-sm btn-gold mt-2 block">
-                    Request this package
+                  <span
+                    className="text-xs font-semibold tracking-[0.15em] uppercase pt-4 border-t transition-colors duration-300 group-hover:text-[#C9B889]"
+                    style={{ color: '#968148', borderColor: 'rgba(201,184,137,0.2)' }}
+                  >
+                    See pricing & availability
+                  </span>
+                </Link>
+              </RevealSection>
+            ))}
+
+            {/* 6th cell — custom quote CTA */}
+            <RevealSection delay={5 * 70}>
+              <div
+                className="flex flex-col justify-between gap-6 p-8 sm:p-10 h-full"
+                style={{ background: '#201208' }}
+              >
+                <div>
+                  <span className="text-xs font-mono" style={{ color: '#968148' }}>06</span>
+                  <h3 className="text-3xl sm:text-4xl mt-5" style={{ color: '#C9B889' }}>Need<br />everything?</h3>
+                </div>
+                <div>
+                  <p className="text-sm mb-6 leading-relaxed" style={{ color: '#7A6535' }}>
+                    Build a fully custom quote combining all categories for your event.
+                  </p>
+                  <Link
+                    href="/cotizacion"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm btn-gold"
+                  >
+                    Get a quote <ArrowRight size={14} />
                   </Link>
                 </div>
+              </div>
+            </RevealSection>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 5 — Packages: video background */}
+      <VideoBackground cfId="134e4fa4b335ec371611d69b2fbcd52c" overlayOpacity={0.82}>
+        <div className="py-24 sm:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <RevealSection>
+              <div className="mb-16 sm:mb-20">
+                <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#C9B889' }}>Packages</p>
+                <h2 className="text-4xl sm:text-5xl mb-4" style={{ color: '#FCF7E8' }}>Ready to go,<br />no complications</h2>
+                <p className="max-w-md text-sm leading-relaxed" style={{ color: '#968148' }}>
+                  Pre-built packages for the most common events. Fully customizable to your taste.
+                </p>
+              </div>
+            </RevealSection>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {packages.map((pkg, i) => (
+                <RevealSection key={pkg.name} delay={i * 90}>
+                  <div
+                    className="rounded-2xl p-8 flex flex-col gap-5 relative h-full"
+                    style={{
+                      background: pkg.popular ? 'rgba(252,247,232,0.12)' : 'rgba(252,247,232,0.06)',
+                      border: `1px solid ${pkg.popular ? 'rgba(201,184,137,0.6)' : 'rgba(201,184,137,0.2)'}`,
+                      backdropFilter: 'blur(12px)',
+                    }}
+                  >
+                    {pkg.popular && (
+                      <span
+                        className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-xs font-bold px-4 py-1 rounded-full"
+                        style={{ background: '#968148', color: '#FCF7E8' }}
+                      >
+                        Most popular
+                      </span>
+                    )}
+                    <div>
+                      <h3 className="text-2xl mb-1.5" style={{ color: '#FCF7E8' }}>{pkg.name}</h3>
+                      <p className="text-sm leading-relaxed" style={{ color: '#968148' }}>{pkg.desc}</p>
+                    </div>
+                    <div className="py-4 border-y" style={{ borderColor: 'rgba(201,184,137,0.2)' }}>
+                      <p className="text-4xl" style={{ color: '#FCF7E8' }}>
+                        {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(pkg.price)}
+                      </p>
+                      <p className="text-xs mt-1" style={{ color: '#7A6535' }}>estimated base price</p>
+                    </div>
+                    <ul className="flex flex-col gap-2 flex-1">
+                      {pkg.items.map(item => (
+                        <li key={item} className="flex items-center gap-2.5 text-sm" style={{ color: '#D6C6B0' }}>
+                          <span style={{ color: '#968148' }}>✓</span> {item}
+                        </li>
+                      ))}
+                    </ul>
+                    <Link
+                      href={`/cotizacion?paquete=${encodeURIComponent(pkg.name)}`}
+                      className="w-full py-3.5 rounded-xl text-center font-semibold text-sm btn-gold mt-2 block"
+                    >
+                      Request this package
+                    </Link>
+                  </div>
+                </RevealSection>
               ))}
             </div>
-            <p className="text-center text-xs mt-6" style={{ color: '#C9B889' }}>
+
+            <p className="text-center text-xs mt-8" style={{ color: '#7A6535' }}>
               * Packages are reference prices. Final price depends on date, location, and customization.
             </p>
           </div>
         </div>
       </VideoBackground>
 
-      {/* 6 — Gallery Preview: cream */}
-      <section className="py-20" style={{ background: '#FCF7E8' }}>
+      {/* 6 — Gallery Preview */}
+      <section className="py-24 sm:py-32" style={{ background: '#FCF7E8' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Gallery</p>
-              <h2 className="text-4xl font-bold italic" style={{ color: '#2A1E08' }}>Events we've transformed</h2>
+
+          <RevealSection>
+            <div className="flex items-end justify-between mb-14">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#968148' }}>Gallery</p>
+                <h2 className="text-4xl sm:text-5xl" style={{ color: '#2A1E08' }}>Events we've<br />transformed</h2>
+              </div>
+              <Link
+                href="/galeria"
+                className="hidden sm:flex items-center gap-1.5 text-sm font-semibold pb-1 border-b transition-colors hover:opacity-60"
+                style={{ color: '#968148', borderColor: '#D9C99A' }}
+              >
+                See all <ArrowRight size={13} />
+              </Link>
             </div>
-            <Link href="/galeria" className="hidden sm:flex items-center gap-1 text-sm font-semibold" style={{ color: '#968148' }}>
-              See all <ArrowRight size={14} />
+          </RevealSection>
+
+          <div className="grid grid-cols-2 gap-4 sm:gap-6">
+            <RevealSection delay={0}>
+              <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
+                <CloudflareVideo id="134e4fa4b335ec371611d69b2fbcd52c" mode="loop" portrait />
+              </div>
+            </RevealSection>
+            <RevealSection delay={100}>
+              <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
+                <CloudflareVideo id="f4c4cb0155960b64fa063d36b0ecabc8" mode="loop" portrait />
+              </div>
+            </RevealSection>
+          </div>
+
+          <RevealSection className="mt-10 flex justify-center sm:hidden">
+            <Link
+              href="/galeria"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold"
+              style={{ color: '#968148' }}
+            >
+              View full gallery <ArrowRight size={13} />
             </Link>
-          </div>
-          <div className="flex justify-center gap-4">
-            <div className="rounded-2xl overflow-hidden w-full max-w-xs" style={{ border: '1px solid #D9C99A' }}>
-              <CloudflareVideo id="134e4fa4b335ec371611d69b2fbcd52c" mode="loop" portrait />
-            </div>
-            <div className="rounded-2xl overflow-hidden w-full max-w-xs" style={{ border: '1px solid #D9C99A' }}>
-              <CloudflareVideo id="f4c4cb0155960b64fa063d36b0ecabc8" mode="loop" portrait />
-            </div>
-          </div>
-          <div className="flex justify-center mt-6">
-            <Link href="/galeria" className="inline-flex items-center gap-2 font-semibold text-sm" style={{ color: '#968148' }}>
-              View full gallery <ArrowRight size={14} />
-            </Link>
-          </div>
+          </RevealSection>
+
         </div>
       </section>
 
-      {/* 7 — Event Showcases: real couples + video + testimonial */}
-      <section className="py-20" style={{ background: '#FCF7E8' }}>
+      {/* 7 — Event Showcases: dark */}
+      <section className="py-24 sm:py-32" style={{ background: '#201208' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Our couples</p>
-            <h2 className="text-4xl font-bold" style={{ color: '#2A1E08' }}>Real events. Real stories.</h2>
-            <p className="mt-3 text-lg max-w-xl mx-auto" style={{ color: '#7A6535' }}>
-              Every video is backed by the people who lived it.
-            </p>
-          </div>
 
-          <div className="flex flex-col gap-8">
+          <RevealSection>
+            <div className="mb-16 sm:mb-20">
+              <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#968148' }}>Our couples</p>
+              <h2 className="text-4xl sm:text-5xl" style={{ color: '#FCF7E8' }}>Real events.<br />Real stories.</h2>
+            </div>
+          </RevealSection>
+
+          <div className="flex flex-col gap-[1px]" style={{ background: 'rgba(201,184,137,0.12)' }}>
             {eventShowcases.map((showcase, i) => (
-              <div
-                key={showcase.names}
-                className="flex flex-col sm:flex-row rounded-3xl overflow-hidden"
-                style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
-              >
-                {/* Portrait reel — fixed width, natural 9:16 */}
+              <RevealSection key={showcase.names}>
                 <div
-                  className={`w-full sm:w-56 md:w-64 flex-shrink-0 ${i % 2 === 1 ? 'sm:order-2' : ''}`}
+                  className={`flex flex-col sm:flex-row overflow-hidden`}
+                  style={{ background: '#201208' }}
                 >
-                  <CloudflareVideo id={showcase.cfId} mode="loop" portrait />
-                </div>
-
-                {/* Testimonial */}
-                <div className={`flex-1 p-8 sm:p-10 flex flex-col justify-center gap-5 ${i % 2 === 1 ? 'sm:order-1' : ''}`}>
-                  <div className="flex gap-0.5">
-                    {Array.from({ length: showcase.stars }).map((_, j) => (
-                      <Star key={j} size={16} fill="#C9B889" style={{ color: '#C9B889' }} />
-                    ))}
+                  {/* Portrait reel */}
+                  <div className={`w-full sm:w-60 md:w-72 lg:w-80 flex-shrink-0 ${i % 2 === 1 ? 'sm:order-2' : ''}`}>
+                    <CloudflareVideo id={showcase.cfId} mode="loop" portrait />
                   </div>
-                  <Quote size={28} style={{ color: '#C9B889' }} />
-                  <p className="text-lg leading-relaxed" style={{ color: '#2A1E08' }}>
-                    "{showcase.quote}"
-                  </p>
-                  <div className="pt-2 border-t" style={{ borderColor: '#D9C99A' }}>
-                    <p className="font-semibold" style={{ color: '#2A1E08' }}>{showcase.names}</p>
-                    <p className="text-sm mb-3" style={{ color: '#968148' }}>{showcase.event}</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {showcase.services.map(s => (
-                        <span key={s} className="text-xs px-2.5 py-1 rounded-full" style={{ background: '#FCF7E8', color: '#968148', border: '1px solid #D9C99A' }}>
-                          {s}
-                        </span>
+
+                  {/* Testimonial */}
+                  <div
+                    className={`flex-1 p-8 sm:p-10 lg:p-14 flex flex-col justify-center gap-6 ${i % 2 === 1 ? 'sm:order-1' : ''}`}
+                  >
+                    <div className="flex gap-0.5">
+                      {Array.from({ length: showcase.stars }).map((_, j) => (
+                        <Star key={j} size={13} fill="#968148" style={{ color: '#968148' }} />
                       ))}
+                    </div>
+                    <p
+                      className="text-xl sm:text-2xl lg:text-3xl leading-snug italic"
+                      style={{ color: '#D6C6B0' }}
+                    >
+                      &ldquo;{showcase.quote}&rdquo;
+                    </p>
+                    <div className="pt-5 border-t" style={{ borderColor: 'rgba(201,184,137,0.2)' }}>
+                      <p className="font-semibold mb-0.5" style={{ color: '#C9B889' }}>{showcase.names}</p>
+                      <p className="text-sm mb-4" style={{ color: '#7A6535' }}>{showcase.event}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {showcase.services.map(s => (
+                          <span
+                            key={s}
+                            className="text-xs px-3 py-1 rounded-full"
+                            style={{ background: 'rgba(252,247,232,0.05)', color: '#968148', border: '1px solid rgba(201,184,137,0.25)' }}
+                          >
+                            {s}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </RevealSection>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* 8 — How it works: hero2 background */}
-      <VideoBackground src="/section-cta.mp4" overlayOpacity={0.75}>
-        <div className="py-20">
+      {/* 8 — How it works */}
+      <VideoBackground src="/section-cta.mp4" overlayOpacity={0.78}>
+        <div className="py-24 sm:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14">
-              <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#C9B889' }}>Process</p>
-              <h2 className="text-4xl font-bold italic" style={{ color: '#FCF7E8' }}>How it works</h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <RevealSection>
+              <div className="mb-16 sm:mb-20">
+                <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#C9B889' }}>Process</p>
+                <h2 className="text-4xl sm:text-5xl" style={{ color: '#FCF7E8' }}>How it works</h2>
+              </div>
+            </RevealSection>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12">
               {[
                 { step: '01', title: 'Browse the catalog', desc: 'Navigate by category or choose an event type and add what you need.' },
                 { step: '02', title: 'Build your quote', desc: 'Customize quantities and fill in your event details to receive a breakdown.' },
                 { step: '03', title: 'Book your date', desc: 'Select the date and verify availability before committing.' },
-                { step: '04', title: 'Pay & confirm', desc: 'Secure online payment with Stripe. Your booking is confirmed instantly.' },
-              ].map(item => (
-                <div key={item.step}>
-                  <div className="text-5xl font-bold mb-4" style={{ color: 'rgba(201,184,137,0.5)' }}>{item.step}</div>
-                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#FCF7E8' }}>{item.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: '#C9B889' }}>{item.desc}</p>
-                </div>
+                { step: '04', title: 'Pay & confirm', desc: 'Secure online payment. Your booking is confirmed instantly.' },
+              ].map((item, i) => (
+                <RevealSection key={item.step} delay={i * 90}>
+                  <div className="pt-6 border-t" style={{ borderColor: 'rgba(201,184,137,0.25)' }}>
+                    <div className="text-5xl sm:text-6xl font-bold mb-5 leading-none" style={{ color: 'rgba(201,184,137,0.18)', letterSpacing: '-0.02em' }}>{item.step}</div>
+                    <h3 className="text-lg mb-2.5" style={{ color: '#FCF7E8' }}>{item.title}</h3>
+                    <p className="text-sm leading-relaxed" style={{ color: '#7A6535' }}>{item.desc}</p>
+                  </div>
+                </RevealSection>
               ))}
             </div>
+
           </div>
         </div>
       </VideoBackground>
 
-      {/* 9 — About snippet: cream */}
-      <section className="py-20" style={{ background: '#FCF7E8' }}>
+      {/* 9 — About snippet */}
+      <section className="py-24 sm:py-32" style={{ background: '#FCF7E8' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="rounded-3xl overflow-hidden aspect-video" style={{ border: '1px solid #D9C99A' }}>
-              <CloudflareVideo id="2b7b1640fdde1ebb0185d21db8055b4f" mode="loop" className="h-full" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Who we are</p>
-              <h2 className="text-4xl font-bold mb-5 italic" style={{ color: '#2A1E08' }}>
-                Born in Baja,<br />built to celebrate
-              </h2>
-              <p className="text-base leading-relaxed mb-4" style={{ color: '#7A6535' }}>
-                Oak Project Baja was born from a passion for creating memorable experiences in the unique landscapes of Baja California. We specialize in transforming spaces — from beaches to vineyards — into the perfect setting for the most important moments of your life.
-              </p>
-              <p className="text-base leading-relaxed mb-8" style={{ color: '#7A6535' }}>
-                With 16 years as DJs in Cabo San Lucas and over 300 events under our belt, we evolved into a full-service production company. Premium inventory, professional team, and the flexibility to adapt to every vision.
-              </p>
-              <Link href="/nosotros" className="inline-flex items-center gap-2 font-semibold text-sm" style={{ color: '#968148' }}>
-                Learn our story <ArrowRight size={14} />
-              </Link>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+            <RevealSection>
+              <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #D9C99A', aspectRatio: '16/9' }}>
+                <CloudflareVideo id="2b7b1640fdde1ebb0185d21db8055b4f" mode="loop" className="h-full" />
+              </div>
+            </RevealSection>
+
+            <RevealSection delay={120}>
+              <div>
+                <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: '#968148' }}>Who we are</p>
+                <h2 className="text-4xl sm:text-5xl mb-7" style={{ color: '#2A1E08' }}>
+                  Born in Baja,<br />built to celebrate
+                </h2>
+                <p className="text-base leading-relaxed mb-4" style={{ color: '#7A6535' }}>
+                  Oak Project Baja was born from a passion for creating memorable experiences in the unique landscapes of Baja California. We specialize in transforming spaces — from beaches to vineyards — into the perfect setting for the most important moments of your life.
+                </p>
+                <p className="text-base leading-relaxed mb-10" style={{ color: '#7A6535' }}>
+                  With 16 years as DJs in Cabo San Lucas and over 300 events under our belt, we evolved into a full-service production company. Premium inventory, professional team, and the flexibility to adapt to every vision.
+                </p>
+                <Link
+                  href="/nosotros"
+                  className="inline-flex items-center gap-2 text-sm font-semibold pb-1 border-b transition-opacity hover:opacity-60"
+                  style={{ color: '#968148', borderColor: '#D9C99A' }}
+                >
+                  Learn our story <ArrowRight size={13} />
+                </Link>
+              </div>
+            </RevealSection>
+
           </div>
         </div>
       </section>
 
-      {/* 10 — CTA: section-stats video */}
+      {/* 10 — Final CTA */}
       <VideoBackground src="/section-stats.mp4" overlayOpacity={0.55}>
-        <div className="py-28 px-4 text-center">
-          <p className="text-sm font-semibold tracking-widest uppercase mb-4" style={{ color: '#C9B889' }}>
-            Oak Project Baja
-          </p>
-          <h2 className="text-5xl sm:text-6xl font-bold mb-6 italic" style={{ color: '#FCF7E8', textShadow: '0 2px 24px rgba(0,0,0,0.4)' }}>
-            Ready for your event?
-          </h2>
-          <p className="text-xl mb-10 max-w-xl mx-auto" style={{ color: '#FCF7E8', textShadow: '0 1px 8px rgba(0,0,0,0.3)' }}>
-            Get a quote in minutes, book your date, and let us handle the rest.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/cotizacion" className="inline-flex items-center gap-2 px-10 py-4 rounded-full font-semibold text-lg btn-gold justify-center">
-              Get a free quote <ArrowRight size={20} />
-            </Link>
-            <Link href="/galeria" className="inline-flex items-center gap-2 px-10 py-4 rounded-full font-semibold text-lg btn-outline-light justify-center">
-              View gallery
-            </Link>
-          </div>
+        <div className="py-32 sm:py-40 px-4 text-center">
+          <RevealSection>
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-6" style={{ color: '#C9B889' }}>
+              Oak Project Baja
+            </p>
+            <h2
+              className="text-5xl sm:text-6xl lg:text-7xl mb-8"
+              style={{ color: '#FCF7E8', textShadow: '0 2px 24px rgba(0,0,0,0.4)' }}
+            >
+              Ready for<br />your event?
+            </h2>
+            <p
+              className="text-lg sm:text-xl mb-12 max-w-md mx-auto leading-relaxed"
+              style={{ color: '#C9B889', textShadow: '0 1px 8px rgba(0,0,0,0.3)' }}
+            >
+              Get a quote in minutes, book your date, and let us handle the rest.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                href="/cotizacion"
+                className="inline-flex items-center gap-2 px-10 py-4 rounded-full font-semibold text-base btn-gold justify-center"
+              >
+                Get a free quote <ArrowRight size={18} />
+              </Link>
+              <Link
+                href="/galeria"
+                className="inline-flex items-center gap-2 px-10 py-4 rounded-full font-semibold text-base btn-outline-light justify-center"
+              >
+                View gallery
+              </Link>
+            </div>
+          </RevealSection>
         </div>
       </VideoBackground>
 
