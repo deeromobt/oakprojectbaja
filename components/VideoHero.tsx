@@ -35,27 +35,27 @@ export default function VideoHero({
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: '100svh' }}>
-        <div className="mb-8">
+        <div className="mb-6">
           <Image
             src="/logo.png"
             alt="Oak Project Baja"
-            width={180}
-            height={90}
+            width={320}
+            height={160}
             priority
             className="mx-auto"
             style={{ filter: 'brightness(0) invert(0.88) sepia(0.25) saturate(0.5)' }}
           />
         </div>
 
-        <h1
-          className="text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6 whitespace-pre-line"
-          style={{ color: '#D6C6B0', textShadow: '0 2px 24px rgba(0,0,0,0.5)' }}
+        <p
+          className="text-xl sm:text-2xl lg:text-3xl max-w-2xl leading-snug mb-4 whitespace-pre-line"
+          style={{ color: '#D6C6B0', textShadow: '0 2px 24px rgba(0,0,0,0.5)', fontFamily: 'var(--font-higuen)', letterSpacing: '0.04em' }}
         >
           {headline}
-        </h1>
+        </p>
 
         <p
-          className="text-lg sm:text-xl max-w-xl leading-relaxed mb-10"
+          className="text-sm sm:text-base max-w-md leading-relaxed mb-10"
           style={{ color: '#A3947F', textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}
         >
           {subline}
