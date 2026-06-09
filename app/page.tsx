@@ -214,15 +214,15 @@ export default function HomePage() {
         </div>
       </VideoBackground>
 
-      {/* 4 — Services: dark editorial grid */}
-      <section id="servicios" className="py-24 sm:py-32" style={{ background: '#201208' }}>
+      {/* 4 — Services: cream editorial grid */}
+      <section id="servicios" className="py-24 sm:py-32" style={{ background: '#FCF7E8' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <RevealSection>
             <div className="mb-16 sm:mb-20">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#968148' }}>Catalog</p>
               <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-                <h2 className="text-4xl sm:text-5xl" style={{ color: '#FCF7E8' }}>Everything for<br />your event</h2>
+                <h2 className="text-4xl sm:text-5xl" style={{ color: '#2A1E08' }}>Everything for<br />your event</h2>
                 <p className="text-sm max-w-xs leading-relaxed" style={{ color: '#7A6535' }}>
                   Browse each category, build your quote, and book your date in minutes.
                 </p>
@@ -233,35 +233,35 @@ export default function HomePage() {
           {/* Grid with gap-px creating golden line separators */}
           <div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[1px]"
-            style={{ background: 'rgba(201,184,137,0.15)' }}
+            style={{ background: '#D9C99A' }}
           >
             {services.map((service, i) => (
               <RevealSection key={service.href} delay={i * 70}>
                 <Link
                   href={service.href}
-                  className="group flex flex-col gap-6 p-8 sm:p-10 h-full transition-colors duration-300"
-                  style={{ background: '#201208' }}
+                  className="group flex flex-col gap-6 p-8 sm:p-10 h-full transition-colors duration-300 hover:bg-[#EDE4CC]"
+                  style={{ background: '#FCF7E8' }}
                 >
                   <div className="flex items-start justify-between">
-                    <span className="text-xs font-mono" style={{ color: '#968148' }}>0{i + 1}</span>
+                    <span className="text-xs font-mono" style={{ color: '#C9B889' }}>0{i + 1}</span>
                     <ArrowRight
                       size={15}
                       className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                       style={{ color: '#968148' }}
                     />
                   </div>
-                  <h3 className="text-3xl sm:text-4xl" style={{ color: '#FCF7E8' }}>{service.title}</h3>
+                  <h3 className="text-3xl sm:text-4xl" style={{ color: '#2A1E08' }}>{service.title}</h3>
                   <ul className="flex flex-col gap-2.5 flex-1">
                     {service.items.map(item => (
-                      <li key={item} className="flex items-center gap-2.5 text-sm" style={{ color: '#5C4B30' }}>
-                        <span style={{ color: '#968148', fontSize: '0.45rem', lineHeight: 1 }}>▸</span>
+                      <li key={item} className="flex items-center gap-2.5 text-sm" style={{ color: '#7A6535' }}>
+                        <span style={{ color: '#C9B889', fontSize: '0.45rem', lineHeight: 1 }}>▸</span>
                         {item}
                       </li>
                     ))}
                   </ul>
                   <span
-                    className="text-xs font-semibold tracking-[0.15em] uppercase pt-4 border-t transition-colors duration-300 group-hover:text-[#C9B889]"
-                    style={{ color: '#968148', borderColor: 'rgba(201,184,137,0.2)' }}
+                    className="text-xs font-semibold tracking-[0.15em] uppercase pt-4 border-t transition-colors duration-300 group-hover:text-[#2A1E08]"
+                    style={{ color: '#968148', borderColor: '#D9C99A' }}
                   >
                     See pricing & availability
                   </span>
@@ -273,11 +273,11 @@ export default function HomePage() {
             <RevealSection delay={5 * 70}>
               <div
                 className="flex flex-col justify-between gap-6 p-8 sm:p-10 h-full"
-                style={{ background: '#201208' }}
+                style={{ background: '#FCF7E8' }}
               >
                 <div>
-                  <span className="text-xs font-mono" style={{ color: '#968148' }}>06</span>
-                  <h3 className="text-3xl sm:text-4xl mt-5" style={{ color: '#C9B889' }}>Need<br />everything?</h3>
+                  <span className="text-xs font-mono" style={{ color: '#C9B889' }}>06</span>
+                  <h3 className="text-3xl sm:text-4xl mt-5" style={{ color: '#2A1E08' }}>Need<br />everything?</h3>
                 </div>
                 <div>
                   <p className="text-sm mb-6 leading-relaxed" style={{ color: '#7A6535' }}>
@@ -412,23 +412,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7 — Event Showcases: dark */}
-      <section className="py-24 sm:py-32" style={{ background: '#201208' }}>
+      {/* 7 — Event Showcases: cream */}
+      <section className="py-24 sm:py-32" style={{ background: '#FCF7E8' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <RevealSection>
             <div className="mb-16 sm:mb-20">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#968148' }}>Our couples</p>
-              <h2 className="text-4xl sm:text-5xl" style={{ color: '#FCF7E8' }}>Real events.<br />Real stories.</h2>
+              <h2 className="text-4xl sm:text-5xl" style={{ color: '#2A1E08' }}>Real events.<br />Real stories.</h2>
             </div>
           </RevealSection>
 
-          <div className="flex flex-col gap-[1px]" style={{ background: 'rgba(201,184,137,0.12)' }}>
+          <div className="flex flex-col gap-[1px]" style={{ background: '#D9C99A' }}>
             {eventShowcases.map((showcase, i) => (
               <RevealSection key={showcase.names}>
                 <div
-                  className={`flex flex-col sm:flex-row overflow-hidden`}
-                  style={{ background: '#201208' }}
+                  className="flex flex-col sm:flex-row overflow-hidden"
+                  style={{ background: '#FCF7E8' }}
                 >
                   {/* Portrait reel */}
                   <div className={`w-full sm:w-60 md:w-72 lg:w-80 flex-shrink-0 ${i % 2 === 1 ? 'sm:order-2' : ''}`}>
@@ -441,24 +441,24 @@ export default function HomePage() {
                   >
                     <div className="flex gap-0.5">
                       {Array.from({ length: showcase.stars }).map((_, j) => (
-                        <Star key={j} size={13} fill="#968148" style={{ color: '#968148' }} />
+                        <Star key={j} size={13} fill="#C9B889" style={{ color: '#C9B889' }} />
                       ))}
                     </div>
                     <p
                       className="text-xl sm:text-2xl lg:text-3xl leading-snug italic"
-                      style={{ color: '#D6C6B0' }}
+                      style={{ color: '#2A1E08' }}
                     >
                       &ldquo;{showcase.quote}&rdquo;
                     </p>
-                    <div className="pt-5 border-t" style={{ borderColor: 'rgba(201,184,137,0.2)' }}>
-                      <p className="font-semibold mb-0.5" style={{ color: '#C9B889' }}>{showcase.names}</p>
-                      <p className="text-sm mb-4" style={{ color: '#7A6535' }}>{showcase.event}</p>
+                    <div className="pt-5 border-t" style={{ borderColor: '#D9C99A' }}>
+                      <p className="font-semibold mb-0.5" style={{ color: '#2A1E08' }}>{showcase.names}</p>
+                      <p className="text-sm mb-4" style={{ color: '#968148' }}>{showcase.event}</p>
                       <div className="flex flex-wrap gap-2">
                         {showcase.services.map(s => (
                           <span
                             key={s}
                             className="text-xs px-3 py-1 rounded-full"
-                            style={{ background: 'rgba(252,247,232,0.05)', color: '#968148', border: '1px solid rgba(201,184,137,0.25)' }}
+                            style={{ background: '#EDE4CC', color: '#968148', border: '1px solid #D9C99A' }}
                           >
                             {s}
                           </span>
