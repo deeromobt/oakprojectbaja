@@ -128,7 +128,7 @@ export default function HomePage() {
       />
 
       {/* MARQUEE STRIP */}
-      <div className="overflow-hidden py-3.5 border-y" style={{ background: '#201208', borderColor: '#3D2D17' }}>
+      <div className="overflow-hidden py-3.5 border-y" style={{ background: '#FCF7E8', borderColor: '#D9C99A' }}>
         <div
           className="flex whitespace-nowrap"
           style={{ animation: 'marquee 32s linear infinite', width: 'max-content' }}
@@ -137,10 +137,10 @@ export default function HomePage() {
             <span
               key={i}
               className="mx-6 sm:mx-8 text-xs font-semibold tracking-[0.2em] uppercase"
-              style={{ color: '#968148' }}
+              style={{ color: '#C9B889' }}
             >
               {item}
-              <span className="ml-6 sm:ml-8" style={{ color: '#3D2D17' }}>·</span>
+              <span className="ml-6 sm:ml-8" style={{ color: '#D9C99A' }}>·</span>
             </span>
           ))}
         </div>
