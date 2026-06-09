@@ -33,7 +33,10 @@ export default function VideoBackground({
   return (
     <section
       className={`relative overflow-hidden ${className}`}
-      style={minHeight ? { minHeight } : undefined}
+      style={{
+        background: '#201208',
+        ...(minHeight ? { minHeight } : {}),
+      }}
     >
       {cfId ? (
         <CloudflareVideo id={cfId} mode="background" />
