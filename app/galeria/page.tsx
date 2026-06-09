@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import CloudflareVideo from '@/components/CloudflareVideo'
 
 export const metadata: Metadata = {
   title: 'Gallery — Oak Project Baja',
@@ -11,19 +12,19 @@ const realEvents = [
   {
     title: "Indera & Julius — Wedding",
     tag: 'Wedding',
-    video: '/julius-party.mp4',
+    cfId: '0be046e661a055faeee5366d66de94f9',
     services: ['Audio', 'Lighting', 'Video'],
   },
   {
     title: "Katie & Manuel — Wedding",
     tag: 'Wedding',
-    video: '/mendivil-reel.mp4',
+    cfId: '134e4fa4b335ec371611d69b2fbcd52c',
     services: ['Audio', 'Lighting', 'Photography', 'Video'],
   },
   {
     title: "Jessica & Charlie — Audio & Lights",
     tag: 'Wedding',
-    video: '/about-reel.mp4',
+    cfId: 'f4c4cb0155960b64fa063d36b0ecabc8',
     services: ['Audio', 'Lighting'],
   },
 ]
@@ -45,7 +46,7 @@ export default function GaleriaPage() {
         {/* Header */}
         <div className="mb-12">
           <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Gallery</p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 italic" style={{ color: '#2A1E08' }}>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: '#2A1E08' }}>
             Events we've transformed
           </h1>
           <p className="text-lg max-w-2xl leading-relaxed" style={{ color: '#7A6535' }}>
@@ -59,7 +60,7 @@ export default function GaleriaPage() {
             <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Featured film</p>
             <h2 className="text-2xl font-bold mb-6" style={{ color: '#2A1E08' }}>Indera & Julius — Wedding Film</h2>
             <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
-              <video className="w-full aspect-video object-cover" src="/julius-montaje.mp4" controls playsInline style={{ background: '#EDE4CC' }} />
+              <CloudflareVideo id="bd123b05247e4ef098521fddab781f90" mode="player" />
             </div>
             <div className="flex flex-wrap gap-2 mt-4">
               {['Audio', 'Lighting', 'Video'].map(s => (
@@ -71,7 +72,7 @@ export default function GaleriaPage() {
           <div>
             <h2 className="text-2xl font-bold mb-6" style={{ color: '#2A1E08' }}>Katie & Manuel — Wedding Film</h2>
             <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
-              <video className="w-full aspect-video object-cover" src="/mendivil-wedding.mp4" controls playsInline style={{ background: '#EDE4CC' }} />
+              <CloudflareVideo id="eec5d98dd3a17e919fe324b5071d5667" mode="player" />
             </div>
             <div className="flex flex-wrap gap-2 mt-4">
               {['Audio', 'Lighting', 'Photography', 'Video'].map(s => (
@@ -106,14 +107,7 @@ export default function GaleriaPage() {
               className="rounded-2xl overflow-hidden transition-all hover:-translate-y-1"
               style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
             >
-              <video
-                className="w-full aspect-video object-cover"
-                src={event.video}
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
+              <CloudflareVideo id={event.cfId} mode="loop" />
               <div className="p-4">
                 <span className="text-xs px-2 py-0.5 rounded-full mb-2 inline-block" style={{ background: '#D9C99A', color: '#2A1E08' }}>
                   {event.tag}

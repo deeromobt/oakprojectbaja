@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ArrowRight, Star, Quote } from 'lucide-react'
 import VideoHero from '@/components/VideoHero'
 import VideoBackground from '@/components/VideoBackground'
+import CloudflareVideo from '@/components/CloudflareVideo'
 
 const eventTypes = [
   { label: 'Weddings', icon: '💍', desc: 'Your most special day deserves the best' },
@@ -80,7 +81,7 @@ const eventShowcases = [
   {
     names: 'Indera & Julius',
     event: 'Wedding — Baja California Sur',
-    video: '/julius-party.mp4',
+    cfId: '0be046e661a055faeee5366d66de94f9',
     services: ['Audio', 'Lighting', 'Video'],
     // TODO: Replace with Julius's real testimonial
     quote: 'The energy on the dance floor was incredible all night. The sound was perfect and the lighting completely transformed the venue into something we had only imagined.',
@@ -89,7 +90,7 @@ const eventShowcases = [
   {
     names: 'Katie & Manuel',
     event: 'Wedding — Baja California Sur',
-    video: '/mendivil-reel.mp4',
+    cfId: '134e4fa4b335ec371611d69b2fbcd52c',
     services: ['Audio', 'Lighting', 'Photography', 'Video'],
     quote: 'From the first detail to the last song, Oak Project made our wedding exactly what we dreamed of. The production quality was beyond anything we expected.',
     stars: 5,
@@ -97,7 +98,7 @@ const eventShowcases = [
   {
     names: 'Jessica & Charlie',
     event: 'Wedding — Baja California Sur',
-    video: '/about-reel.mp4',
+    cfId: 'f4c4cb0155960b64fa063d36b0ecabc8',
     services: ['Audio', 'Lighting'],
     // TODO: Replace with Charlie & Jessica's real testimonial
     quote: 'The audio and lighting setup was flawless. Our guests kept asking who was behind the production — the atmosphere they created was exactly what we wanted.',
@@ -120,8 +121,7 @@ export default function HomePage() {
       <VideoHero
         headline={"Bringing your\nperfect event to life"}
         subline="Furniture rental, audio, lighting, photography, and video for events in Baja California."
-        posterSrc="/logo.png"
-        videoSrc="/julius-montaje.mp4"
+        cfId="bd123b05247e4ef098521fddab781f90"
       />
 
       {/* 2 — Event Types: cream */}
@@ -206,7 +206,7 @@ export default function HomePage() {
       </section>
 
       {/* 5 — Packages: Mendivil reel background */}
-      <VideoBackground src="/mendivil-reel.mp4" overlayOpacity={0.80}>
+      <VideoBackground cfId="134e4fa4b335ec371611d69b2fbcd52c" overlayOpacity={0.80}>
         <div className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14">
@@ -273,11 +273,11 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="rounded-2xl overflow-hidden aspect-video" style={{ border: '1px solid #D9C99A' }}>
-              <video className="w-full h-full object-cover" src="/mendivil-reel.mp4" autoPlay muted loop playsInline />
+            <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
+              <CloudflareVideo id="134e4fa4b335ec371611d69b2fbcd52c" mode="loop" />
             </div>
-            <div className="rounded-2xl overflow-hidden aspect-video" style={{ border: '1px solid #D9C99A' }}>
-              <video className="w-full h-full object-cover" src="/about-reel.mp4" autoPlay muted loop playsInline />
+            <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
+              <CloudflareVideo id="f4c4cb0155960b64fa063d36b0ecabc8" mode="loop" />
             </div>
           </div>
           <div className="flex justify-center mt-6">
@@ -308,12 +308,7 @@ export default function HomePage() {
               >
                 {/* Video — alternates left/right on desktop */}
                 <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
-                  <video
-                    className="w-full h-full object-cover"
-                    style={{ minHeight: '280px', maxHeight: '420px' }}
-                    src={showcase.video}
-                    autoPlay muted loop playsInline
-                  />
+                  <CloudflareVideo id={showcase.cfId} mode="loop" style={{ minHeight: '280px', maxHeight: '420px' }} />
                 </div>
 
                 {/* Testimonial */}
@@ -376,7 +371,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="rounded-3xl overflow-hidden aspect-video" style={{ border: '1px solid #D9C99A' }}>
-              <video className="w-full h-full object-cover" src="/born-in-baja.mp4" autoPlay muted loop playsInline />
+              <CloudflareVideo id="2b7b1640fdde1ebb0185d21db8055b4f" mode="loop" className="h-full" />
             </div>
             <div>
               <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Who we are</p>
