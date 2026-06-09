@@ -33,9 +33,9 @@ export default function VideoHero({
         style={{ background: 'linear-gradient(to bottom, rgba(32,18,8,0.45) 0%, rgba(32,18,8,0.6) 100%)' }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: '100svh' }}>
-        <div className="mb-6">
+      {/* Content — logo pushed to lower third, headline on one line below */}
+      <div className="relative z-10 flex flex-col items-center justify-end text-center px-6 pb-28 sm:pb-36" style={{ minHeight: '100svh' }}>
+        <div className="mb-5">
           <Image
             src="/logo.png"
             alt="Oak Project Baja"
@@ -48,7 +48,7 @@ export default function VideoHero({
         </div>
 
         <p
-          className="text-xl sm:text-2xl lg:text-3xl max-w-2xl leading-snug mb-4 whitespace-pre-line"
+          className="text-lg sm:text-xl lg:text-2xl mb-4 whitespace-nowrap"
           style={{ color: '#D6C6B0', textShadow: '0 2px 24px rgba(0,0,0,0.5)', fontFamily: 'var(--font-higuen)', letterSpacing: '0.04em' }}
         >
           {headline}
