@@ -272,12 +272,12 @@ export default function HomePage() {
               See all <ArrowRight size={14} />
             </Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
-              <CloudflareVideo id="134e4fa4b335ec371611d69b2fbcd52c" mode="loop" />
+          <div className="flex justify-center gap-4">
+            <div className="rounded-2xl overflow-hidden w-full max-w-xs" style={{ border: '1px solid #D9C99A' }}>
+              <CloudflareVideo id="134e4fa4b335ec371611d69b2fbcd52c" mode="loop" portrait />
             </div>
-            <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
-              <CloudflareVideo id="f4c4cb0155960b64fa063d36b0ecabc8" mode="loop" />
+            <div className="rounded-2xl overflow-hidden w-full max-w-xs" style={{ border: '1px solid #D9C99A' }}>
+              <CloudflareVideo id="f4c4cb0155960b64fa063d36b0ecabc8" mode="loop" portrait />
             </div>
           </div>
           <div className="flex justify-center mt-6">
@@ -303,16 +303,18 @@ export default function HomePage() {
             {eventShowcases.map((showcase, i) => (
               <div
                 key={showcase.names}
-                className={`grid grid-cols-1 lg:grid-cols-2 rounded-3xl overflow-hidden`}
+                className="flex flex-col sm:flex-row rounded-3xl overflow-hidden"
                 style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
               >
-                {/* Video — alternates left/right on desktop */}
-                <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
-                  <CloudflareVideo id={showcase.cfId} mode="loop" style={{ minHeight: '280px', maxHeight: '420px' }} />
+                {/* Portrait reel — fixed width, natural 9:16 */}
+                <div
+                  className={`w-full sm:w-56 md:w-64 flex-shrink-0 ${i % 2 === 1 ? 'sm:order-2' : ''}`}
+                >
+                  <CloudflareVideo id={showcase.cfId} mode="loop" portrait />
                 </div>
 
                 {/* Testimonial */}
-                <div className={`p-8 sm:p-10 flex flex-col justify-center gap-5 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
+                <div className={`flex-1 p-8 sm:p-10 flex flex-col justify-center gap-5 ${i % 2 === 1 ? 'sm:order-1' : ''}`}>
                   <div className="flex gap-0.5">
                     {Array.from({ length: showcase.stars }).map((_, j) => (
                       <Star key={j} size={16} fill="#C9B889" style={{ color: '#C9B889' }} />

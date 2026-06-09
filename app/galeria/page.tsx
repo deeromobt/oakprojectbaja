@@ -100,14 +100,14 @@ export default function GaleriaPage() {
         </div>
 
         {/* Real event reels grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 mb-5">
           {realEvents.map((event, i) => (
             <div
               key={i}
               className="rounded-2xl overflow-hidden transition-all hover:-translate-y-1"
               style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
             >
-              <CloudflareVideo id={event.cfId} mode="loop" />
+              <CloudflareVideo id={event.cfId} mode="loop" portrait />
               <div className="p-4">
                 <span className="text-xs px-2 py-0.5 rounded-full mb-2 inline-block" style={{ background: '#D9C99A', color: '#2A1E08' }}>
                   {event.tag}
