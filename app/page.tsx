@@ -376,7 +376,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="rounded-3xl overflow-hidden aspect-video" style={{ border: '1px solid #D9C99A' }}>
-              <video className="w-full h-full object-cover" src="/born-in-baja.mp4" autoPlay muted loop playsInline />
+              <video className="w-full h-full object-cover" src="/julius-montaje.mp4" autoPlay muted loop playsInline />
             </div>
             <div>
               <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Who we are</p>
