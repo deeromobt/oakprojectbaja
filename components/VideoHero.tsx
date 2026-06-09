@@ -34,7 +34,7 @@ export default function VideoHero({
       />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ minHeight: '100svh' }}>
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 pb-24 sm:pb-32" style={{ minHeight: '100svh' }}>
         <div className="mb-8">
           <Image
             src="/logo.png"
