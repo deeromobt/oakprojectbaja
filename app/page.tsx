@@ -122,7 +122,7 @@ export default function HomePage() {
 
       {/* 1 — Hero */}
       <VideoHero
-        headline="Bringing your perfect event to life"
+        headline={"Bringing your\nperfect event to life"}
         subline="Furniture rental, audio, lighting, photography, and video for events in Baja California."
         cfId="bd123b05247e4ef098521fddab781f90"
       />
