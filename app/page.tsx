@@ -82,7 +82,7 @@ const eventShowcases = [
     names: 'Indera & Julius',
     event: 'Wedding — Baja California Sur',
     cfId: '0be046e661a055faeee5366d66de94f9',
-    services: ['Audio', 'Lighting', 'Video'],
+    services: ['Audio', 'Lighting'],
     quote: 'The energy on the dance floor was incredible all night. The sound was perfect and the lighting completely transformed the venue into something we had only imagined.',
     stars: 5,
   },
