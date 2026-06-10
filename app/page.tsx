@@ -26,7 +26,7 @@ const packages = [
   {
     name: 'Sound Package',
     desc: 'Professional DJ service with full sound system — ideal for any event',
-    price: 1375,
+    price: 2500,
     items: [
       'DJ Service — 6 hours',
       '2 QSC mid speakers',
@@ -40,7 +40,7 @@ const packages = [
   {
     name: 'Sound + Lights Package',
     desc: 'Full sound system plus lighting production with trusses, par LEDs, and moving heads',
-    price: 3250,
+    price: 4500,
     items: [
       'DJ Service — 6 hours',
       '2 QSC mid speakers',
@@ -57,7 +57,7 @@ const packages = [
   {
     name: 'Premium Package',
     desc: 'Full production: professional sound, show lighting with 4 trusses, photography, and complete video package',
-    price: 6125,
+    price: 8500,
     items: [
       'DJ Service — 6 hours',
       '4 QSC K12 speakers',
@@ -357,6 +357,10 @@ export default function HomePage() {
                 </RevealSection>
               ))}
             </div>
+
+            <p className="text-center text-xs mt-6" style={{ color: '#968148' }}>
+              * Prices do not include IVA (16%). Final price subject to date, location, and customization.
+            </p>
 
           </div>
         </div>
