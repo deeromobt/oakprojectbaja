@@ -11,6 +11,8 @@ const navLinks = [
   { href: '/iluminacion', label: 'Lighting' },
   { href: '/fotografia', label: 'Photography' },
   { href: '/video', label: 'Video' },
+  { href: '/djs', label: 'DJs' },
+  { href: '/rentas', label: 'Rentals' },
   { href: '/galeria', label: 'Gallery' },
   { href: '/nosotros', label: 'About' },
 ]

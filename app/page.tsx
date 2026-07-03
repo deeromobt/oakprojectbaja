@@ -297,74 +297,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5 — Packages: video background */}
-      <VideoBackground cfId="241d0f9ec3d81b32be4a1e4718adc230" overlayOpacity={0.82}>
-        <div className="py-10 sm:py-14">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <RevealSection>
-              <div className="mb-8 sm:mb-10">
-                <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3" style={{ color: '#C9B889' }}>Packages</p>
-                <h2 className="text-3xl sm:text-4xl mb-2" style={{ color: '#FCF7E8' }}>Ready to go, no complications</h2>
-                <p className="text-xs leading-relaxed" style={{ color: '#968148' }}>
-                  Pre-built packages for the most common events. Fully customizable to your taste.
-                </p>
-              </div>
-            </RevealSection>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {packages.map((pkg, i) => (
-                <RevealSection key={pkg.name} delay={i * 90}>
-                  <div
-                    className="rounded-xl p-5 flex flex-col gap-3 relative h-full"
-                    style={{
-                      background: pkg.popular ? 'rgba(252,247,232,0.12)' : 'rgba(252,247,232,0.06)',
-                      border: `1px solid ${pkg.popular ? 'rgba(201,184,137,0.6)' : 'rgba(201,184,137,0.2)'}`,
-                      backdropFilter: 'blur(12px)',
-                    }}
-                  >
-                    {pkg.popular && (
-                      <span
-                        className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold px-3 py-0.5 rounded-full"
-                        style={{ background: '#968148', color: '#FCF7E8' }}
-                      >
-                        Most popular
-                      </span>
-                    )}
-                    <div>
-                      <h3 className="text-lg mb-0.5" style={{ color: '#FCF7E8' }}>{pkg.name}</h3>
-                      <p className="text-xs leading-relaxed" style={{ color: '#968148' }}>{pkg.desc}</p>
-                    </div>
-                    <div className="py-2 border-y" style={{ borderColor: 'rgba(201,184,137,0.2)' }}>
-                      <p className="text-3xl" style={{ color: '#FCF7E8' }}>
-                        {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0 }).format(pkg.price)}
-                      </p>
-                    </div>
-                    <ul className="flex flex-col gap-1 flex-1">
-                      {pkg.items.map(item => (
-                        <li key={item} className="flex items-center gap-2 text-xs" style={{ color: '#D6C6B0' }}>
-                          <span style={{ color: '#968148' }}>✓</span> {item}
-                        </li>
-                      ))}
-                    </ul>
-                    <Link
-                      href={`/cotizacion?paquete=${encodeURIComponent(pkg.name)}`}
-                      className="w-full py-2.5 rounded-xl text-center font-semibold text-xs btn-gold block"
-                    >
-                      Request this package
-                    </Link>
-                  </div>
-                </RevealSection>
-              ))}
-            </div>
-
-            <p className="text-center text-xs mt-6" style={{ color: '#968148' }}>
-              * Prices do not include IVA (16%). Final price subject to date, location, and customization.
+      {/* 5 — Wedding in a Box */}
+      <section className="py-32 sm:py-40" style={{ background: '#FCF7E8' }}>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <RevealSection>
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-6" style={{ color: '#968148' }}>
+              One Stop Shop
             </p>
-
-          </div>
+            <h2
+              className="text-6xl sm:text-7xl lg:text-8xl mb-8 leading-none"
+              style={{ color: '#2A1E08' }}
+            >
+              Wedding<br />in a Box.
+            </h2>
+            <p
+              className="text-base sm:text-lg leading-relaxed mb-10 mx-auto"
+              style={{ color: '#7A6535', maxWidth: '560px', fontFamily: 'var(--font-garamond)' }}
+            >
+              Audio, lighting, photography, video, DJ and rentals — everything your wedding needs,
+              curated into one seamless production. Tell us about your day and we&apos;ll build the
+              perfect package around it.
+            </p>
+            <Link
+              href="/cotizacion"
+              className="inline-flex items-center gap-2 px-10 py-4 rounded-full font-semibold text-base btn-gold"
+            >
+              Ask for Your Custom Package <ArrowRight size={18} />
+            </Link>
+            <p
+              className="mt-6 text-sm italic"
+              style={{ color: '#7A6535', fontFamily: 'var(--font-garamond)' }}
+            >
+              Every package is built to order. No two events are the same.
+            </p>
+          </RevealSection>
         </div>
-      </VideoBackground>
+      </section>
 
       {/* 6 — Gallery Preview */}
       <section className="py-24 sm:py-32" style={{ background: '#FCF7E8' }}>
