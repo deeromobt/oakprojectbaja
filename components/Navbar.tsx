@@ -6,7 +6,6 @@ import { ShoppingCart, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
 const navLinks = [
-  { href: '/mobiliario', label: 'Furniture' },
   { href: '/media', label: 'Media' },
   { href: '/djs', label: 'DJs' },
   { href: '/rentas', label: 'Rentals' },
