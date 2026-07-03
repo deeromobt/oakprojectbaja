@@ -18,8 +18,8 @@ const services = [
   { href: '/mobiliario', title: 'Furniture', items: ['Professional DJ Booths', 'Modular dance floors', 'Customizable sizes', 'Setup & breakdown included'] },
   { href: '/audio', title: 'Audio', items: ['12" mid speakers', '18" subwoofers', '8" monitors', 'Wireless microphones'] },
   { href: '/iluminacion', title: 'Lighting', items: ['RGB LED uplights', 'Moving heads', 'Custom gobos', 'String lights'] },
-  { href: '/fotografia', title: 'Photography', items: ['4–8 hour coverage', 'Photo booth with prints', 'Private online gallery', 'Portrait sessions'] },
-  { href: '/video', title: 'Video', items: ['4K drone video', 'Live streaming', 'Edited highlight video', 'Photo + video package'] },
+  { href: '/media', title: 'Photography', items: ['4–8 hour coverage', 'Photo booth with prints', 'Private online gallery', 'Portrait sessions'] },
+  { href: '/media', title: 'Video', items: ['4K drone video', 'Live streaming', 'Edited highlight video', 'Photo + video package'] },
 ]
 
 const packages = [

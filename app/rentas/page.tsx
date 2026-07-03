@@ -5,7 +5,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Rentals Catalog — Oak Project Baja',
-  description: 'Browse our full rentals catalog: audio, lighting, DJ equipment, dance floors, photography & video. Available for any event in Baja California Sur.',
+  description: 'Browse our full rentals catalog: audio, lighting, DJ equipment and dance floors. Available for any event in Baja California Sur.',
 }
 
 type CatalogItem = {
@@ -66,17 +66,8 @@ const catalog: CatalogCategory[] = [
     ],
   },
   {
-    category: 'Photography & Video',
-    index: '05',
-    items: [
-      { name: 'Wedding Photography', description: '2 photographers, 8-hour coverage, fully edited private gallery delivered online', price: '$2,500 USD' },
-      { name: 'Wedding Film', description: '3 videographers, full wedding film plus highlight reel, drone footage included', price: '$2,500 USD' },
-      { name: 'Family Beach Session', description: '1 photographer, 1-hour session on location, edited photos delivered in private gallery', price: '$350 USD' },
-    ],
-  },
-  {
     category: 'Logistics',
-    index: '06',
+    index: '05',
     items: [
       { name: 'Setup & Breakdown', description: 'Professional crew handles all equipment load-in, setup, and breakdown at your venue', price: '$450 USD', note: 'Included in all packages.' },
     ],
