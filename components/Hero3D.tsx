@@ -20,19 +20,19 @@ type Card = {
   rz: number   // rotateZ (deg)
   z: number    // translateZ (px) — depth
   delay: number
-  deep?: boolean       // far background accent — dimmed, hidden on mobile
-  hideSm?: boolean     // hidden on mobile to keep text readable
+  far?: boolean       // further back — smaller apparent, hidden on mobile
+  hideSm?: boolean    // hidden on mobile to keep text readable
 }
 
 const CARDS: Card[] = [
   // ---- left side ----
-  { src: '/hero/couple-lift.jpg',   alt: 'Wedding couple on the beach', w: 208, h: 280, pos: { top: '14%', left: '4%' },  ry: 17,  rz: -5, z: -40,  delay: 0.0 },
-  { src: '/hero/couple-desert.jpg', alt: 'Couple in the desert dunes',  w: 216, h: 146, pos: { top: '46%', left: '1%' },  ry: 22,  rz: -3, z: -240, delay: 0.6, deep: true },
-  { src: '/hero/ceremony.jpg',      alt: 'Wedding ceremony',            w: 182, h: 244, pos: { bottom: '10%', left: '8%' }, ry: 13,  rz: 6,  z: -130, delay: 1.3, hideSm: true },
+  { src: '/hero/couple-lift.jpg',   alt: 'Wedding couple on the beach', w: 210, h: 284, pos: { top: '15%', left: '4.5%' }, ry: 15,  rz: -4, z: 40,   delay: 0.0 },
+  { src: '/hero/couple-desert.jpg', alt: 'Couple in the desert dunes',  w: 208, h: 140, pos: { top: '47%', left: '2%' },   ry: 19,  rz: -3, z: -150, delay: 0.6, far: true },
+  { src: '/hero/ceremony.jpg',      alt: 'Wedding ceremony',            w: 186, h: 250, pos: { bottom: '9%', left: '8%' },   ry: 12,  rz: 5,  z: -40,  delay: 1.3, hideSm: true },
   // ---- right side ----
-  { src: '/hero/couple-beach.jpg',  alt: 'Couple walking on the beach', w: 200, h: 270, pos: { top: '13%', right: '4%' }, ry: -17, rz: 5,  z: -60,  delay: 0.35 },
-  { src: '/hero/couple-rocks.jpg',  alt: 'Couple by the sea',           w: 216, h: 146, pos: { top: '48%', right: '1%' }, ry: -22, rz: 3,  z: -250, delay: 0.9, deep: true },
-  { src: '/hero/table.jpg',         alt: 'Wedding reception table',     w: 186, h: 250, pos: { bottom: '12%', right: '7%' }, ry: -13, rz: -6, z: -140, delay: 1.7, hideSm: true },
+  { src: '/hero/couple-beach.jpg',  alt: 'Couple walking on the beach', w: 202, h: 272, pos: { top: '13%', right: '4.5%' }, ry: -15, rz: 4,  z: 20,   delay: 0.35 },
+  { src: '/hero/couple-rocks.jpg',  alt: 'Couple by the sea',           w: 208, h: 140, pos: { top: '49%', right: '2%' },   ry: -19, rz: 3,  z: -160, delay: 0.9, far: true },
+  { src: '/hero/table.jpg',         alt: 'Wedding reception table',     w: 188, h: 252, pos: { bottom: '11%', right: '7%' }, ry: -12, rz: -5, z: -50,  delay: 1.7, hideSm: true },
 ]
 
 export default function Hero3D({
@@ -53,16 +53,17 @@ export default function Hero3D({
     const onMove = (e: MouseEvent) => {
       const x = e.clientX / window.innerWidth - 0.5   // -0.5 .. 0.5
       const y = e.clientY / window.innerHeight - 0.5
-      target.current.ry = x * 16
-      target.current.rx = -y * 10
+      target.current.ry = x * 14
+      target.current.rx = -y * 9
     }
 
     const tick = () => {
-      current.current.rx += (target.current.rx - current.current.rx) * 0.06
-      current.current.ry += (target.current.ry - current.current.ry) * 0.06
+      // smooth, high-quality easing toward the cursor target
+      current.current.rx += (target.current.rx - current.current.rx) * 0.075
+      current.current.ry += (target.current.ry - current.current.ry) * 0.075
       if (sceneRef.current) {
         sceneRef.current.style.transform =
-          `rotateX(${current.current.rx.toFixed(2)}deg) rotateY(${current.current.ry.toFixed(2)}deg)`
+          `rotateX(${current.current.rx.toFixed(3)}deg) rotateY(${current.current.ry.toFixed(3)}deg)`
       }
       frame.current = requestAnimationFrame(tick)
     }
@@ -81,19 +82,19 @@ export default function Hero3D({
       style={{
         minHeight: '100svh',
         background:
-          'radial-gradient(120% 90% at 50% 12%, #3a2a12 0%, #241609 45%, #150c04 100%)',
+          'radial-gradient(125% 100% at 50% 0%, #FFFDF7 0%, #FCF7E8 48%, #F1E6CC 100%)',
       }}
     >
-      {/* golden spotlight glow */}
+      {/* soft gold glow */}
       <div
-        className="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+        className="absolute left-1/2 top-[36%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
         style={{
-          width: '900px',
-          height: '900px',
-          maxWidth: '120vw',
+          width: '1000px',
+          height: '1000px',
+          maxWidth: '130vw',
           background:
-            'radial-gradient(circle, rgba(201,184,137,0.28) 0%, rgba(150,129,72,0.10) 40%, transparent 70%)',
-          filter: 'blur(10px)',
+            'radial-gradient(circle, rgba(201,184,137,0.30) 0%, rgba(201,184,137,0.10) 42%, transparent 70%)',
+          filter: 'blur(6px)',
         }}
       />
 
@@ -103,36 +104,30 @@ export default function Hero3D({
           {CARDS.map((c) => (
             <div
               key={c.src}
-              className={`hero-card-wrap absolute ${c.deep ? 'hero-card-deep' : ''} ${c.hideSm ? 'hero-card-hide-sm' : ''}`}
+              className={`hero-card-wrap absolute ${c.hideSm ? 'hero-card-hide-sm' : ''}`}
               style={c.pos}
             >
               <div className="hero-float" style={{ animationDelay: `${c.delay}s` }}>
                 <div
+                  className="hero-card"
                   style={{
                     width: c.w,
                     height: c.h,
                     transform: `translateZ(${c.z}px) rotateY(${c.ry}deg) rotateZ(${c.rz}deg)`,
-                    borderRadius: '14px',
-                    overflow: 'hidden',
-                    position: 'relative',
-                    border: '1px solid rgba(201,184,137,0.35)',
-                    boxShadow:
-                      '0 30px 60px -20px rgba(0,0,0,0.7), 0 8px 20px rgba(0,0,0,0.4)',
-                    opacity: c.deep ? 0.55 : 0.94,
-                    filter: c.deep ? 'blur(1px) saturate(0.9)' : 'none',
+                    opacity: c.far ? 0.92 : 1,
                   }}
                 >
                   <Image
                     src={c.src}
                     alt={c.alt}
                     fill
-                    sizes="220px"
+                    sizes="240px"
                     style={{ objectFit: 'cover' }}
                   />
-                  {/* warm tint to unify with palette */}
+                  {/* glossy light-catch */}
                   <div
                     className="absolute inset-0"
-                    style={{ background: 'linear-gradient(180deg, rgba(21,12,4,0) 40%, rgba(21,12,4,0.45) 100%)' }}
+                    style={{ background: 'linear-gradient(155deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 34%)' }}
                   />
                 </div>
               </div>
@@ -141,10 +136,10 @@ export default function Hero3D({
         </div>
       </div>
 
-      {/* vignette for text legibility */}
+      {/* subtle cream vignette so text stays crisp over cards */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(70% 60% at 50% 45%, rgba(21,12,4,0.35) 0%, rgba(21,12,4,0.72) 100%)' }}
+        style={{ background: 'radial-gradient(58% 50% at 50% 44%, rgba(252,247,232,0.72) 0%, rgba(252,247,232,0) 100%)' }}
       />
 
       {/* Center content */}
@@ -160,20 +155,20 @@ export default function Hero3D({
             height={84}
             priority
             className="mx-auto mb-8"
-            style={{ height: 'auto', filter: 'brightness(0) invert(0.9) sepia(0.22) saturate(0.5)' }}
+            style={{ height: 'auto' }}
           />
         </div>
 
         <h1
           className="hero-fade-up w-full text-4xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] mb-6 whitespace-pre-line"
-          style={{ color: '#F3E9D2', textShadow: '0 2px 40px rgba(0,0,0,0.6)', animationDelay: '0.25s' }}
+          style={{ color: '#2A1E08', animationDelay: '0.25s' }}
         >
           {headline}
         </h1>
 
         <p
           className="hero-fade-up w-full text-lg sm:text-xl max-w-xl leading-relaxed mb-10"
-          style={{ color: '#C9B889', textShadow: '0 1px 12px rgba(0,0,0,0.5)', animationDelay: '0.4s' }}
+          style={{ color: '#7A6535', animationDelay: '0.4s' }}
         >
           {subline}
         </p>
@@ -182,7 +177,7 @@ export default function Hero3D({
           <Link href="/cotizacion" className="btn-gold px-10 py-4 rounded-full font-semibold text-base tracking-wide">
             Get a Quote
           </Link>
-          <Link href="/mobiliario" className="btn-outline-light px-10 py-4 rounded-full font-semibold text-base tracking-wide">
+          <Link href="/mobiliario" className="btn-outline px-10 py-4 rounded-full font-semibold text-base tracking-wide">
             Browse Catalog
           </Link>
         </div>
@@ -191,13 +186,13 @@ export default function Hero3D({
       {/* photo credit */}
       <div
         className="absolute bottom-5 left-6 z-10 hidden sm:block text-xs tracking-[0.18em] uppercase"
-        style={{ color: 'rgba(201,184,137,0.65)' }}
+        style={{ color: 'rgba(122,101,53,0.75)' }}
       >
         Photography · {photographer}
       </div>
 
       {/* scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce" style={{ color: 'rgba(201,184,137,0.7)' }}>
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce" style={{ color: 'rgba(150,129,72,0.7)' }}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M12 5v14M5 12l7 7 7-7" />
         </svg>

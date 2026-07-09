@@ -7,6 +7,7 @@ import Footer from '@/components/Footer'
 import CartSidebar from '@/components/CartSidebar'
 import Providers from '@/components/Providers'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import SmoothScroll from '@/components/SmoothScroll'
 
 const higuen = localFont({
   src: '../public/fonts/HiguenSerif.otf',
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${higuen.variable} ${garamond.variable} ${atkinson.variable} h-full`}>
       <body className="min-h-full flex flex-col" style={{ background: '#FCF7E8' }}>
         <Providers>
+          <SmoothScroll />
           <Navbar />
           <CartSidebar />
           <main className="flex-1 pt-16">

@@ -48,6 +48,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Lenis smooth scroll (inertial). Video-player iframes stay interactive
+   (the global iframe pointer-events rule is intentionally omitted). */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
 /* Primary CTA — gold on cream or dark backgrounds */
 .btn-gold {
   background: var(--accent-dark);
@@ -108,10 +115,21 @@ html {
   0%, 100% { transform: translateY(0px); }
   50%      { transform: translateY(-16px); }
 }
-.hero-stage  { perspective: 1500px; }
-.hero-scene  { transform-style: preserve-3d; will-change: transform; transition: transform 0.25s cubic-bezier(0.22,1,0.36,1); }
+.hero-stage  { perspective: 1300px; }
+.hero-scene  { transform-style: preserve-3d; will-change: transform; }
 .hero-card-wrap  { transform-style: preserve-3d; }
-.hero-float  { animation: heroFloat 9s ease-in-out infinite; transform-style: preserve-3d; will-change: transform; }
+.hero-float  { animation: heroFloat 11s ease-in-out infinite; transform-style: preserve-3d; will-change: transform; }
+.hero-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow:
+    0 2px 4px rgba(58, 42, 18, 0.10),
+    0 18px 34px -14px rgba(58, 42, 18, 0.30),
+    0 36px 70px -30px rgba(58, 42, 18, 0.34);
+}
 .hero-fade-up { opacity: 0; transform: translateY(24px); animation: heroFadeUp 1s cubic-bezier(0.22,1,0.36,1) forwards; }
 @keyframes heroFadeUp { to { opacity: 1; transform: translateY(0); } }
 
