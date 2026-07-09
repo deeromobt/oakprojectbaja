@@ -6,6 +6,7 @@ import CloudflareVideo from '@/components/CloudflareVideo'
 import RevealSection from '@/components/RevealSection'
 import Tilt3D from '@/components/Tilt3D'
 import Parallax from '@/components/Parallax'
+import SplitReveal from '@/components/SplitReveal'
 
 const eventTypes = [
   { label: 'Weddings', desc: 'Your most special day deserves the best' },
@@ -156,7 +157,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-16 sm:mb-20 gap-6">
               <div>
                 <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#968148' }}>What we do</p>
-                <h2 className="text-5xl sm:text-6xl" style={{ color: '#2A1E08' }}>For every<br />occasion</h2>
+                <SplitReveal as="h2" className="text-6xl sm:text-7xl lg:text-8xl leading-[0.95]" style={{ color: '#2A1E08' }}>For every occasion</SplitReveal>
               </div>
               <p className="text-sm max-w-xs leading-relaxed" style={{ color: '#7A6535' }}>
                 From intimate beach weddings to large corporate events — we bring the full production.
@@ -224,7 +225,7 @@ export default function HomePage() {
             <div className="mb-16 sm:mb-20">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#968148' }}>Catalog</p>
               <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-                <h2 className="text-4xl sm:text-5xl" style={{ color: '#2A1E08' }}>Everything for<br />your event</h2>
+                <SplitReveal as="h2" className="text-5xl sm:text-6xl lg:text-7xl leading-[0.95]" style={{ color: '#2A1E08' }}>Everything for your event</SplitReveal>
                 <p className="text-sm max-w-xs leading-relaxed" style={{ color: '#7A6535' }}>
                   Browse each category, build your quote, and book your date in minutes.
                 </p>
@@ -306,12 +307,13 @@ export default function HomePage() {
             <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-6" style={{ color: '#968148' }}>
               One Stop Shop
             </p>
-            <h2
-              className="text-6xl sm:text-7xl lg:text-8xl mb-8 leading-none"
+            <SplitReveal
+              as="h2"
+              className="text-7xl sm:text-8xl lg:text-9xl mb-8 leading-[0.9]"
               style={{ color: '#2A1E08' }}
             >
-              Wedding<br />in a Box.
-            </h2>
+              Wedding in a Box.
+            </SplitReveal>
             <p
               className="text-base sm:text-lg leading-relaxed mb-10 mx-auto"
               style={{ color: '#7A6535', maxWidth: '560px', fontFamily: 'var(--font-garamond)' }}
@@ -344,7 +346,7 @@ export default function HomePage() {
             <div className="flex items-end justify-between mb-14">
               <div>
                 <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#968148' }}>Gallery</p>
-                <h2 className="text-4xl sm:text-5xl" style={{ color: '#2A1E08' }}>Events we've<br />transformed</h2>
+                <SplitReveal as="h2" className="text-5xl sm:text-6xl lg:text-7xl leading-[0.95]" style={{ color: '#2A1E08' }}>Events we&apos;ve transformed</SplitReveal>
               </div>
               <Link
                 href="/galeria"
@@ -393,7 +395,7 @@ export default function HomePage() {
           <RevealSection>
             <div className="mb-16 sm:mb-20">
               <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#968148' }}>Our couples</p>
-              <h2 className="text-4xl sm:text-5xl" style={{ color: '#2A1E08' }}>Real events.<br />Real stories.</h2>
+              <SplitReveal as="h2" className="text-5xl sm:text-6xl lg:text-7xl leading-[0.95]" style={{ color: '#2A1E08' }}>Real events. Real stories.</SplitReveal>
             </div>
           </RevealSection>
 
@@ -473,7 +475,7 @@ export default function HomePage() {
             <RevealSection>
               <div className="mb-16 sm:mb-20">
                 <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#C9B889' }}>Process</p>
-                <h2 className="text-4xl sm:text-5xl" style={{ color: '#FCF7E8' }}>How it works</h2>
+                <SplitReveal as="h2" className="text-5xl sm:text-6xl lg:text-7xl leading-[0.95]" style={{ color: '#FCF7E8' }}>How it works</SplitReveal>
               </div>
             </RevealSection>
 
@@ -504,19 +506,21 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
             <RevealSection>
-              <Tilt3D glare max={6} lift={14}>
-                <div className="rounded-2xl overflow-hidden depth-1" style={{ border: '1px solid #D9C99A', aspectRatio: '16/9' }}>
-                  <CloudflareVideo id="2b7b1640fdde1ebb0185d21db8055b4f" mode="loop" className="h-full" />
-                </div>
-              </Tilt3D>
+              <Parallax speed={0.1}>
+                <Tilt3D glare max={6} lift={14}>
+                  <div className="rounded-2xl overflow-hidden depth-1" style={{ border: '1px solid #D9C99A', aspectRatio: '16/9' }}>
+                    <CloudflareVideo id="2b7b1640fdde1ebb0185d21db8055b4f" mode="loop" className="h-full" />
+                  </div>
+                </Tilt3D>
+              </Parallax>
             </RevealSection>
 
             <RevealSection delay={120}>
               <div>
                 <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-5" style={{ color: '#968148' }}>Who we are</p>
-                <h2 className="text-4xl sm:text-5xl mb-7" style={{ color: '#2A1E08' }}>
-                  Born in Baja,<br />built to celebrate
-                </h2>
+                <SplitReveal as="h2" className="text-5xl sm:text-6xl lg:text-7xl mb-7 leading-[0.95]" style={{ color: '#2A1E08' }}>
+                  Born in Baja, built to celebrate
+                </SplitReveal>
                 <p className="text-base leading-relaxed mb-4" style={{ color: '#7A6535' }}>
                   Oak Project Baja was born from a passion for creating memorable experiences in the unique landscapes of Baja California. We specialize in transforming spaces — from beaches to vineyards — into the perfect setting for the most important moments of your life.
                 </p>
@@ -544,12 +548,13 @@ export default function HomePage() {
             <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-6" style={{ color: '#C9B889' }}>
               Oak Project Baja
             </p>
-            <h2
-              className="text-5xl sm:text-6xl lg:text-7xl mb-8"
+            <SplitReveal
+              as="h2"
+              className="text-6xl sm:text-7xl lg:text-8xl mb-8 leading-[0.95]"
               style={{ color: '#FCF7E8', textShadow: '0 2px 24px rgba(0,0,0,0.4)' }}
             >
-              Ready for<br />your event?
-            </h2>
+              Ready for your event?
+            </SplitReveal>
             <p
               className="text-lg sm:text-xl mb-12 max-w-md mx-auto leading-relaxed"
               style={{ color: '#C9B889', textShadow: '0 1px 8px rgba(0,0,0,0.3)' }}

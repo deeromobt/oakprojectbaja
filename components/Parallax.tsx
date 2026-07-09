@@ -1,65 +1,48 @@
 'use client'
 
 import { useEffect, useRef, type ReactNode, type CSSProperties } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 interface Props {
   children: ReactNode
   className?: string
   style?: CSSProperties
-  /** positive = moves slower than scroll (recedes); try 0.06–0.18 for subtle depth */
+  /** fraction of travel; higher = stronger parallax. 0.1 subtle → 0.3 strong */
   speed?: number
 }
 
 /**
- * Lightweight scroll parallax — translates the element on the Y axis relative to
- * its distance from viewport center. Disabled on reduced-motion.
+ * GSAP scrub parallax — the element drifts on the Y axis as its parent scrolls
+ * through the viewport. Synced with Lenis via ScrollTrigger. Reduced-motion safe.
  */
-export default function Parallax({ children, className = '', style, speed = 0.1 }: Props) {
+export default function Parallax({ children, className = '', style, speed = 0.15 }: Props) {
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    gsap.registerPlugin(ScrollTrigger)
 
-    let raf = 0
-    let ticking = false
-    let visible = false
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        visible = entry.isIntersecting
-        if (visible) update()
-      },
-      { rootMargin: '120px 0px' }
-    )
-    io.observe(el)
-
-    const update = () => {
-      ticking = false
-      if (!visible) return
-      const r = el.getBoundingClientRect()
-      const center = r.top + r.height / 2
-      const offset = center - window.innerHeight / 2
-      el.style.transform = `translate3d(0, ${(offset * -speed).toFixed(1)}px, 0)`
-    }
-
-    const onScroll = () => {
-      if (!ticking) {
-        ticking = true
-        raf = requestAnimationFrame(update)
+    const move = speed * 100
+    const tween = gsap.fromTo(
+      el,
+      { yPercent: -move },
+      {
+        yPercent: move,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el.parentElement || el,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
       }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    update()
-
+    )
     return () => {
-      io.disconnect()
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('resize', onScroll)
-      cancelAnimationFrame(raf)
+      tween.scrollTrigger?.kill()
+      tween.kill()
     }
   }, [speed])
 

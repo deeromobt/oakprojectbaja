@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getProductsByCategory, categoryInfo, type Category } from '@/lib/products'
 import ProductCard from './ProductCard'
 import Tilt3D from './Tilt3D'
+import SplitReveal from './SplitReveal'
 
 export default function CategoryPage({ category }: { category: Category }) {
   const products = getProductsByCategory(category)
@@ -21,9 +22,9 @@ export default function CategoryPage({ category }: { category: Category }) {
           <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>
             {info.icon} {info.title}
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 italic" style={{ color: '#2A1E08' }}>
+          <SplitReveal as="h1" className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 italic leading-[0.95]" style={{ color: '#2A1E08' }}>
             {info.subtitle}
-          </h1>
+          </SplitReveal>
           <p className="text-lg max-w-2xl leading-relaxed" style={{ color: '#7A6535' }}>
             {info.description}
           </p>

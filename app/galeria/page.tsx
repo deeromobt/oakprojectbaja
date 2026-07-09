@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import CloudflareVideo from '@/components/CloudflareVideo'
 import Tilt3D from '@/components/Tilt3D'
+import SplitReveal from '@/components/SplitReveal'
 
 export const metadata: Metadata = {
   title: 'Gallery — Oak Project Baja',
@@ -47,9 +48,9 @@ export default function GaleriaPage() {
         {/* Header */}
         <div className="mb-12">
           <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Gallery</p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: '#2A1E08' }}>
-            Events we've transformed
-          </h1>
+          <SplitReveal as="h1" className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-4 leading-[0.95]" style={{ color: '#2A1E08' }}>
+            Events we&apos;ve transformed
+          </SplitReveal>
           <p className="text-lg max-w-2xl leading-relaxed" style={{ color: '#7A6535' }}>
             Every event is a unique story. Here we share some of the most special moments we've had the privilege of being part of in Baja California.
           </p>

@@ -143,6 +143,10 @@ html.lenis, html.lenis body { height: auto; }
   .hero-card-wrap { display: none !important; }
 }
 
+/* ---- Scroll-driven text reveal (SplitReveal, GSAP) ---- */
+.sr-line { overflow: hidden; padding: 0.1em 0; margin: -0.1em 0; }
+.sr-word { display: inline-block; will-change: transform; }
+
 /* ---- Site-wide 3D depth system (cream palette, subtle) ---- */
 
 /* Tilt cards — mouse-driven perspective tilt */

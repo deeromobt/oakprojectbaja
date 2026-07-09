@@ -1,5 +1,7 @@
 'use client'
 import { useEffect, useRef, type ReactNode } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 interface Props {
   children: ReactNode
@@ -13,22 +15,25 @@ export default function RevealSection({ children, className = '', delay = 0 }: P
   useEffect(() => {
     const el = ref.current
     if (!el) return
-    el.style.opacity = '0'
-    el.style.transform = 'translateY(36px)'
-    el.style.transition = `opacity 0.9s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.9s cubic-bezier(0.16,1,0.3,1) ${delay}ms`
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    gsap.registerPlugin(ScrollTrigger)
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.style.opacity = '1'
-          el.style.transform = 'translateY(0)'
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+    const tween = gsap.fromTo(
+      el,
+      { opacity: 0, y: 52 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.05,
+        delay: delay / 1000,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+      }
     )
-    observer.observe(el)
-    return () => observer.disconnect()
+    return () => {
+      tween.scrollTrigger?.kill()
+      tween.kill()
+    }
   }, [delay])
 
   return (

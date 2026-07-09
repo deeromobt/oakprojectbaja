@@ -2,30 +2,37 @@
 
 import { useEffect } from 'react'
 import Lenis from 'lenis'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 /**
- * Site-wide inertial smooth scrolling (Higgsfield-style). Renders nothing.
- * Disabled when the user prefers reduced motion.
+ * Site-wide inertial smooth scrolling (Lenis) synced with GSAP ScrollTrigger,
+ * so every scroll-driven animation runs on the same smoothed scroll position.
+ * Renders nothing. Disabled when the user prefers reduced motion.
  */
 export default function SmoothScroll() {
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    gsap.registerPlugin(ScrollTrigger)
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduce) return
 
     const lenis = new Lenis({
       duration: 1.15,
-      // ease-out expo — glides to a stop, feels premium
       easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
       smoothWheel: true,
       wheelMultiplier: 1,
       touchMultiplier: 1.6,
     })
 
-    let raf = 0
-    const loop = (time: number) => {
-      lenis.raf(time)
-      raf = requestAnimationFrame(loop)
+    // keep ScrollTrigger in sync with Lenis' smoothed position
+    lenis.on('scroll', ScrollTrigger.update)
+
+    const onTick = (time: number) => {
+      lenis.raf(time * 1000)
     }
-    raf = requestAnimationFrame(loop)
+    gsap.ticker.add(onTick)
+    gsap.ticker.lagSmoothing(0)
 
     // smooth-scroll same-page anchor links (e.g. navbar → #servicios)
     const onAnchorClick = (e: MouseEvent) => {
@@ -42,8 +49,8 @@ export default function SmoothScroll() {
     document.addEventListener('click', onAnchorClick)
 
     return () => {
-      cancelAnimationFrame(raf)
       document.removeEventListener('click', onAnchorClick)
+      gsap.ticker.remove(onTick)
       lenis.destroy()
     }
   }, [])

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Star } from 'lucide-react'
 import Tilt3D from '@/components/Tilt3D'
+import SplitReveal from '@/components/SplitReveal'
 
 export const metadata: Metadata = {
   title: 'About Us — Oak Project Baja',
@@ -29,9 +30,9 @@ export default function NosotrosPage() {
         {/* Hero */}
         <div className="max-w-3xl mb-16">
           <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Our story</p>
-          <h1 className="text-4xl sm:text-5xl font-bold mb-6 italic" style={{ color: '#2A1E08' }}>
-            Born in Baja,<br />built to celebrate
-          </h1>
+          <SplitReveal as="h1" className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 italic leading-[0.95]" style={{ color: '#2A1E08' }}>
+            Born in Baja, built to celebrate
+          </SplitReveal>
           <p className="text-lg leading-relaxed mb-4" style={{ color: '#7A6535' }}>
             Oak Project Baja was born from a simple idea: Baja California deserves an events company that matches its landscapes and its people. From Valle de Guadalupe to Los Cabos, we've been present at the most important moments of hundreds of families and businesses.
           </p>
