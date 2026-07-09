@@ -7,6 +7,8 @@ import RevealSection from '@/components/RevealSection'
 import Tilt3D from '@/components/Tilt3D'
 import Parallax from '@/components/Parallax'
 import SplitReveal from '@/components/SplitReveal'
+import CountUp from '@/components/CountUp'
+import PinnedStatement from '@/components/PinnedStatement'
 
 const eventTypes = [
   { label: 'Weddings', desc: 'Your most special day deserves the best' },
@@ -123,13 +125,15 @@ export default function HomePage() {
   return (
     <div>
 
-      {/* 1 — Hero (cinematic full-bleed film, Terminal-style) */}
+      {/* 1 — Hero (cinematic full-bleed film, Terminal-style) — pulled under floating nav */}
+      <div className="-mt-24">
       <HeroCinematic
         eyebrow="Weddings & Events · Baja California"
         headline="Bringing your perfect event to life"
         subline="Furniture, audio, lighting, photography and video for weddings and events across Baja California."
         cfId="bd123b05247e4ef098521fddab781f90"
       />
+      </div>
 
       {/* MARQUEE STRIP */}
       <div className="overflow-hidden py-3.5 border-y" style={{ background: '#FCF7E8', borderColor: '#D9C99A' }}>
@@ -209,7 +213,7 @@ export default function HomePage() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16">
               {stats.map((stat, i) => (
                 <RevealSection key={stat.label} delay={i * 80} className="text-center">
-                  <p className="text-4xl sm:text-5xl mb-2" style={{ color: '#FCF7E8' }}>{stat.value}</p>
+                  <CountUp value={stat.value} className="block text-5xl sm:text-7xl mb-2" style={{ color: '#FCF7E8' }} />
                   <p className="text-xs tracking-[0.15em] uppercase" style={{ color: '#968148' }}>{stat.label}</p>
                 </RevealSection>
               ))}
@@ -301,6 +305,14 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 4b — Pinned cinematic statement (Terminal-style) */}
+      <PinnedStatement
+        text="From an empty venue to the night you'll never forget."
+        className="text-4xl sm:text-6xl lg:text-7xl leading-[1.05]"
+        style={{ color: '#2A1E08' }}
+        background="#FCF7E8"
+      />
+
       {/* 5 — Wedding in a Box */}
       <section className="py-32 sm:py-40" style={{ background: '#FCF7E8' }}>
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -336,6 +348,39 @@ export default function HomePage() {
               Every package is built to order. No two events are the same.
             </p>
           </RevealSection>
+        </div>
+      </section>
+
+      {/* 5b — Numbered benefits (Terminal-style) */}
+      <section className="py-24 sm:py-32" style={{ background: '#FCF7E8' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RevealSection>
+            <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-4" style={{ color: '#968148' }}>Why Oak</p>
+          </RevealSection>
+          <SplitReveal as="h2" className="text-5xl sm:text-6xl lg:text-7xl leading-[0.95] mb-16 sm:mb-20" style={{ color: '#2A1E08' }}>
+            One team. Every detail.
+          </SplitReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-[1px]" style={{ background: '#D9C99A' }}>
+            {[
+              { n: '01', title: 'One team, everything', desc: 'Furniture, audio, lighting, photography, video and DJs — the whole production under one roof.' },
+              { n: '02', title: '16 years on the ground', desc: 'Local expertise across Baja Sur, from Cabo beaches to Valle de Guadalupe vineyards.' },
+              { n: '03', title: 'Built around your day', desc: 'Every package is made to order. No two events are the same.' },
+            ].map((b, i) => (
+              <RevealSection key={b.n} delay={i * 90}>
+                <div className="flex flex-col gap-5 p-8 sm:p-10 h-full" style={{ background: '#FCF7E8' }}>
+                  <span
+                    className="text-7xl sm:text-8xl font-bold leading-none"
+                    style={{ color: 'transparent', WebkitTextStroke: '1.5px #C9B889', letterSpacing: '-0.02em' }}
+                  >
+                    {b.n}
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl" style={{ color: '#2A1E08' }}>{b.title}</h3>
+                  <p className="text-base leading-relaxed" style={{ color: '#7A6535' }}>{b.desc}</p>
+                </div>
+              </RevealSection>
+            ))}
+          </div>
         </div>
       </section>
 

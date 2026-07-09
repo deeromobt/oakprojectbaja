@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { ArrowRight, Star } from 'lucide-react'
 import Tilt3D from '@/components/Tilt3D'
 import SplitReveal from '@/components/SplitReveal'
+import CountUp from '@/components/CountUp'
 
 export const metadata: Metadata = {
   title: 'About Us — Oak Project Baja',
@@ -50,7 +51,7 @@ export default function NosotrosPage() {
             { value: 'Baja Sur', label: 'Full coverage' },
           ].map(stat => (
             <div key={stat.label} className="text-center">
-              <p className="text-3xl font-bold mb-1" style={{ color: '#2A1E08' }}>{stat.value}</p>
+              <CountUp value={stat.value} className="block text-4xl sm:text-5xl font-bold mb-1" style={{ color: '#2A1E08' }} />
               <p className="text-sm" style={{ color: '#968148' }}>{stat.label}</p>
             </div>
           ))}

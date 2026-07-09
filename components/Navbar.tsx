@@ -13,37 +13,38 @@ const navLinks = [
   { href: '/nosotros', label: 'About' },
 ]
 
+const pillStyle: React.CSSProperties = {
+  background: 'rgba(252,247,232,0.72)',
+  border: '1px solid rgba(217,201,154,0.7)',
+  backdropFilter: 'blur(14px)',
+  WebkitBackdropFilter: 'blur(14px)',
+  boxShadow: '0 12px 34px -14px rgba(42,30,8,0.28)',
+}
+
 export default function Navbar() {
   const { getItemCount, setCartOpen } = useCartStore()
   const itemCount = getItemCount()
   const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50 border-b"
-      style={{ background: 'rgba(252,247,232,0.95)', borderColor: '#D9C99A', backdropFilter: 'blur(12px)' }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/logo.png"
-              alt="Oak Project Baja"
-              width={120}
-              height={48}
-              className="h-10 w-auto"
-              priority
-            />
+    <nav className="fixed top-0 inset-x-0 z-50 pointer-events-none">
+      <div className="mx-auto max-w-6xl px-3 sm:px-5 pt-3">
+        {/* floating pill */}
+        <div
+          className="pointer-events-auto flex items-center justify-between gap-4 rounded-full pl-5 pr-2 py-2"
+          style={pillStyle}
+        >
+          <Link href="/" className="flex items-center shrink-0">
+            <Image src="/logo.png" alt="Oak Project Baja" width={110} height={44} className="h-9 w-auto" priority />
           </Link>
 
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-7">
             {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm tracking-wide transition-colors"
-                style={{ color: '#7A6535', fontFamily: 'inherit' }}
+                style={{ color: '#7A6535' }}
                 onMouseEnter={e => (e.currentTarget.style.color = '#2A1E08')}
                 onMouseLeave={e => (e.currentTarget.style.color = '#7A6535')}
               >
@@ -52,16 +53,16 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <button
               onClick={() => setCartOpen(true)}
-              className="relative p-2 rounded-lg transition-colors"
+              className="relative p-2 rounded-full transition-colors"
               style={{ color: '#968148' }}
             >
-              <ShoppingCart size={20} />
+              <ShoppingCart size={19} />
               {itemCount > 0 && (
                 <span
-                  className="absolute -top-1 -right-1 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center"
+                  className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center"
                   style={{ background: '#968148', color: '#FCF7E8' }}
                 >
                   {itemCount}
@@ -71,46 +72,50 @@ export default function Navbar() {
 
             <Link
               href="/cotizacion"
-              className="hidden md:block px-4 py-2 rounded-lg text-sm font-semibold btn-gold"
+              className="hidden md:block px-5 py-2.5 rounded-full text-sm font-semibold btn-gold"
             >
               Get a Quote
             </Link>
 
             <button
-              className="md:hidden p-2 rounded-lg"
+              className="md:hidden p-2 rounded-full"
               onClick={() => setMenuOpen(!menuOpen)}
               style={{ color: '#968148' }}
             >
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
+              {menuOpen ? <X size={19} /> : <Menu size={19} />}
             </button>
           </div>
         </div>
-      </div>
 
-      {menuOpen && (
-        <div className="md:hidden border-t" style={{ background: '#FCF7E8', borderColor: '#D9C99A' }}>
-          <div className="px-4 py-3 flex flex-col gap-3">
-            {navLinks.map(link => (
+        {/* mobile dropdown panel */}
+        {menuOpen && (
+          <div
+            className="pointer-events-auto md:hidden mt-2 rounded-3xl p-2"
+            style={pillStyle}
+          >
+            <div className="flex flex-col">
+              {navLinks.map(link => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="px-4 py-3 rounded-2xl text-sm"
+                  style={{ color: '#7A6535' }}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
               <Link
-                key={link.href}
-                href={link.href}
-                className="py-2 text-sm"
-                style={{ color: '#7A6535' }}
+                href="/cotizacion"
+                className="mt-1 py-3 px-4 rounded-2xl text-sm font-semibold btn-gold text-center"
                 onClick={() => setMenuOpen(false)}
               >
-                {link.label}
+                Get a Quote
               </Link>
-            ))}
-            <Link
-              href="/cotizacion"
-              className="py-2 px-4 rounded-lg text-sm font-semibold btn-gold text-center"
-              onClick={() => setMenuOpen(false)}
-            >
-              Get a Quote
-            </Link>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </nav>
   )
 }
