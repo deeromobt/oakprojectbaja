@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import CloudflareVideo from '@/components/CloudflareVideo'
+import Tilt3D from '@/components/Tilt3D'
 
 export const metadata: Metadata = {
   title: 'Gallery — Oak Project Baja',
@@ -59,7 +60,7 @@ export default function GaleriaPage() {
           <div>
             <p className="text-sm font-semibold tracking-widest uppercase mb-3" style={{ color: '#968148' }}>Featured film</p>
             <h2 className="text-2xl font-bold mb-6" style={{ color: '#2A1E08' }}>Indera & Julius — Wedding Film</h2>
-            <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
+            <div className="rounded-3xl overflow-hidden depth-2" style={{ border: '1px solid #D9C99A' }}>
               <CloudflareVideo id="bd123b05247e4ef098521fddab781f90" mode="player" />
             </div>
             <div className="flex flex-wrap gap-2 mt-4">
@@ -71,7 +72,7 @@ export default function GaleriaPage() {
 
           <div>
             <h2 className="text-2xl font-bold mb-6" style={{ color: '#2A1E08' }}>Katie & Manuel — Wedding Film</h2>
-            <div className="rounded-3xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
+            <div className="rounded-3xl overflow-hidden depth-2" style={{ border: '1px solid #D9C99A' }}>
               <CloudflareVideo id="eec5d98dd3a17e919fe324b5071d5667" mode="player" />
             </div>
             <div className="flex flex-wrap gap-2 mt-4">
@@ -102,9 +103,9 @@ export default function GaleriaPage() {
         {/* Real event reels grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 mb-5">
           {realEvents.map((event, i) => (
+            <Tilt3D key={i} max={6} lift={12} glare>
             <div
-              key={i}
-              className="rounded-2xl overflow-hidden transition-all hover:-translate-y-1"
+              className="rounded-2xl overflow-hidden h-full depth-1"
               style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
             >
               <CloudflareVideo id={event.cfId} mode="loop" portrait />
@@ -122,6 +123,7 @@ export default function GaleriaPage() {
                 </div>
               </div>
             </div>
+            </Tilt3D>
           ))}
         </div>
 
@@ -130,7 +132,7 @@ export default function GaleriaPage() {
           {placeholderEvents.map((event, i) => (
             <div
               key={i}
-              className="rounded-2xl overflow-hidden"
+              className="rounded-2xl overflow-hidden depth-1"
               style={{ background: '#EDE4CC', border: '1px dashed #D9C99A' }}
             >
               <div
@@ -158,7 +160,7 @@ export default function GaleriaPage() {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 p-8 rounded-2xl text-center" style={{ background: '#EDE4CC', border: '1px dashed #C9B889' }}>
+        <div className="mt-12 p-8 rounded-2xl text-center depth-2" style={{ background: '#EDE4CC', border: '1px dashed #C9B889' }}>
           <p className="text-2xl mb-3">🎬</p>
           <h3 className="text-xl font-semibold mb-2" style={{ color: '#2A1E08' }}>More events coming soon</h3>
           <p className="mb-6" style={{ color: '#7A6535' }}>

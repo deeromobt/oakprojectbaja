@@ -4,6 +4,7 @@ import { formatPrice, type Product } from '@/lib/products'
 import { Plus, Check } from 'lucide-react'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
+import Tilt3D from './Tilt3D'
 
 export default function ProductCard({ product }: { product: Product }) {
   const { addItem, items } = useCartStore()
@@ -18,12 +19,15 @@ export default function ProductCard({ product }: { product: Product }) {
   }
 
   return (
+    <Tilt3D max={5} lift={9}>
     <div
-      className="rounded-2xl p-5 flex flex-col gap-3 transition-all duration-200 hover:-translate-y-0.5"
+      className="rounded-2xl p-5 flex flex-col gap-3 h-full transition-shadow duration-300"
       style={{
         background: '#EDE4CC',
         border: `1px solid ${inCart ? '#968148' : '#D9C99A'}`,
-        boxShadow: inCart ? '0 0 0 2px rgba(150,129,72,0.15)' : 'none',
+        boxShadow: inCart
+          ? '0 0 0 2px rgba(150,129,72,0.25), 0 18px 40px -20px rgba(42,30,8,0.28)'
+          : '0 2px 6px -2px rgba(42,30,8,0.08), 0 14px 30px -16px rgba(42,30,8,0.16)',
       }}
     >
       {product.popular && (
@@ -70,5 +74,6 @@ export default function ProductCard({ product }: { product: Product }) {
         </button>
       </div>
     </div>
+    </Tilt3D>
   )
 }

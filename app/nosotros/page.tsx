@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Star } from 'lucide-react'
+import Tilt3D from '@/components/Tilt3D'
 
 export const metadata: Metadata = {
   title: 'About Us — Oak Project Baja',
@@ -17,7 +18,7 @@ const values = [
 const team = [
   { name: 'Your name here', role: 'Founder & Director', initials: 'TN' },
   { name: 'Collaborator', role: 'Event Coordinator', initials: 'CO' },
-  { name: 'Collaborator', role: 'Photography & Video', initials: 'CO' },
+  { name: 'Sofía Angulo', role: 'In-House Photographer', initials: 'SA' },
 ]
 
 export default function NosotrosPage() {
@@ -40,7 +41,7 @@ export default function NosotrosPage() {
         </div>
 
         {/* Stats bar */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 p-8 rounded-2xl" style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20 p-8 rounded-2xl depth-2" style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}>
           {[
             { value: '300+', label: 'Events completed' },
             { value: '16 years', label: 'As DJs in Cabo San Lucas' },
@@ -62,11 +63,13 @@ export default function NosotrosPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {values.map(v => (
-              <div key={v.title} className="rounded-2xl p-5" style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}>
-                <div className="text-3xl mb-3">{v.icon}</div>
-                <h3 className="font-bold text-lg mb-2" style={{ color: '#2A1E08' }}>{v.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#7A6535' }}>{v.desc}</p>
-              </div>
+              <Tilt3D key={v.title} max={5} lift={8}>
+                <div className="rounded-2xl p-5 h-full depth-1" style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}>
+                  <div className="text-3xl mb-3">{v.icon}</div>
+                  <h3 className="font-bold text-lg mb-2" style={{ color: '#2A1E08' }}>{v.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: '#7A6535' }}>{v.desc}</p>
+                </div>
+              </Tilt3D>
             ))}
           </div>
         </div>
@@ -79,22 +82,24 @@ export default function NosotrosPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {team.map((member, i) => (
-              <div key={i} className="rounded-2xl p-6 text-center" style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}>
-                <div
-                  className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4"
-                  style={{ background: '#D9C99A', color: '#2A1E08' }}
-                >
-                  {member.initials}
+              <Tilt3D key={i} max={5} lift={9} glare>
+                <div className="rounded-2xl p-6 text-center h-full depth-1" style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}>
+                  <div
+                    className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4"
+                    style={{ background: '#D9C99A', color: '#2A1E08' }}
+                  >
+                    {member.initials}
+                  </div>
+                  <h3 className="font-semibold mb-1" style={{ color: '#2A1E08' }}>{member.name}</h3>
+                  <p className="text-sm" style={{ color: '#968148' }}>{member.role}</p>
                 </div>
-                <h3 className="font-semibold mb-1" style={{ color: '#2A1E08' }}>{member.name}</h3>
-                <p className="text-sm" style={{ color: '#968148' }}>{member.role}</p>
-              </div>
+              </Tilt3D>
             ))}
           </div>
         </div>
 
         {/* Testimonial highlight */}
-        <div className="mb-20 p-8 sm:p-12 rounded-3xl text-center" style={{ background: '#EDE4CC', border: '1px solid #C9B889' }}>
+        <div className="mb-20 p-8 sm:p-12 rounded-3xl text-center depth-2" style={{ background: '#EDE4CC', border: '1px solid #C9B889' }}>
           <div className="flex justify-center gap-1 mb-4">
             {Array.from({ length: 5 }).map((_, i) => <Star key={i} size={18} fill="#C9B889" style={{ color: '#C9B889' }} />)}
           </div>

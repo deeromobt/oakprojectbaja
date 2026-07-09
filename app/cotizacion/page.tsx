@@ -185,7 +185,7 @@ export default function CotizacionPage() {
           <div className="lg:col-span-3">
             <form onSubmit={handleSubmit}>
               <h2 className="text-base font-semibold mb-4" style={{ color: '#2A1E08' }}>Your event details</h2>
-              <div className="rounded-2xl p-6 flex flex-col gap-5" style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}>
+              <div className="rounded-2xl p-6 flex flex-col gap-5 depth-2" style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}>
 
                 {/* Name */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

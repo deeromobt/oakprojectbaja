@@ -4,6 +4,8 @@ import Hero3D from '@/components/Hero3D'
 import VideoBackground from '@/components/VideoBackground'
 import CloudflareVideo from '@/components/CloudflareVideo'
 import RevealSection from '@/components/RevealSection'
+import Tilt3D from '@/components/Tilt3D'
+import Parallax from '@/components/Parallax'
 
 const eventTypes = [
   { label: 'Weddings', desc: 'Your most special day deserves the best' },
@@ -356,14 +358,18 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 gap-4 sm:gap-6">
             <RevealSection delay={0}>
-              <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
-                <CloudflareVideo id="134e4fa4b335ec371611d69b2fbcd52c" mode="loop" portrait />
-              </div>
+              <Tilt3D glare max={7} lift={16}>
+                <div className="rounded-2xl overflow-hidden depth-1" style={{ border: '1px solid #D9C99A' }}>
+                  <CloudflareVideo id="134e4fa4b335ec371611d69b2fbcd52c" mode="loop" portrait />
+                </div>
+              </Tilt3D>
             </RevealSection>
             <RevealSection delay={100}>
-              <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #D9C99A' }}>
-                <CloudflareVideo id="f4c4cb0155960b64fa063d36b0ecabc8" mode="loop" portrait />
-              </div>
+              <Tilt3D glare max={7} lift={16}>
+                <div className="rounded-2xl overflow-hidden depth-1" style={{ border: '1px solid #D9C99A' }}>
+                  <CloudflareVideo id="f4c4cb0155960b64fa063d36b0ecabc8" mode="loop" portrait />
+                </div>
+              </Tilt3D>
             </RevealSection>
           </div>
 
@@ -498,9 +504,11 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
             <RevealSection>
-              <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #D9C99A', aspectRatio: '16/9' }}>
-                <CloudflareVideo id="2b7b1640fdde1ebb0185d21db8055b4f" mode="loop" className="h-full" />
-              </div>
+              <Tilt3D glare max={6} lift={14}>
+                <div className="rounded-2xl overflow-hidden depth-1" style={{ border: '1px solid #D9C99A', aspectRatio: '16/9' }}>
+                  <CloudflareVideo id="2b7b1640fdde1ebb0185d21db8055b4f" mode="loop" className="h-full" />
+                </div>
+              </Tilt3D>
             </RevealSection>
 
             <RevealSection delay={120}>

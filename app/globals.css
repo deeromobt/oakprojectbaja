@@ -124,3 +124,47 @@ html {
   /* 3D floating gallery is a pointer/desktop experience — hide on mobile for a clean, readable hero */
   .hero-card-wrap { display: none !important; }
 }
+
+/* ---- Site-wide 3D depth system (cream palette, subtle) ---- */
+
+/* Tilt cards — mouse-driven perspective tilt */
+.tilt3d-outer { perspective: 1000px; height: 100%; }
+.tilt3d-inner {
+  position: relative;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+  will-change: transform;
+}
+.tilt3d-outer:hover .tilt3d-inner {
+  box-shadow: 0 26px 50px -22px rgba(42, 30, 8, 0.32), 0 8px 18px -10px rgba(42, 30, 8, 0.18);
+}
+.tilt3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  z-index: 5;
+}
+
+/* Elevation utilities for non-tilt cards */
+.depth-1 {
+  box-shadow: 0 2px 6px -2px rgba(42, 30, 8, 0.08), 0 12px 28px -14px rgba(42, 30, 8, 0.16);
+  transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.depth-1:hover {
+  box-shadow: 0 4px 10px -2px rgba(42, 30, 8, 0.10), 0 22px 44px -18px rgba(42, 30, 8, 0.26);
+  transform: translateY(-4px);
+}
+.depth-2 {
+  box-shadow: 0 4px 12px -4px rgba(42, 30, 8, 0.12), 0 30px 60px -24px rgba(42, 30, 8, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilt3d-inner { transition: none; }
+  .depth-1 { transition: none; }
+  .depth-1:hover { transform: none; }
+}

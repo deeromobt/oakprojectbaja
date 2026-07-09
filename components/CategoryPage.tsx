@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { getProductsByCategory, categoryInfo, type Category } from '@/lib/products'
 import ProductCard from './ProductCard'
+import Tilt3D from './Tilt3D'
 
 export default function CategoryPage({ category }: { category: Category }) {
   const products = getProductsByCategory(category)
@@ -37,7 +38,7 @@ export default function CategoryPage({ category }: { category: Category }) {
 
         {/* Availability note */}
         <div
-          className="mt-12 p-5 rounded-2xl text-sm"
+          className="mt-12 p-5 rounded-2xl text-sm depth-2"
           style={{ background: '#EDE4CC', border: '1px solid #D9C99A', color: '#7A6535' }}
         >
           <strong style={{ color: '#2A1E08' }}>Note:</strong> All prices are in MXN and include delivery and pickup within the Baja California metropolitan area. Events outside the area are subject to a distance surcharge. Prices may vary based on availability and season.
@@ -54,10 +55,10 @@ export default function CategoryPage({ category }: { category: Category }) {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {crossSellCategories.map(({ slug, icon, title, subtitle, description }) => (
+                <Tilt3D key={slug} max={5} lift={10} glare>
                 <Link
-                  key={slug}
                   href={`/${slug}`}
-                  className="group block rounded-2xl p-6 transition-all duration-200 hover:scale-[1.02]"
+                  className="group block rounded-2xl p-6 h-full transition-shadow duration-300 depth-1"
                   style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
                 >
                   <div className="flex items-start gap-4">
@@ -78,6 +79,7 @@ export default function CategoryPage({ category }: { category: Category }) {
                     </div>
                   </div>
                 </Link>
+                </Tilt3D>
               ))}
             </div>
           </div>
@@ -85,7 +87,7 @@ export default function CategoryPage({ category }: { category: Category }) {
 
         {/* CTA banner */}
         <div
-          className="mt-12 rounded-2xl p-8 text-center"
+          className="mt-12 rounded-2xl p-8 text-center depth-2"
           style={{ background: '#EDE4CC', border: '1px solid #D9C99A' }}
         >
           <p className="text-sm font-semibold tracking-widest uppercase mb-2" style={{ color: '#968148' }}>
