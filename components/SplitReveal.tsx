@@ -66,9 +66,11 @@ export default function SplitReveal({
     }
   }, [stagger, duration, start])
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const Tag_ = Tag as any
   return (
-    <Tag ref={ref as React.RefObject<HTMLElement>} className={className} style={style}>
+    <Tag_ ref={ref} className={className} style={style}>
       {children}
-    </Tag>
+    </Tag_>
   )
 }
