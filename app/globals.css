@@ -143,6 +143,22 @@ html.lenis, html.lenis body { height: auto; }
   .hero-card-wrap { display: none !important; }
 }
 
+/* ---- Cinematic hero (Terminal-style) ---- */
+.hero-kenburns { animation: heroKenburns 22s ease-in-out infinite alternate; will-change: transform; }
+@keyframes heroKenburns {
+  0%   { transform: scale(1.04); }
+  100% { transform: scale(1.14); }
+}
+.hero-scroll-cue { animation: heroScrollCue 1.8s ease-in-out infinite; }
+@keyframes heroScrollCue {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50%      { transform: translateY(6px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-kenburns { animation: none; }
+  .hero-scroll-cue { animation: none; }
+}
+
 /* ---- Scroll-driven text reveal (SplitReveal, GSAP) ---- */
 .sr-line { overflow: hidden; padding: 0.1em 0; margin: -0.1em 0; }
 .sr-word { display: inline-block; will-change: transform; }

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight, Star } from 'lucide-react'
-import Hero3D from '@/components/Hero3D'
+import HeroCinematic from '@/components/HeroCinematic'
 import VideoBackground from '@/components/VideoBackground'
 import CloudflareVideo from '@/components/CloudflareVideo'
 import RevealSection from '@/components/RevealSection'
@@ -123,11 +123,12 @@ export default function HomePage() {
   return (
     <div>
 
-      {/* 1 — Hero (3D floating gallery) */}
-      <Hero3D
-        headline={"Bringing your\nperfect event to life"}
-        subline="Furniture rental, audio, lighting, photography, and video for weddings and events across Baja California."
-        photographer="Sofía Angulo"
+      {/* 1 — Hero (cinematic full-bleed film, Terminal-style) */}
+      <HeroCinematic
+        eyebrow="Weddings & Events · Baja California"
+        headline="Bringing your perfect event to life"
+        subline="Furniture, audio, lighting, photography and video for weddings and events across Baja California."
+        cfId="bd123b05247e4ef098521fddab781f90"
       />
 
       {/* MARQUEE STRIP */}
