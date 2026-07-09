@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight, Star } from 'lucide-react'
-import HeroCinematic from '@/components/HeroCinematic'
+import HeroEditorial from '@/components/HeroEditorial'
 import VideoBackground from '@/components/VideoBackground'
 import CloudflareVideo from '@/components/CloudflareVideo'
 import RevealSection from '@/components/RevealSection'
@@ -125,14 +125,13 @@ export default function HomePage() {
   return (
     <div>
 
-      {/* 1 — Hero (cinematic full-bleed film, Terminal-style) — pulled under floating nav */}
+      {/* 1 — Hero (B&W luxury-fashion editorial) — pulled under floating nav */}
       <div className="-mt-24">
-      <HeroCinematic
-        eyebrow="Weddings & Events · Baja California"
-        headline="Bringing your perfect event to life"
-        subline="Furniture, audio, lighting, photography and video for weddings and events across Baja California."
-        cfId="bd123b05247e4ef098521fddab781f90"
-      />
+        <HeroEditorial
+          image="/hero/couple-desert.jpg"
+          eyebrow="Weddings & Events"
+          headline="The Art of Celebration"
+        />
       </div>
 
       {/* MARQUEE STRIP */}

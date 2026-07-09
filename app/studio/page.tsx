@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic'
 
-const ModelScene = dynamic(() => import('@/components/experience/StageScene'), { ssr: false })
+const ModelScene = dynamic(() => import('@/components/experience/ShowcaseScene'), { ssr: false })
 
 export default function StudioPage() {
   return (

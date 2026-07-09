@@ -159,6 +159,13 @@ html.lenis, html.lenis body { height: auto; }
   .hero-scroll-cue { animation: none; }
 }
 
+/* ---- Editorial image reveal (B&W campaign) ---- */
+.editorial-reveal { clip-path: inset(0 0 100% 0); animation: editorialReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards; }
+@keyframes editorialReveal { to { clip-path: inset(0 0 0% 0); } }
+@media (prefers-reduced-motion: reduce) {
+  .editorial-reveal { animation: none; clip-path: none; }
+}
+
 /* ---- Scroll-driven text reveal (SplitReveal, GSAP) ---- */
 .sr-line { overflow: hidden; padding: 0.1em 0; margin: -0.1em 0; }
 .sr-word { display: inline-block; will-change: transform; }
