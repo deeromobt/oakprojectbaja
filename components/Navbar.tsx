@@ -14,11 +14,11 @@ const navLinks = [
 ]
 
 const pillStyle: React.CSSProperties = {
-  background: 'rgba(255,255,255,0.68)',
-  border: '1px solid rgba(0,0,0,0.08)',
+  background: 'rgba(252,247,232,0.72)',
+  border: '1px solid rgba(217,201,154,0.7)',
   backdropFilter: 'blur(16px)',
   WebkitBackdropFilter: 'blur(16px)',
-  boxShadow: '0 12px 34px -16px rgba(0,0,0,0.35)',
+  boxShadow: '0 12px 34px -16px rgba(42,30,8,0.28)',
 }
 
 export default function Navbar() {
@@ -44,7 +44,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className="text-xs tracking-[0.15em] uppercase transition-opacity hover:opacity-50"
-                style={{ color: '#1a1a1a' }}
+                style={{ color: '#2A1E08' }}
               >
                 {link.label}
               </Link>
@@ -55,7 +55,7 @@ export default function Navbar() {
             <button
               onClick={() => setCartOpen(true)}
               className="relative p-2 rounded-full transition-colors"
-              style={{ color: '#1a1a1a' }}
+              style={{ color: '#968148' }}
             >
               <ShoppingCart size={19} />
               {itemCount > 0 && (
@@ -71,7 +71,7 @@ export default function Navbar() {
             <Link
               href="/cotizacion"
               className="hidden md:block px-5 py-2.5 rounded-full text-[11px] font-semibold tracking-[0.15em] uppercase transition-opacity hover:opacity-85"
-              style={{ background: '#0a0a0a', color: '#fff' }}
+              style={{ background: '#968148', color: '#FCF7E8' }}
             >
               Enquire
             </Link>
@@ -79,7 +79,7 @@ export default function Navbar() {
             <button
               className="md:hidden p-2 rounded-full"
               onClick={() => setMenuOpen(!menuOpen)}
-              style={{ color: '#1a1a1a' }}
+              style={{ color: '#968148' }}
             >
               {menuOpen ? <X size={19} /> : <Menu size={19} />}
             </button>

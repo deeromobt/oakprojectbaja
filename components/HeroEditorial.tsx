@@ -31,7 +31,7 @@ export default function HeroEditorial({
             fill
             priority
             sizes="100vw"
-            style={{ objectFit: 'cover', filter: 'grayscale(1) contrast(1.08) brightness(0.82)' }}
+            style={{ objectFit: 'cover', filter: 'contrast(1.04) brightness(0.86) saturate(1.02)' }}
           />
         </div>
       </div>

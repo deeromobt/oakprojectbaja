@@ -9,9 +9,9 @@ import CloudflareVideo from '@/components/CloudflareVideo'
 const marquee = ['Weddings', 'Photography', 'Film', 'Audio', 'Lighting', 'DJ', 'Production', 'Rentals']
 
 const features = [
-  { n: '01', label: 'Photography & Film', title: 'Every detail,\nimmortalized.', img: '/editorial/ed1.jpg', href: '/media' },
-  { n: '02', label: 'Sound & Light', title: 'Nights that\nnever end.', img: '/editorial/ed4.jpg', href: '/rentas' },
-  { n: '03', label: 'Rentals & Production', title: 'Staged to\nperfection.', img: '/hero/couple-lift.jpg', href: '/rentas' },
+  { n: '01', label: 'Photography & Film', title: 'Every detail,\nimmortalized.', img: '/editorial/planner1.jpg', href: '/media' },
+  { n: '02', label: 'The Celebration', title: 'A day made\nto remember.', img: '/editorial/planner4.jpg', href: '/rentas' },
+  { n: '03', label: 'Rentals & Production', title: 'Staged to\nperfection.', img: '/editorial/planner5.jpg', href: '/rentas' },
 ]
 
 const services = [
@@ -31,7 +31,7 @@ const stats = [
 ]
 
 const moodboard = [
-  { img: '/editorial/ed3.jpg', span: 'row-span-2' },
+  { img: '/editorial/planner2.jpg', span: 'row-span-2' },
   { img: '/hero/ceremony.jpg', span: '' },
   { img: '/editorial/ed5.jpg', span: '' },
   { img: '/hero/couple-rocks.jpg', span: 'row-span-2' },
@@ -41,31 +41,31 @@ const moodboard = [
 
 export default function Home() {
   return (
-    <div style={{ background: '#0a0a0a' }}>
+    <div style={{ background: '#FCF7E8' }}>
       {/* 1 — Hero */}
       <div className="-mt-24">
         <HeroEditorial image="/hero/couple-desert.jpg" eyebrow="Weddings & Events" headline="The Art of Celebration" />
       </div>
 
       {/* 2 — Word marquee */}
-      <div className="overflow-hidden py-6 border-y" style={{ borderColor: 'rgba(255,255,255,0.12)' }}>
+      <div className="overflow-hidden py-6 border-y" style={{ borderColor: '#D9C99A' }}>
         <div className="flex whitespace-nowrap" style={{ animation: 'marquee 34s linear infinite', width: 'max-content' }}>
           {[...marquee, ...marquee].map((w, i) => (
-            <span key={i} className="mx-8 uppercase" style={{ color: '#f2f0eb', fontSize: 'clamp(1.6rem,4vw,3rem)', letterSpacing: '-0.01em' }}>
+            <span key={i} className="mx-8 uppercase" style={{ color: '#2A1E08', fontSize: 'clamp(1.6rem,4vw,3rem)', letterSpacing: '-0.01em' }}>
               {w}
-              <span className="ml-8" style={{ color: 'rgba(255,255,255,0.3)' }}>—</span>
+              <span className="ml-8" style={{ color: '#C9B889' }}>—</span>
             </span>
           ))}
         </div>
       </div>
 
       {/* 3 — Manifesto */}
-      <section className="px-6 py-28 sm:py-40">
+      <section className="px-6 py-28 sm:py-40" style={{ background: '#FCF7E8' }}>
         <div className="max-w-5xl mx-auto text-center">
           <RevealSection>
-            <p className="mb-8 text-[11px] tracking-[0.4em] uppercase" style={{ color: 'rgba(255,255,255,0.5)' }}>Oak Project Baja</p>
+            <p className="mb-8 text-[11px] tracking-[0.4em] uppercase" style={{ color: '#968148' }}>Oak Project Baja</p>
           </RevealSection>
-          <SplitReveal as="h2" className="text-white uppercase leading-[0.92]" style={{ fontSize: 'clamp(2.2rem,7vw,6rem)', letterSpacing: '-0.01em' }}>
+          <SplitReveal as="h2" className="uppercase leading-[0.92]" style={{ color: '#2A1E08', fontSize: 'clamp(2.2rem,7vw,6rem)', letterSpacing: '-0.01em' }}>
             Every wedding, a campaign. Every detail, considered.
           </SplitReveal>
         </div>
@@ -75,14 +75,14 @@ export default function Home() {
       {features.map((f, i) => (
         <Link key={f.n} href={f.href} className="group block relative w-full overflow-hidden" style={{ height: '92vh' }}>
           <EditorialImage src={f.img} alt={f.label} className="absolute inset-0" priority={i === 0} />
-          <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.1) 40%, rgba(10,10,10,0.72) 100%)' }} />
+          <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(20,12,4,0.4) 0%, rgba(20,12,4,0.12) 40%, rgba(20,12,4,0.74) 100%)' }} />
           <div className={`absolute inset-0 flex flex-col justify-between p-6 sm:p-12 ${i % 2 === 1 ? 'items-end text-right' : 'items-start text-left'}`}>
-            <div className="flex w-full justify-between text-[11px] tracking-[0.28em] uppercase" style={{ color: 'rgba(255,255,255,0.8)' }}>
+            <div className="flex w-full justify-between text-[11px] tracking-[0.28em] uppercase" style={{ color: 'rgba(255,255,255,0.85)' }}>
               <span>{f.n} / 03</span>
               <span>{f.label}</span>
             </div>
             <div>
-              <h3 className="text-white uppercase whitespace-pre-line leading-[0.9]" style={{ fontSize: 'clamp(2.5rem,8vw,7rem)', letterSpacing: '-0.01em' }}>
+              <h3 className="uppercase whitespace-pre-line leading-[0.9]" style={{ color: '#FCF7E8', fontSize: 'clamp(2.5rem,8vw,7rem)', letterSpacing: '-0.01em' }}>
                 {f.title}
               </h3>
               <span className="inline-block mt-6 text-[11px] tracking-[0.2em] uppercase border-b pb-1 transition-opacity group-hover:opacity-60" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.5)' }}>
@@ -94,39 +94,38 @@ export default function Home() {
       ))}
 
       {/* 5 — Services index */}
-      <section className="px-6 py-28 sm:py-40">
+      <section className="px-6 py-28 sm:py-40" style={{ background: '#FCF7E8' }}>
         <div className="max-w-6xl mx-auto">
           <RevealSection>
-            <p className="mb-5 text-[11px] tracking-[0.4em] uppercase" style={{ color: 'rgba(255,255,255,0.5)' }}>The Studio</p>
+            <p className="mb-5 text-[11px] tracking-[0.4em] uppercase" style={{ color: '#968148' }}>The Studio</p>
           </RevealSection>
-          <SplitReveal as="h2" className="text-white uppercase leading-[0.9] mb-16" style={{ fontSize: 'clamp(2.5rem,8vw,6.5rem)', letterSpacing: '-0.01em' }}>
+          <SplitReveal as="h2" className="uppercase leading-[0.9] mb-16" style={{ color: '#2A1E08', fontSize: 'clamp(2.5rem,8vw,6.5rem)', letterSpacing: '-0.01em' }}>
             Everything, in one place
           </SplitReveal>
           <div className="flex flex-col">
             {services.map((s, i) => (
               <RevealSection key={s.n} delay={i * 45}>
-                <Link href={s.href} className="group flex items-center justify-between py-6 sm:py-8 border-t" style={{ borderColor: 'rgba(255,255,255,0.14)' }}>
+                <Link href={s.href} className="group flex items-center justify-between py-6 sm:py-8 border-t" style={{ borderColor: '#D9C99A' }}>
                   <div className="flex items-baseline gap-6 sm:gap-12">
-                    <span className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>{s.n}</span>
-                    <span className="text-white uppercase transition-opacity group-hover:opacity-50" style={{ fontSize: 'clamp(1.8rem,5vw,3.5rem)', letterSpacing: '-0.01em' }}>{s.title}</span>
+                    <span className="text-xs" style={{ color: '#C9B889' }}>{s.n}</span>
+                    <span className="uppercase transition-opacity group-hover:opacity-50" style={{ color: '#2A1E08', fontSize: 'clamp(1.8rem,5vw,3.5rem)', letterSpacing: '-0.01em' }}>{s.title}</span>
                   </div>
-                  <span className="text-2xl transition-transform group-hover:translate-x-2" style={{ color: '#f2f0eb' }}>→</span>
+                  <span className="text-2xl transition-transform group-hover:translate-x-2" style={{ color: '#968148' }}>→</span>
                 </Link>
               </RevealSection>
             ))}
-            <div className="border-t" style={{ borderColor: 'rgba(255,255,255,0.14)' }} />
+            <div className="border-t" style={{ borderColor: '#D9C99A' }} />
           </div>
         </div>
       </section>
 
       {/* 6 — Moodboard */}
-      <section className="px-3 sm:px-6 pb-6">
+      <section className="px-3 sm:px-6 pb-6" style={{ background: '#FCF7E8' }}>
         <RevealSection>
-          <p className="px-3 mb-6 text-[11px] tracking-[0.4em] uppercase" style={{ color: 'rgba(255,255,255,0.5)' }}>The Work — Selected Frames</p>
+          <p className="px-3 mb-6 text-[11px] tracking-[0.4em] uppercase" style={{ color: '#968148' }}>The Work — Selected Frames</p>
         </RevealSection>
         <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[38vh] gap-3">
-          {/* moving grayscale film tile */}
-          <div className="overflow-hidden row-span-2" style={{ filter: 'grayscale(1) contrast(1.05)' }}>
+          <div className="overflow-hidden row-span-2">
             <CloudflareVideo id="134e4fa4b335ec371611d69b2fbcd52c" mode="loop" portrait className="h-full" style={{ height: '100%' }} />
           </div>
           {moodboard.map((m, i) => (
@@ -134,19 +133,19 @@ export default function Home() {
           ))}
         </div>
         <RevealSection className="mt-8 text-center">
-          <Link href="/galeria" className="inline-block text-[11px] tracking-[0.2em] uppercase border-b pb-1" style={{ color: '#f2f0eb', borderColor: 'rgba(255,255,255,0.4)' }}>
+          <Link href="/galeria" className="inline-block text-[11px] tracking-[0.2em] uppercase border-b pb-1" style={{ color: '#968148', borderColor: '#D9C99A' }}>
             View the full gallery →
           </Link>
         </RevealSection>
       </section>
 
       {/* 7 — Stats */}
-      <section className="px-6 py-28 sm:py-36 border-t" style={{ borderColor: 'rgba(255,255,255,0.12)' }}>
+      <section className="px-6 py-28 sm:py-36 border-t" style={{ background: '#FCF7E8', borderColor: '#D9C99A' }}>
         <div className="max-w-6xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-12">
           {stats.map((s, i) => (
             <RevealSection key={s.l} delay={i * 70} className="text-center">
-              <CountUp value={s.v} className="block text-white" style={{ fontSize: 'clamp(3rem,9vw,6rem)', letterSpacing: '-0.02em', lineHeight: 1 }} />
-              <p className="mt-3 text-[11px] tracking-[0.2em] uppercase" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.l}</p>
+              <CountUp value={s.v} className="block" style={{ color: '#2A1E08', fontSize: 'clamp(3rem,9vw,6rem)', letterSpacing: '-0.02em', lineHeight: 1 }} />
+              <p className="mt-3 text-[11px] tracking-[0.2em] uppercase" style={{ color: '#968148' }}>{s.l}</p>
             </RevealSection>
           ))}
         </div>
@@ -154,14 +153,14 @@ export default function Home() {
 
       {/* 8 — Final CTA */}
       <section className="relative w-full overflow-hidden" style={{ height: '92vh' }}>
-        <EditorialImage src="/editorial/ed2.jpg" alt="" className="absolute inset-0" />
-        <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(10,10,10,0.55), rgba(10,10,10,0.5) 50%, rgba(10,10,10,0.8))' }} />
+        <EditorialImage src="/editorial/planner3.jpg" alt="" className="absolute inset-0" />
+        <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(20,12,4,0.55), rgba(20,12,4,0.45) 50%, rgba(20,12,4,0.8))' }} />
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ height: '92vh' }}>
-          <p className="mb-6 text-[11px] tracking-[0.4em] uppercase" style={{ color: 'rgba(255,255,255,0.7)' }}>Your day, staged</p>
-          <SplitReveal as="h2" className="text-white uppercase leading-[0.9] mb-10 max-w-4xl" style={{ fontSize: 'clamp(2.6rem,8vw,6.5rem)', letterSpacing: '-0.01em' }}>
+          <p className="mb-6 text-[11px] tracking-[0.4em] uppercase" style={{ color: 'rgba(255,255,255,0.8)' }}>Your day, staged</p>
+          <SplitReveal as="h2" className="uppercase leading-[0.9] mb-10 max-w-4xl" style={{ color: '#FCF7E8', fontSize: 'clamp(2.6rem,8vw,6.5rem)', letterSpacing: '-0.01em' }}>
             Let&apos;s create something unforgettable
           </SplitReveal>
-          <Link href="/cotizacion" className="px-10 py-4 text-[11px] tracking-[0.22em] uppercase transition-opacity hover:opacity-80" style={{ background: '#fff', color: '#0a0a0a', fontWeight: 600 }}>
+          <Link href="/cotizacion" className="px-10 py-4 text-[11px] tracking-[0.22em] uppercase transition-opacity hover:opacity-80" style={{ background: '#968148', color: '#FCF7E8', fontWeight: 600 }}>
             Enquire Now
           </Link>
         </div>

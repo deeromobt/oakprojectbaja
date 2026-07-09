@@ -26,7 +26,7 @@ export default function EditorialImage({
   className = '',
   style,
   priority = false,
-  bw = true,
+  bw = false,
   sizes = '100vw',
 }: Props) {
   const ref = useRef<HTMLDivElement>(null)
