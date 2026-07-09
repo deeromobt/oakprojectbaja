@@ -13,6 +13,7 @@ const services = [
     index: '01',
     name: 'Photography',
     description: 'Two-photographer teams for weddings, events and brand sessions. Private online gallery. Delivery within 4 weeks.',
+    byline: 'Led by Sofía Angulo — our in-house photographer',
   },
   {
     index: '02',
@@ -100,6 +101,11 @@ export default function MediaPage() {
                       >
                         {service.description}
                       </p>
+                      {'byline' in service && service.byline && (
+                        <p className="mt-3 text-xs font-semibold tracking-[0.14em] uppercase" style={{ color: '#968148' }}>
+                          {service.byline}
+                        </p>
+                      )}
                     </div>
                   </div>
                   <div className="flex items-center gap-3 shrink-0 ml-6 pt-2">

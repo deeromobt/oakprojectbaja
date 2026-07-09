@@ -11,9 +11,8 @@ interface Props {
 }
 
 /**
- * Ultra-minimal B&W luxury-fashion-campaign hero: full-bleed grayscale image
- * with a top-down clip reveal + slow push-in, oversized editorial headline,
- * and magazine-style corner labels.
+ * Luxury-fashion-campaign hero: full-bleed colour image with a top-down clip
+ * reveal + slow push-in, oversized editorial headline, magazine corner labels.
  */
 export default function HeroEditorial({
   image = '/hero/couple-desert.jpg',
@@ -21,7 +20,7 @@ export default function HeroEditorial({
   headline = 'The Art of Celebration',
 }: Props) {
   return (
-    <section className="relative w-full overflow-hidden" style={{ minHeight: '100svh', background: '#0a0a0a' }}>
+    <section className="relative w-full overflow-hidden" style={{ minHeight: '100svh', background: '#1a1206' }}>
       {/* full-bleed B&W image */}
       <div className="absolute inset-0 editorial-reveal">
         <div className="absolute inset-0 hero-kenburns">
@@ -71,7 +70,7 @@ export default function HeroEditorial({
           <Link
             href="/cotizacion"
             className="px-8 py-3.5 text-[11px] tracking-[0.2em] uppercase transition-opacity hover:opacity-80"
-            style={{ background: '#fff', color: '#0a0a0a', fontWeight: 600 }}
+            style={{ background: '#FCF7E8', color: '#2A1E08', fontWeight: 600 }}
           >
             Enquire
           </Link>

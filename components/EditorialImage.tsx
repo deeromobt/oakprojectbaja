@@ -11,7 +11,7 @@ interface Props {
   className?: string
   style?: CSSProperties
   priority?: boolean
-  /** grayscale by default; set false for a colour accent */
+  /** colour by default; set true for a B&W treatment */
   bw?: boolean
   sizes?: string
 }

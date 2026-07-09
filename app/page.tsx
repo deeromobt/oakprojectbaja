@@ -9,9 +9,9 @@ import CloudflareVideo from '@/components/CloudflareVideo'
 const marquee = ['Weddings', 'Photography', 'Film', 'Audio', 'Lighting', 'DJ', 'Production', 'Rentals']
 
 const features = [
-  { n: '01', label: 'Photography & Film', title: 'Every detail,\nimmortalized.', img: '/editorial/planner1.jpg', href: '/media' },
-  { n: '02', label: 'The Celebration', title: 'A day made\nto remember.', img: '/editorial/planner4.jpg', href: '/rentas' },
-  { n: '03', label: 'Rentals & Production', title: 'Staged to\nperfection.', img: '/editorial/planner5.jpg', href: '/rentas' },
+  { n: '01', label: 'Photography & Film', title: 'Every detail,\nimmortalized.', img: '/editorial/planner1.jpg', href: '/media', credit: 'Photography by Sofía Angulo' },
+  { n: '02', label: 'The Celebration', title: 'A day made\nto remember.', img: '/editorial/planner4.jpg', href: '/rentas', credit: '' },
+  { n: '03', label: 'Rentals & Production', title: 'Staged to\nperfection.', img: '/editorial/planner5.jpg', href: '/rentas', credit: '' },
 ]
 
 const services = [
@@ -33,10 +33,10 @@ const stats = [
 const moodboard = [
   { img: '/editorial/planner2.jpg', span: 'row-span-2' },
   { img: '/hero/ceremony.jpg', span: '' },
-  { img: '/editorial/ed5.jpg', span: '' },
-  { img: '/hero/couple-rocks.jpg', span: 'row-span-2' },
-  { img: '/editorial/ed6.jpg', span: '' },
+  { img: '/editorial/planner4.jpg', span: '' },
+  { img: '/editorial/planner1.jpg', span: 'row-span-2' },
   { img: '/hero/table.jpg', span: '' },
+  { img: '/editorial/planner5.jpg', span: '' },
 ]
 
 export default function Home() {
@@ -77,12 +77,12 @@ export default function Home() {
           <EditorialImage src={f.img} alt={f.label} className="absolute inset-0" priority={i === 0} />
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(20,12,4,0.4) 0%, rgba(20,12,4,0.12) 40%, rgba(20,12,4,0.74) 100%)' }} />
           <div className={`absolute inset-0 flex flex-col justify-between p-6 sm:p-12 ${i % 2 === 1 ? 'items-end text-right' : 'items-start text-left'}`}>
-            <div className="flex w-full justify-between text-[11px] tracking-[0.28em] uppercase" style={{ color: 'rgba(255,255,255,0.85)' }}>
+            <div className="flex w-full justify-between text-[11px] tracking-[0.28em] uppercase" style={{ color: 'rgba(255,255,255,0.9)', textShadow: '0 1px 12px rgba(0,0,0,0.5)' }}>
               <span>{f.n} / 03</span>
-              <span>{f.label}</span>
+              <span>{f.credit ? f.credit : f.label}</span>
             </div>
             <div>
-              <h3 className="uppercase whitespace-pre-line leading-[0.9]" style={{ color: '#FCF7E8', fontSize: 'clamp(2.5rem,8vw,7rem)', letterSpacing: '-0.01em' }}>
+              <h3 className="uppercase whitespace-pre-line leading-[0.9]" style={{ color: '#FCF7E8', fontSize: 'clamp(2.5rem,8vw,7rem)', letterSpacing: '-0.01em', textShadow: '0 2px 30px rgba(0,0,0,0.45)' }}>
                 {f.title}
               </h3>
               <span className="inline-block mt-6 text-[11px] tracking-[0.2em] uppercase border-b pb-1 transition-opacity group-hover:opacity-60" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.5)' }}>
