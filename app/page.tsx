@@ -44,7 +44,7 @@ export default function Home() {
     <div style={{ background: '#FCF7E8' }}>
       {/* 1 — Hero */}
       <div className="-mt-24">
-        <HeroEditorial image="/hero/couple-desert.jpg" eyebrow="Weddings & Events" headline="The Art of Celebration" />
+        <HeroEditorial image="/hero/hero-beach.jpg" eyebrow="Weddings & Events" headline="The Art of Celebration" />
       </div>
 
       {/* 2 — Word marquee */}
