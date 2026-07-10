@@ -13,7 +13,7 @@ interface VideoHeroProps {
 export default function VideoHero({
   cfId,
   headline = 'Every detail of your event,\nin one place.',
-  subline = 'Furniture, audio, lighting, photography and video for events in Baja California.',
+  subline = 'Dance floors, audio, lighting, photography and video for events in Baja California.',
 }: VideoHeroProps) {
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: '100svh' }}>

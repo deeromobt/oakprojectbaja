@@ -37,7 +37,7 @@ const CARDS: Card[] = [
 
 export default function Hero3D({
   headline = 'Bringing your\nperfect event to life',
-  subline = 'Furniture rental, audio, lighting, photography, and video for weddings and events across Baja California.',
+  subline = 'Dance floor rental, audio, lighting, photography, and video for weddings and events across Baja California.',
   photographer = 'Sofía Angulo',
 }: Hero3DProps) {
   const sceneRef = useRef<HTMLDivElement>(null)

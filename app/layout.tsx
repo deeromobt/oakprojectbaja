@@ -30,8 +30,8 @@ const atkinson = Atkinson_Hyperlegible({
 })
 
 export const metadata: Metadata = {
-  title: 'Oak Project Baja — Furniture, Audio, Lighting & Photography Rentals',
-  description: 'Furniture rental, audio, lighting, photography, and video services for events in Baja California. Get a quote online and book your date.',
+  title: 'Oak Project Baja — Dance Floors, Audio, Lighting & Photography Rentals',
+  description: 'Dance floor rental, audio, lighting, photography, and video services for events in Baja California. Get a quote online and book your date.',
   keywords: 'event furniture rental baja california, audio lighting events, photography video events baja',
 }
 

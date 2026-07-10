@@ -106,7 +106,7 @@ export const products: Product[] = [
 
 export const categoryInfo = {
   mobiliario: {
-    title: 'Furniture',
+    title: 'Dance Floors',
     subtitle: 'The perfect stage for every moment',
     description: 'Professional DJ Booths and modular dance floors for rental. The element that turns any space into a real party.',
     icon: '🪑',

@@ -117,7 +117,7 @@ export default function CotizacionPage() {
                 </p>
                 <div className="flex flex-wrap gap-2 justify-center">
                   {[
-                    { slug: 'mobiliario', label: 'Furniture' },
+                    { slug: 'mobiliario', label: 'Dance Floors' },
                     { slug: 'audio', label: 'Audio' },
                     { slug: 'iluminacion', label: 'Lighting' },
                     { slug: 'fotografia', label: 'Photography' },

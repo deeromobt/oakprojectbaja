@@ -15,7 +15,7 @@ export default function Footer() {
               className="h-11 w-auto mb-5"
             />
             <p className="text-sm leading-relaxed max-w-xs" style={{ color: '#7A6535' }}>
-              Furniture, audio, lighting, photography and video for weddings and events across Baja California Sur.
+              Dance floors, audio, lighting, photography and video for weddings and events across Baja California Sur.
             </p>
           </div>
 
@@ -23,7 +23,7 @@ export default function Footer() {
             <h4 className="text-[11px] font-semibold mb-5 tracking-[0.25em] uppercase" style={{ color: '#968148' }}>The Studio</h4>
             <ul className="flex flex-col gap-3">
               {[
-                { href: '/rentas', label: 'Furniture' },
+                { href: '/rentas', label: 'Dance Floors' },
                 { href: '/rentas', label: 'Audio' },
                 { href: '/rentas', label: 'Lighting' },
                 { href: '/media', label: 'Photography' },

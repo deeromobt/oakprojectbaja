@@ -15,7 +15,7 @@ const features = [
 ]
 
 const services = [
-  { n: '01', title: 'Furniture', href: '/rentas' },
+  { n: '01', title: 'Dance Floors', href: '/rentas' },
   { n: '02', title: 'Audio', href: '/rentas' },
   { n: '03', title: 'Lighting', href: '/rentas' },
   { n: '04', title: 'Photography', href: '/media' },

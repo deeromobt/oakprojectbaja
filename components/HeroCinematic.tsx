@@ -17,7 +17,7 @@ interface Props {
  */
 export default function HeroCinematic({
   headline = 'Bringing your perfect event to life',
-  subline = 'Furniture, audio, lighting, photography and video for weddings and events across Baja California.',
+  subline = 'Dance floors, audio, lighting, photography and video for weddings and events across Baja California.',
   eyebrow = 'Weddings & Events · Baja California',
   cfId = 'bd123b05247e4ef098521fddab781f90',
 }: Props) {

@@ -33,9 +33,9 @@ const realEvents = [
 
 const placeholderEvents = [
   { title: 'Corporate Event Los Cabos', tag: 'Corporate', services: ['Audio', 'Lighting'] },
-  { title: 'Private Event — Los Cabos', tag: 'Private Party', services: ['Furniture', 'Audio', 'Lighting', 'Video'] },
-  { title: 'Beach wedding Ensenada', tag: 'Wedding', services: ['Furniture', 'Photography', 'Video'] },
-  { title: 'Birthday 50 La Paz', tag: 'Birthday', services: ['Photo booth', 'Furniture'] },
+  { title: 'Private Event — Los Cabos', tag: 'Private Party', services: ['Dance Floors', 'Audio', 'Lighting', 'Video'] },
+  { title: 'Beach wedding Ensenada', tag: 'Wedding', services: ['Dance Floors', 'Photography', 'Video'] },
+  { title: 'Birthday 50 La Paz', tag: 'Birthday', services: ['Photo booth', 'Dance Floors'] },
 ]
 
 const categories = ['All', 'Weddings', 'Corporate', 'Private parties', 'Villas']
