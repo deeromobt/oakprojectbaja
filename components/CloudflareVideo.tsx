@@ -1,6 +1,6 @@
 interface Props {
   id: string
-  mode: 'background' | 'loop' | 'player'
+  mode: 'background' | 'loop' | 'player' | 'cover'
   portrait?: boolean
   className?: string
   style?: React.CSSProperties
@@ -35,6 +35,29 @@ export default function CloudflareVideo({ id, mode, portrait = false, className 
           allow="autoplay; fullscreen"
         />
       </div>
+    )
+  }
+
+  if (mode === 'cover') {
+    // Fills a sized, position:relative parent — the iframe keeps the video's
+    // native aspect ratio and is scaled to COVER (crops overflow, no letterbox).
+    return (
+      <iframe
+        src={`${BASE}/${id}?autoplay=true&muted=true&loop=true&controls=false&background=true`}
+        title="Wedding film"
+        allow="autoplay; fullscreen"
+        className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ${className}`}
+        style={{
+          minWidth: '100%',
+          minHeight: '100%',
+          width: 'auto',
+          height: 'auto',
+          aspectRatio: portrait ? '9 / 16' : '16 / 9',
+          border: 'none',
+          pointerEvents: 'none',
+          ...style,
+        }}
+      />
     )
   }
 

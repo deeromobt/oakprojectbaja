@@ -4,6 +4,7 @@ import SplitReveal from '@/components/SplitReveal'
 import RevealSection from '@/components/RevealSection'
 import CountUp from '@/components/CountUp'
 import EditorialImage from '@/components/EditorialImage'
+import CloudflareVideo from '@/components/CloudflareVideo'
 
 const marquee = ['Weddings', 'Photography', 'Film', 'Audio', 'Lighting', 'DJ', 'Production', 'Rentals']
 
@@ -124,18 +125,19 @@ export default function Home() {
           <p className="px-3 mb-6 text-[11px] tracking-[0.4em] uppercase" style={{ color: '#968148' }}>The Work — Selected Frames</p>
         </RevealSection>
         <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[38vh] gap-3">
+          {/* Katie & Manuel film — covers the tile, no black bars */}
           <div className="relative overflow-hidden row-span-2">
-            {/* 9:16 film sized to COVER the tile (crops overflow, no letterbox bars) */}
-            <iframe
-              src="https://iframe.videodelivery.net/134e4fa4b335ec371611d69b2fbcd52c?autoplay=true&muted=true&loop=true&controls=false&background=true"
-              title="Selected wedding film"
-              allow="autoplay; fullscreen"
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-              style={{ minWidth: '100%', minHeight: '100%', width: 'auto', height: 'auto', aspectRatio: '9 / 16', border: 'none', pointerEvents: 'none' }}
-            />
+            <CloudflareVideo id="134e4fa4b335ec371611d69b2fbcd52c" mode="cover" portrait />
           </div>
-          {moodboard.map((m, i) => (
+          {moodboard.slice(0, 3).map((m, i) => (
             <EditorialImage key={i} src={m.img} className={`relative ${m.span}`} sizes="(max-width:768px) 50vw, 33vw" />
+          ))}
+          {/* Charlie & Jessica film */}
+          <div className="relative overflow-hidden row-span-2">
+            <CloudflareVideo id="f4c4cb0155960b64fa063d36b0ecabc8" mode="cover" portrait />
+          </div>
+          {moodboard.slice(3).map((m, i) => (
+            <EditorialImage key={i + 3} src={m.img} className={`relative ${m.span}`} sizes="(max-width:768px) 50vw, 33vw" />
           ))}
         </div>
         <RevealSection className="mt-8 text-center">
