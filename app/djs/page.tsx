@@ -55,6 +55,15 @@ const djs: DJ[] = [
     soundcloud: '#',
     presskit: 'mailto:bookings@oakprojectbaja.com?subject=Presskit Request - Alejandro Rivas',
   },
+  {
+    name: 'Jhonny Boites',
+    initials: 'JB',
+    title: 'DJ · Performer',
+    genres: ['Open Format', 'Latin', 'Reggaeton'],
+    bio: 'Jhonny Boites reads a dance floor like few others — seamless transitions, bold selections and the kind of energy that keeps guests dancing until the last song. A dynamic performer for weddings and private parties across Baja California.',
+    soundcloud: '#',
+    presskit: 'mailto:bookings@oakprojectbaja.com?subject=Presskit Request - Jhonny Boites',
+  },
 ]
 
 export default function DJsPage() {
