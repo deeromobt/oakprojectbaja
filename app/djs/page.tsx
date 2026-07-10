@@ -20,6 +20,15 @@ type DJ = {
 
 const djs: DJ[] = [
   {
+    name: 'Daniel Romo',
+    initials: 'DR',
+    title: 'Founder · DJ',
+    genres: ['Open Format', 'Wedding', 'Latin'],
+    bio: 'With years of experience behind the decks and a deep love for music that moves people, Daniel brings energy and precision to every set. As founder of Oak Project Baja, he understands what a wedding needs — not just from the DJ booth, but from the full production.',
+    soundcloud: '#',
+    presskit: 'mailto:bookings@oakprojectbaja.com?subject=Presskit Request - Daniel Romo',
+  },
+  {
     name: 'Paco Navarro',
     initials: 'PN',
     title: 'DJ · Producer',
