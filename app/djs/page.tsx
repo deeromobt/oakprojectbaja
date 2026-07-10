@@ -20,15 +20,6 @@ type DJ = {
 
 const djs: DJ[] = [
   {
-    name: 'Daniel Romo',
-    initials: 'DR',
-    title: 'Founder · DJ',
-    genres: ['Open Format', 'Wedding', 'Latin'],
-    bio: 'With years of experience behind the decks and a deep love for music that moves people, Daniel brings energy and precision to every set. As founder of Oak Project Baja, he understands what a wedding needs — not just from the DJ booth, but from the full production.',
-    soundcloud: '#',
-    presskit: 'mailto:bookings@oakprojectbaja.com?subject=Presskit Request - Daniel Romo',
-  },
-  {
     name: 'Paco Navarro',
     initials: 'PN',
     title: 'DJ · Producer',
@@ -45,6 +36,15 @@ const djs: DJ[] = [
     bio: 'DJ Morena is a powerhouse performer whose sets are known for their infectious energy and instinct for what gets people on the dance floor. A crowd favorite at events across Baja California.',
     soundcloud: '#',
     presskit: 'mailto:bookings@oakprojectbaja.com?subject=Presskit Request - DJ Morena',
+  },
+  {
+    name: 'Alejandro Rivas',
+    initials: 'AR',
+    title: 'DJ · Selector',
+    genres: ['Open Format', 'House', 'Latin'],
+    bio: 'Alejandro Rivas blends deep grooves with a refined sense of timing, curating sets that build the perfect atmosphere — from cocktail hour to the peak of the celebration. A versatile, dependable selector for weddings and private events across Baja California.',
+    soundcloud: '#',
+    presskit: 'mailto:bookings@oakprojectbaja.com?subject=Presskit Request - Alejandro Rivas',
   },
 ]
 

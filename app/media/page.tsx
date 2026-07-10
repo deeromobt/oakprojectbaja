@@ -19,6 +19,7 @@ const services = [
     index: '02',
     name: 'Video',
     description: 'Cinema-quality wedding films and event videos produced by a dedicated 3-person crew. Full-length film + social media highlight reel.',
+    byline: 'Led by Daniel Romo — our in-house videographer',
   },
   {
     index: '03',
