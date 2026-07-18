@@ -11,7 +11,7 @@ const marquee = ['Weddings', 'Photography', 'Film', 'Audio', 'Lighting', 'DJ', '
 const features = [
   { n: '01', label: 'Photography & Film', title: 'Every detail,\nimmortalized.', img: '/editorial/charlie_ceremony.jpg', href: '/media', credit: 'Jessica & Charlie — Baja Luna' },
   { n: '02', label: 'The Celebration', title: 'A day made\nto remember.', img: '/editorial/charlie_table.jpg', href: '/rentas', credit: 'Jessica & Charlie — Baja Luna' },
-  { n: '03', label: 'Rentals & Production', title: 'Staged to\nperfection.', img: '/editorial/charlie_ceremony.jpg', href: '/rentas', credit: '' },
+  { n: '03', label: 'Rentals & Production', title: 'Staged to\nperfection.', videoId: 'debc5af9f99542083c548ad644051c98', href: '/rentas', credit: 'The Mendivils' },
 ]
 
 const services = [
@@ -66,7 +66,10 @@ export default function Home() {
       {/* 4 — Editorial features */}
       {features.map((f, i) => (
         <Link key={f.n} href={f.href} className="group block relative w-full overflow-hidden" style={{ height: '92vh' }}>
-          <EditorialImage src={f.img} alt={f.label} className="absolute inset-0" priority={i === 0} />
+          {'videoId' in f && f.videoId
+            ? <CloudflareVideo id={f.videoId} mode="cover" />
+            : <EditorialImage src={(f as any).img} alt={f.label} className="absolute inset-0" priority={i === 0} />
+          }
           <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(20,12,4,0.4) 0%, rgba(20,12,4,0.12) 40%, rgba(20,12,4,0.74) 100%)' }} />
           <div className={`absolute inset-0 flex flex-col justify-between p-6 sm:p-12 ${i % 2 === 1 ? 'items-end text-right' : 'items-start text-left'}`}>
             <div className="flex w-full justify-between text-[11px] tracking-[0.28em] uppercase" style={{ color: 'rgba(255,255,255,0.9)', textShadow: '0 1px 12px rgba(0,0,0,0.5)' }}>
