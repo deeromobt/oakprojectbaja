@@ -9,9 +9,9 @@ import CloudflareVideo from '@/components/CloudflareVideo'
 const marquee = ['Weddings', 'Photography', 'Film', 'Audio', 'Lighting', 'DJ', 'Production', 'Rentals']
 
 const features = [
-  { n: '01', label: 'Photography & Film', title: 'Every detail,\nimmortalized.', img: '/editorial/planner1.jpg', href: '/media', credit: 'Photography by Sofía Angulo' },
-  { n: '02', label: 'The Celebration', title: 'A day made\nto remember.', img: '/editorial/planner4.jpg', href: '/rentas', credit: '' },
-  { n: '03', label: 'Rentals & Production', title: 'Staged to\nperfection.', img: '/editorial/planner5.jpg', href: '/rentas', credit: '' },
+  { n: '01', label: 'Photography & Film', title: 'Every detail,\nimmortalized.', img: '/editorial/charlie_ceremony.jpg', href: '/media', credit: 'Jessica & Charlie — Baja Luna' },
+  { n: '02', label: 'The Celebration', title: 'A day made\nto remember.', img: '/editorial/charlie_table.jpg', href: '/rentas', credit: 'Jessica & Charlie — Baja Luna' },
+  { n: '03', label: 'Rentals & Production', title: 'Staged to\nperfection.', img: '/editorial/charlie_ceremony.jpg', href: '/rentas', credit: '' },
 ]
 
 const services = [
@@ -31,12 +31,12 @@ const stats = [
 ]
 
 const moodboard = [
-  { img: '/editorial/planner2.jpg', span: 'row-span-2' },
+  { img: '/editorial/charlie_ceremony.jpg', span: 'row-span-2' },
   { img: '/hero/ceremony.jpg', span: '' },
-  { img: '/editorial/planner4.jpg', span: '' },
-  { img: '/editorial/planner1.jpg', span: 'row-span-2' },
+  { img: '/editorial/charlie_table.jpg', span: '' },
+  { img: '/editorial/charlie_table.jpg', span: 'row-span-2' },
   { img: '/hero/table.jpg', span: '' },
-  { img: '/editorial/planner5.jpg', span: '' },
+  { img: '/editorial/charlie_ceremony.jpg', span: '' },
 ]
 
 export default function Home() {
@@ -161,7 +161,7 @@ export default function Home() {
 
       {/* 8 — Final CTA */}
       <section className="relative w-full overflow-hidden" style={{ height: '92vh' }}>
-        <EditorialImage src="/editorial/planner3.jpg" alt="" className="absolute inset-0" />
+        <EditorialImage src="/editorial/charlie_table.jpg" alt="" className="absolute inset-0" />
         <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(20,12,4,0.55), rgba(20,12,4,0.45) 50%, rgba(20,12,4,0.8))' }} />
         <div className="relative z-10 flex flex-col items-center justify-center text-center px-6" style={{ height: '92vh' }}>
           <p className="mb-6 text-[11px] tracking-[0.4em] uppercase" style={{ color: 'rgba(255,255,255,0.8)' }}>Your day, staged</p>
