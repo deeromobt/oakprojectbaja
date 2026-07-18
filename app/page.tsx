@@ -30,14 +30,6 @@ const stats = [
   { v: '6', l: 'Disciplines' },
 ]
 
-const moodboard = [
-  { img: '/editorial/charlie_ceremony.jpg', span: 'row-span-2' },
-  { img: '/hero/ceremony.jpg', span: '' },
-  { img: '/editorial/charlie_table.jpg', span: '' },
-  { img: '/editorial/charlie_table.jpg', span: 'row-span-2' },
-  { img: '/hero/table.jpg', span: '' },
-  { img: '/editorial/charlie_ceremony.jpg', span: '' },
-]
 
 export default function Home() {
   return (
@@ -124,21 +116,15 @@ export default function Home() {
         <RevealSection>
           <p className="px-3 mb-6 text-[11px] tracking-[0.4em] uppercase" style={{ color: '#968148' }}>The Work — Selected Frames</p>
         </RevealSection>
-        <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-[38vh] gap-3">
-          {/* Katie & Manuel film — covers the tile, no black bars */}
+        <div className="grid grid-cols-3 auto-rows-[38vh] gap-3">
           <div className="relative overflow-hidden row-span-2">
             <CloudflareVideo id="134e4fa4b335ec371611d69b2fbcd52c" mode="cover" portrait />
           </div>
-          {moodboard.slice(0, 3).map((m, i) => (
-            <EditorialImage key={i} src={m.img} className={`relative ${m.span}`} sizes="(max-width:768px) 50vw, 33vw" />
-          ))}
-          {/* Charlie & Jessica film */}
+          <EditorialImage src="/editorial/charlie_ceremony.jpg" className="relative" sizes="33vw" />
           <div className="relative overflow-hidden row-span-2">
             <CloudflareVideo id="f4c4cb0155960b64fa063d36b0ecabc8" mode="cover" portrait />
           </div>
-          {moodboard.slice(3).map((m, i) => (
-            <EditorialImage key={i + 3} src={m.img} className={`relative ${m.span}`} sizes="(max-width:768px) 50vw, 33vw" />
-          ))}
+          <EditorialImage src="/editorial/charlie_table.jpg" className="relative" sizes="33vw" />
         </div>
         <RevealSection className="mt-8 text-center">
           <Link href="/galeria" className="inline-block text-[11px] tracking-[0.2em] uppercase border-b pb-1" style={{ color: '#968148', borderColor: '#D9C99A' }}>
