@@ -6,10 +6,10 @@ import { ShoppingCart, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
 const navLinks = [
-  { href: '/media', label: 'Media' },
+  { href: '/wedding-in-a-box', label: 'Wedding in a Box' },
+  { href: '/celebraciones', label: 'Celebrations' },
   { href: '/djs', label: 'DJs' },
-  { href: '/rentas', label: 'Rentals' },
-  { href: '/galeria', label: 'Gallery' },
+  { href: '/media', label: 'Media' },
   { href: '/nosotros', label: 'About' },
 ]
 
