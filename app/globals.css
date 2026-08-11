@@ -213,3 +213,13 @@ html.lenis, html.lenis body { height: auto; }
   .depth-1 { transition: none; }
   .depth-1:hover { transform: none; }
 }
+
+/* ---- Hero: mobile video / desktop photo switching ---- */
+.hero-mobile-video { display: block; }
+.hero-desktop-photo { display: block; }
+@media (max-width: 639px) {
+  .hero-desktop-photo { display: none !important; }
+}
+@media (min-width: 640px) {
+  .hero-mobile-video { display: none !important; }
+}

@@ -3,11 +3,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import SplitReveal from './SplitReveal'
+import CloudflareVideo from './CloudflareVideo'
 
 interface Props {
   image?: string
   eyebrow?: string
   headline?: string
+  mobileVideoId?: string
 }
 
 /**
@@ -18,11 +20,19 @@ export default function HeroEditorial({
   image = '/hero/couple-desert.jpg',
   eyebrow = 'Weddings & Events',
   headline = 'The Art of Celebration',
+  mobileVideoId,
 }: Props) {
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: '100svh', background: '#1a1206' }}>
-      {/* full-bleed B&W image */}
-      <div className="absolute inset-0 editorial-reveal">
+      {/* Mobile: Cloudflare video background */}
+      {mobileVideoId && (
+        <div className="hero-mobile-video absolute inset-0 overflow-hidden">
+          <CloudflareVideo id={mobileVideoId} mode="cover" portrait />
+        </div>
+      )}
+
+      {/* Desktop photo (hidden on mobile when video provided) */}
+      <div className={`absolute inset-0 editorial-reveal${mobileVideoId ? ' hero-desktop-photo' : ''}`}>
         <div className="absolute inset-0 hero-kenburns">
           <Image
             src={image}
