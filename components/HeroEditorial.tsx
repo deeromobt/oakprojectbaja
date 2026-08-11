@@ -70,7 +70,7 @@ export default function HeroEditorial({
         style={{ color: 'rgba(255,255,255,0.72)', animationDelay: '0.7s' }}
       >
         <span>Oak Project — Baja California</span>
-        <span className="hidden sm:block">Est. Cabo San Lucas</span>
+        <span>Est. Cabo San Lucas</span>
       </div>
 
       {/* center headline */}

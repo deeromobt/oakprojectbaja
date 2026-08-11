@@ -38,6 +38,7 @@ export default function Home() {
       <div className="-mt-24">
         <HeroEditorial
           videoId="134e4fa4b335ec371611d69b2fbcd52c"
+          videoPortrait
           eyebrow="Oak Project Baja"
           headline="Wedding in a Box"
         />
