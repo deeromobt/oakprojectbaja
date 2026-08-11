@@ -1,9 +1,19 @@
 'use client'
 import { useCartStore } from '@/lib/store'
 import { formatPrice } from '@/lib/products'
-import { Trash2, Plus, Minus, Calendar, ArrowRight, ShoppingCart, MessageCircle } from 'lucide-react'
+import { Trash2, Plus, Minus, Calendar, ArrowRight, ShoppingCart, MessageCircle, Check } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
+
+const wibOptions = [
+  'Photography',
+  'Cinematography / Video',
+  'Professional Audio',
+  'Lighting Design',
+  'DJ',
+  'Dance Floor',
+  'Full Production & Setup',
+]
 
 const eventTypes = [
   'Wedding', 'Quinceañera', 'Birthday', 'Corporate Event',
@@ -29,6 +39,12 @@ export default function CotizacionPage() {
   const { items, removeItem, updateQuantity, eventDetails, setEventDetails } = useCartStore()
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
+  const [wibSelected, setWibSelected] = useState<string[]>([])
+
+  const toggleWib = (service: string) =>
+    setWibSelected(prev =>
+      prev.includes(service) ? prev.filter(s => s !== service) : [...prev, service]
+    )
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -50,7 +66,10 @@ export default function CotizacionPage() {
           budget: (eventDetails as { budget?: string }).budget || 'Not specified',
           source: (eventDetails as { hearAbout?: string }).hearAbout || 'Not specified',
           vision: eventDetails.notes,
-          items: items.map(i => `${i.quantity}x ${i.product.name}`).join(', ') || 'No items selected',
+          items: [
+            wibSelected.length ? `Wedding in a Box: ${wibSelected.join(', ')}` : '',
+            ...items.map(i => `${i.quantity}x ${i.product.name}`),
+          ].filter(Boolean).join(' | ') || 'No items selected',
         }),
       })
     } catch (_) {
@@ -108,6 +127,49 @@ export default function CotizacionPage() {
             <h2 className="text-base font-semibold mb-4" style={{ color: '#2A1E08' }}>
               Selected services
             </h2>
+
+            {/* Wedding in a Box builder */}
+            <div className="rounded-2xl overflow-hidden mb-4" style={{ border: '1.5px solid #968148' }}>
+              <div className="px-5 py-4" style={{ background: '#2A1E08' }}>
+                <p className="text-xs tracking-[0.25em] uppercase mb-1" style={{ color: '#C9B889' }}>Most popular</p>
+                <p className="font-semibold text-base" style={{ color: '#FCF7E8' }}>Wedding in a Box</p>
+                <p className="text-xs mt-1 leading-relaxed" style={{ color: 'rgba(252,247,232,0.6)' }}>
+                  Get all of them for a custom price tailored for you — just select the items you wish to put in your wedding box.
+                </p>
+              </div>
+              <div className="px-5 py-4 flex flex-col gap-2" style={{ background: '#EDE4CC' }}>
+                {wibOptions.map(service => {
+                  const active = wibSelected.includes(service)
+                  return (
+                    <button
+                      key={service}
+                      type="button"
+                      onClick={() => toggleWib(service)}
+                      className="flex items-center gap-3 w-full text-left px-3 py-2.5 rounded-xl transition-all"
+                      style={{
+                        background: active ? '#FCF7E8' : 'transparent',
+                        border: `1px solid ${active ? '#968148' : '#D9C99A'}`,
+                      }}
+                    >
+                      <span
+                        className="w-5 h-5 rounded flex items-center justify-center shrink-0 transition-all"
+                        style={{ background: active ? '#968148' : '#FCF7E8', border: `1px solid ${active ? '#968148' : '#D9C99A'}` }}
+                      >
+                        {active && <Check size={11} color="#FCF7E8" strokeWidth={3} />}
+                      </span>
+                      <span className="text-sm" style={{ color: active ? '#2A1E08' : '#7A6535', fontWeight: active ? 600 : 400 }}>
+                        {service}
+                      </span>
+                    </button>
+                  )
+                })}
+                {wibSelected.length > 0 && (
+                  <p className="text-xs text-center pt-1" style={{ color: '#968148' }}>
+                    {wibSelected.length} service{wibSelected.length > 1 ? 's' : ''} selected — we'll build your custom quote
+                  </p>
+                )}
+              </div>
+            </div>
 
             {items.length === 0 ? (
               <div className="rounded-2xl p-8 text-center" style={{ background: '#EDE4CC', border: '1px dashed #D9C99A' }}>
