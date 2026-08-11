@@ -83,8 +83,8 @@ export default function HeroEditorial({
         </p>
         <SplitReveal
           as="h1"
-          className="text-white uppercase leading-[0.86]"
-          style={{ fontSize: 'clamp(3rem, 12vw, 11rem)', letterSpacing: '-0.01em' }}
+          className="text-white uppercase leading-[1.08]"
+          style={{ fontSize: 'clamp(1.9rem, 4.5vw, 4rem)', letterSpacing: '-0.01em', maxWidth: '780px' }}
         >
           {headline}
         </SplitReveal>
