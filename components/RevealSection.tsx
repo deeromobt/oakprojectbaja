@@ -18,18 +18,16 @@ export default function RevealSection({ children, className = '', delay = 0 }: P
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     gsap.registerPlugin(ScrollTrigger)
 
-    const tween = gsap.fromTo(
-      el,
-      { opacity: 0, y: 52 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1.05,
-        delay: delay / 1000,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 88%', once: true },
-      }
-    )
+    // Use `from` not `fromTo` — if ScrollTrigger never fires (iOS quirk),
+    // element stays at its CSS default (visible) instead of stuck at opacity:0.
+    const tween = gsap.from(el, {
+      opacity: 0,
+      y: 52,
+      duration: 1.05,
+      delay: delay / 1000,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 92%', once: true },
+    })
     return () => {
       tween.scrollTrigger?.kill()
       tween.kill()

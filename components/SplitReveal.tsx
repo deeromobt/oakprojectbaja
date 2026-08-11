@@ -43,13 +43,19 @@ export default function SplitReveal({
     const run = () => {
       split = new SplitType(el, { types: 'lines,words', lineClass: 'sr-line', wordClass: 'sr-word' })
       if (!split.words) return
-      gsap.set(split.words, { yPercent: 118 })
-      tween = gsap.to(split.words, {
-        yPercent: 0,
-        duration,
-        stagger,
-        ease: 'power4.out',
-        scrollTrigger: { trigger: el, start, once: true },
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 92%',
+        once: true,
+        onEnter: () => {
+          gsap.set(split!.words!, { yPercent: 118 })
+          tween = gsap.to(split!.words!, {
+            yPercent: 0,
+            duration,
+            stagger,
+            ease: 'power4.out',
+          })
+        },
       })
     }
 
