@@ -10,6 +10,8 @@ interface Props {
   eyebrow?: string
   headline?: string
   mobileVideoId?: string
+  videoId?: string        // full video hero — replaces photo on both breakpoints
+  videoPortrait?: boolean
 }
 
 /**
@@ -21,29 +23,40 @@ export default function HeroEditorial({
   eyebrow = 'Weddings & Events',
   headline = 'The Art of Celebration',
   mobileVideoId,
+  videoId,
+  videoPortrait = false,
 }: Props) {
   return (
     <section className="relative w-full overflow-hidden" style={{ minHeight: '100svh', background: '#1a1206' }}>
-      {/* Mobile: Cloudflare video background */}
-      {mobileVideoId && (
+      {/* Full video hero — both breakpoints */}
+      {videoId && (
+        <div className="absolute inset-0 overflow-hidden">
+          <CloudflareVideo id={videoId} mode="cover" portrait={videoPortrait} />
+        </div>
+      )}
+
+      {/* Mobile-only video (when no full videoId) */}
+      {!videoId && mobileVideoId && (
         <div className="hero-mobile-video absolute inset-0 overflow-hidden">
           <CloudflareVideo id={mobileVideoId} mode="cover" portrait />
         </div>
       )}
 
-      {/* Desktop photo (hidden on mobile when video provided) */}
-      <div className={`absolute inset-0 editorial-reveal${mobileVideoId ? ' hero-desktop-photo' : ''}`}>
-        <div className="absolute inset-0 hero-kenburns">
-          <Image
-            src={image}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: 'cover', filter: 'contrast(1.04) brightness(0.86) saturate(1.02)' }}
-          />
+      {/* Photo — shown on desktop, or always when no video at all */}
+      {!videoId && (
+        <div className={`absolute inset-0 editorial-reveal${mobileVideoId ? ' hero-desktop-photo' : ''}`}>
+          <div className="absolute inset-0 hero-kenburns">
+            <Image
+              src={image}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              style={{ objectFit: 'cover', filter: 'contrast(1.04) brightness(0.86) saturate(1.02)' }}
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* gradient for legibility */}
       <div
